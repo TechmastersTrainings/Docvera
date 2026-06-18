@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:8001/api";
+// const API_BASE_URL = "http://127.0.0.1:8001/api";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://docvera-0aa3.onrender.com/api";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
