@@ -50,7 +50,7 @@ export default function PatientDashboard() {
         setBloodGroup(p.blood_group || "");
         setEmergencyContact(p.emergency_contact || "");
         if (p.profile_photo) {
-          const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+          const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://docvera-0aa3.onrender.com";
           setPhotoPreview(p.profile_photo.startsWith("http") ? p.profile_photo : `${baseUrl}${p.profile_photo}`);
         }
       }
@@ -96,7 +96,9 @@ export default function PatientDashboard() {
         setFormMessage({ type: "success", text: "Profile updated successfully!" });
         setSelectedFile(null);
         if (updatedData.profile_photo) {
-          const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+          const baseUrl =
+            process.env.NEXT_PUBLIC_API_URL ||
+            "https://docvera-0aa3.onrender.com";
           setPhotoPreview(updatedData.profile_photo.startsWith("http") ? updatedData.profile_photo : `${baseUrl}${updatedData.profile_photo}`);
         }
         setTimeout(() => setActiveTab("overview"), 1500);
@@ -135,11 +137,10 @@ export default function PatientDashboard() {
           <div className="flex items-center gap-3 w-full lg:w-auto">
             <button
               onClick={() => { setFormMessage(null); setActiveTab(activeTab === "overview" ? "edit-profile" : "overview"); }}
-              className={`flex-1 lg:flex-none px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                activeTab === "overview"
+              className={`flex-1 lg:flex-none px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeTab === "overview"
                   ? "bg-white/8 text-white border border-white/15 hover:bg-white/12"
                   : "bg-[#015d67] text-white hover:bg-[#00a6a6]"
-              }`}
+                }`}
             >
               {activeTab === "overview" ? "Edit Profile" : "Back to Overview"}
             </button>
@@ -254,11 +255,10 @@ export default function PatientDashboard() {
                             <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-white/8 text-white border border-white/12 uppercase tracking-widest">
                               {appt.specialization || "General"}
                             </span>
-                            <span className={`px-3 py-1 text-[11px] font-bold rounded-xl border uppercase tracking-wider ${
-                              appt.status === "COMPLETED" ? "bg-[#00a6a6]/15 text-[#00a6a6] border-[#00a6a6]/25" :
-                              appt.status === "CANCELLED" ? "bg-red-500/10 text-red-400 border-red-500/20" :
-                              "bg-blue-500/10 text-blue-400 border-blue-500/20"
-                            }`}>
+                            <span className={`px-3 py-1 text-[11px] font-bold rounded-xl border uppercase tracking-wider ${appt.status === "COMPLETED" ? "bg-[#00a6a6]/15 text-[#00a6a6] border-[#00a6a6]/25" :
+                                appt.status === "CANCELLED" ? "bg-red-500/10 text-red-400 border-red-500/20" :
+                                  "bg-blue-500/10 text-blue-400 border-blue-500/20"
+                              }`}>
                               {appt.status}
                             </span>
                           </div>
@@ -321,9 +321,8 @@ export default function PatientDashboard() {
           <div className="max-w-3xl mx-auto">
             <div className="bg-[#1a4a5a] border border-white/10 rounded-2xl p-6 sm:p-8">
               {formMessage && (
-                <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 text-sm font-semibold border ${
-                  formMessage.type === "success" ? "bg-[#00a6a6]/10 text-[#00a6a6] border-[#00a6a6]/20" : "bg-red-500/10 text-red-400 border-red-500/20"
-                }`}>
+                <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 text-sm font-semibold border ${formMessage.type === "success" ? "bg-[#00a6a6]/10 text-[#00a6a6] border-[#00a6a6]/20" : "bg-red-500/10 text-red-400 border-red-500/20"
+                  }`}>
                   {formMessage.type === "success" ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
                   <span>{formMessage.text}</span>
                 </div>
