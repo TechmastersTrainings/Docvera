@@ -4,16 +4,16 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { 
-  Search, 
-  MapPin, 
-  ShieldCheck, 
-  Heart, 
-  Stethoscope, 
-  Activity, 
-  Compass, 
-  ArrowRight, 
-  Award, 
+import {
+  Search,
+  MapPin,
+  ShieldCheck,
+  Heart,
+  Stethoscope,
+  Activity,
+  Compass,
+  ArrowRight,
+  Award,
   Eye,
   Plus,
   Hospital as HospitalIcon,
@@ -124,7 +124,8 @@ export default function LandingPage() {
     const fetchDoctors = async () => {
       try {
         setIsLoadingDoctors(true);
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        // const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://docvera-0aa3.onrender.com';
         const response = await fetch(`${apiUrl}/api/doctors/search/`);
         if (!response.ok) throw new Error('Failed to fetch doctors');
         const result = await response.json();
@@ -349,11 +350,10 @@ export default function LandingPage() {
                 <div
                   key={doctor.user || idx}
                   onClick={() => setSelectedPreviewIdx(idx)}
-                  className={`p-6 bg-[#1a4a5a] border rounded-2xl space-y-4 relative cursor-pointer transition-all duration-300 ${
-                    selectedPreviewIdx === idx
+                  className={`p-6 bg-[#1a4a5a] border rounded-2xl space-y-4 relative cursor-pointer transition-all duration-300 ${selectedPreviewIdx === idx
                       ? "border-[#00D4FF] ring-1 ring-[#00D4FF]/25 -translate-y-1 shadow-xl shadow-[#00D4FF]/10"
                       : "border-white/10 hover:border-[#00D4FF]/35"
-                  }`}
+                    }`}
                 >
                   <div className="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-[#00D4FF] to-[#00E8B4] border-l border-b border-[#0d1f2d]/20 text-[10px] font-bold rounded-bl-xl text-[#0d1f2d]">
                     {doctor.experience_years} Yrs Exp
@@ -520,17 +520,15 @@ export default function LandingPage() {
             <div className="inline-flex bg-[#0d1f2d] p-1.5 rounded-xl w-full sm:w-auto shadow-inner border border-white/8">
               <button
                 onClick={() => setSearchMode('DOCTOR')}
-                className={`flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                  searchMode === 'DOCTOR' ? 'bg-gradient-to-r from-[#00D4FF] to-[#00E8B4] text-[#0d1f2d] shadow-md' : 'text-white/65 hover:text-white'
-                }`}
+                className={`flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all ${searchMode === 'DOCTOR' ? 'bg-gradient-to-r from-[#00D4FF] to-[#00E8B4] text-[#0d1f2d] shadow-md' : 'text-white/65 hover:text-white'
+                  }`}
               >
                 <Stethoscope className="h-3.5 w-3.5" /> Find Doctors
               </button>
               <button
                 onClick={() => setSearchMode('HOSPITAL')}
-                className={`flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                  searchMode === 'HOSPITAL' ? 'bg-gradient-to-r from-[#A78BF0] to-[#00D4FF] text-[#0d1f2d] shadow-md' : 'text-white/65 hover:text-white'
-                }`}
+                className={`flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all ${searchMode === 'HOSPITAL' ? 'bg-gradient-to-r from-[#A78BF0] to-[#00D4FF] text-[#0d1f2d] shadow-md' : 'text-white/65 hover:text-white'
+                  }`}
               >
                 <HospitalIcon className="h-3.5 w-3.5" /> Find Clinics
               </button>
@@ -543,19 +541,18 @@ export default function LandingPage() {
               <div className="md:col-span-4">
                 <button
                   onClick={handleGeoLocate}
-                  className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs border transition-all ${
-                    geoStatus === "success"
+                  className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-xs border transition-all ${geoStatus === "success"
                       ? "bg-[#D0F56A]/15 border-[#D0F56A]/30 text-[#D0F56A]"
                       : geoStatus === "loading"
-                      ? "bg-white/5 border-white/10 animate-pulse text-white"
-                      : "bg-white/5 border-white/12 text-white hover:bg-[#00D4FF]/8 hover:border-[#00D4FF]/25"
-                  }`}
+                        ? "bg-white/5 border-white/10 animate-pulse text-white"
+                        : "bg-white/5 border-white/12 text-white hover:bg-[#00D4FF]/8 hover:border-[#00D4FF]/25"
+                    }`}
                 >
                   <MapPin className="h-4 w-4 shrink-0" />
                   <span className="truncate">
                     {geoStatus === "success" ? "Location Detected" :
-                     geoStatus === "loading" ? "Locating..." :
-                     geoStatus === "denied" ? "Access Denied" : "Current Location"}
+                      geoStatus === "loading" ? "Locating..." :
+                        geoStatus === "denied" ? "Access Denied" : "Current Location"}
                   </span>
                 </button>
               </div>
