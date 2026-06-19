@@ -16,33 +16,33 @@ export default function AppointmentCard({ appointment, handleStatusChange }: Pro
   const isCancelled = appointment.status === "CANCELLED";
 
   return (
-    <div className="bg-card p-6 flex flex-col gap-5 border border-white/10 rounded-3xl shadow-xl shadow-black/30 text-white">
+    <div className="bg-white p-6 flex flex-col gap-5 border border-slate-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-white/5 rounded-2xl border border-white/10 shrink-0 text-white">
-            <User className="h-5 w-5 text-white" />
+          <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100 shrink-0 text-blue-600">
+            <User className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white leading-tight">{appointment.patient_name}</h2>
-            <p className="text-sm text-white/80 mt-0.5">Consultation</p>
+            <h2 className="text-lg font-bold text-slate-900 leading-tight">{appointment.patient_name}</h2>
+            <p className="text-sm font-medium text-slate-500 mt-0.5">Consultation</p>
           </div>
         </div>
-        <span className={`shrink-0 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${isCompleted ? "bg-[#08A29E]/20 text-[#08A29E] border-[#08A29E]/30" :
-            isCancelled ? "bg-red-500/20 text-red-400 border-red-500/30" :
-              "bg-amber-500/20 text-amber-400 border-amber-500/30"
+        <span className={`shrink-0 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${isCompleted ? "bg-emerald-50 text-emerald-600 border-emerald-200" :
+            isCancelled ? "bg-red-50 text-red-600 border-red-200" :
+              "bg-amber-50 text-amber-600 border-amber-200"
           }`}>
           {appointment.status}
         </span>
       </div>
 
-      <div className="flex flex-col gap-3 text-sm text-white/80 bg-white/5 p-4 rounded-2xl border border-white/10">
+      <div className="flex flex-col gap-3 text-sm font-medium text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100">
         <div className="flex items-center gap-3">
-          <Calendar className="h-4 w-4 text-white/60" />
-          <span className="font-medium text-white">{appointment.booking_date}</span>
+          <Calendar className="h-4 w-4 text-slate-400" />
+          <span className="font-bold text-slate-900">{appointment.booking_date}</span>
         </div>
         <div className="flex items-center gap-3">
-          <Clock className="h-4 w-4 text-white/60" />
-          <span className="font-medium text-white">{appointment.start_time} - {appointment.end_time}</span>
+          <Clock className="h-4 w-4 text-slate-400" />
+          <span className="font-bold text-slate-900">{appointment.start_time} - {appointment.end_time}</span>
         </div>
       </div>
 
@@ -50,9 +50,9 @@ export default function AppointmentCard({ appointment, handleStatusChange }: Pro
         {!isCancelled && (
           <Link href={`/dashboard/doctor/consultation?appointment=${appointment.id}`} className="flex-1">
             <button
-              className={`w-full justify-center px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${isCompleted
-                  ? "bg-[#08A29E] text-white hover:bg-[#08A29E]/90"
-                  : "bg-[#00a6a6] text-white hover:bg-[#00a6a6]/90 shadow-md"
+              className={`w-full justify-center px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 cursor-pointer shadow-sm ${isCompleted
+                  ? "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50"
+                  : "bg-blue-600 border border-blue-600 text-white hover:bg-blue-700"
                 }`}
             >
               {isCompleted ? "View Details" : "Start Consultation"}
@@ -63,7 +63,7 @@ export default function AppointmentCard({ appointment, handleStatusChange }: Pro
         {!isCompleted && !isCancelled && (
           <button
             onClick={() => handleStatusChange(appointment.id, "COMPLETED")}
-            className="shrink-0 h-[46px] w-[46px] bg-[#08A29E]/10 text-[#08A29E] rounded-xl hover:bg-[#08A29E]/20 flex items-center justify-center transition-colors border border-[#08A29E]/20"
+            className="shrink-0 h-[46px] w-[46px] bg-emerald-50 text-emerald-600 rounded-xl hover:bg-emerald-100 flex items-center justify-center transition-colors border border-emerald-200"
           >
             <CheckCircle className="h-5 w-5" />
           </button>
@@ -72,7 +72,7 @@ export default function AppointmentCard({ appointment, handleStatusChange }: Pro
         {!isCancelled && (
           <button
             onClick={() => handleStatusChange(appointment.id, "CANCELLED")}
-            className="shrink-0 h-[46px] w-[46px] bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 flex items-center justify-center transition-colors border border-red-500/20"
+            className="shrink-0 h-[46px] w-[46px] bg-red-50 text-red-600 rounded-xl hover:bg-red-100 flex items-center justify-center transition-colors border border-red-200"
           >
             <XCircle className="h-5 w-5" />
           </button>

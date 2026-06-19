@@ -15,7 +15,7 @@ interface Props {
 export default function PendingAppointments({ appointments, handleStatusChange }: Props) {
   return (
     <DashboardCard>
-      <div className="p-6 border-b border-border">
+      <div className="p-6 border-b border-slate-200">
         <SectionHeader
           title="Pending Appointments"
           subtitle="Appointments waiting for confirmation or payment."
@@ -26,7 +26,7 @@ export default function PendingAppointments({ appointments, handleStatusChange }
           <EmptyAppointments title="No Pending Appointments" description="Upcoming pending bookings will appear here." />
         </div>
       ) : (
-        <div className="divide-y divide-border">
+        <div className="divide-y divide-slate-200">
           {appointments.map((appointment) => (
             <AppointmentCard
               key={appointment.id}
