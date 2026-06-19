@@ -11,7 +11,7 @@ from apps.hospitals.models import Hospital
 from .models import Doctor, DoctorAvailability
 from .serializers import DoctorSerializer, DoctorAvailabilitySerializer
 
-'''
+
 class DoctorSearchView(APIView):
     permission_classes = [AllowAny]
 
@@ -63,8 +63,9 @@ class DoctorSearchView(APIView):
             queryset = queryset.filter(city__iexact=city)
 
         serializer = DoctorSerializer(queryset, many=True)
-        return api_response(success=True, data=serializer.data)'''
-class DoctorSearchView(APIView):
+        return api_response(success=True, data=serializer.data)
+
+'''class DoctorSearchView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
@@ -72,7 +73,7 @@ class DoctorSearchView(APIView):
             success=True,
             data={"message": "Doctor search reached"}
         )
-
+'''
 class DoctorAvailabilityManageView(APIView):
     permission_classes = [IsAuthenticated]
 
