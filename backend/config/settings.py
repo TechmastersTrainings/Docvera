@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     "https://docvera-eight.vercel.app",
     "https://docvera-0aa3.onrender.com",
+    "https://docvera-git-main-techmasterstrainings-4356s-projects.vercel.app",
 ]
 
 # =========================================================
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -115,9 +117,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # DATABASE
 # =========================================================
 
+_DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///" + str(BASE_DIR / "db.sqlite3")
+)
+
 DATABASES = {
     "default": dj_database_url.parse(
-        os.environ["DATABASE_URL"],
+        _DATABASE_URL,
         conn_max_age=600,
         ssl_require=False
     )
@@ -165,6 +172,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # =========================================================
 # MEDIA FILES

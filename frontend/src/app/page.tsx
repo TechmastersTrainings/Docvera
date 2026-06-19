@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import AOS from "aos";
 
+import { api } from "@/lib/api";
 import Navbar from "@/components/Navbar";
 
 interface Doctor {
@@ -124,13 +125,9 @@ export default function LandingPage() {
     const fetchDoctors = async () => {
       try {
         setIsLoadingDoctors(true);
-        // const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://docvera-0aa3.onrender.com';
-        const response = await fetch(`${apiUrl}/api/doctors/search/`);
-        if (!response.ok) throw new Error('Failed to fetch doctors');
-        const result = await response.json();
-        if (result.success && result.data) {
-          setDoctors(result.data);
+        const response = await api.get("/doctors/search/");
+        if (response.data.success && response.data.data) {
+          setDoctors(response.data.data);
         }
       } catch (error) {
         console.error("Error fetching doctors:", error);
