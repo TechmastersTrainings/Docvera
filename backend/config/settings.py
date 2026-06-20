@@ -20,6 +20,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://docvera.techmaster.space",
     "https://docvera-eight.vercel.app",
     "https://docvera-0aa3.onrender.com",
     "https://docvera-git-main-techmasterstrainings-4356s-projects.vercel.app",
@@ -223,7 +224,15 @@ SIMPLE_JWT = {
 # CORS
 # =========================================================
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://docvera.techmaster.space",
+    "https://docvera-eight.vercel.app",
+    "https://docvera-0aa3.onrender.com",
+    "https://docvera-git-main-techmasterstrainings-4356s-projects.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
 CORS_ALLOW_CREDENTIALS = True
 
 # =========================================================
