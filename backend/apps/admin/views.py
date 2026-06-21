@@ -10,6 +10,7 @@ from django.utils import timezone
 from django.db.models import Sum
 from apps.appointments.models import Appointment
 from apps.payments.models import Payment
+from apps.patients.models import Patient
 
 class AdminPagination(PageNumberPagination):
     page_size = 20
@@ -186,3 +187,70 @@ class FinancialStatsView(APIView):
                 "pending_payouts_inr": float(pending_payouts)
             }
         })
+
+
+class PatientManagementView(APIView, AdminPagination):
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        queryset = Patient.objects.select_related('user').all().order_by('-created_at')
+        results = self.paginate_queryset(queryset, request)
+        
+        data = [{
+            "id": str(p.user.id),
+            "email": p.user.email,
+            "phone": p.user.phone,
+            "full_name": p.full_name,
+            "gender": p.gender,
+            "city": p.city,
+            "is_suspended": p.user.is_suspended,
+            "created_at": p.created_at
+        } for p in results]
+        
+        return self.get_paginated_response(data)
+
+
+class PatientActionView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def post(self, request, patient_id):
+        patient = get_object_or_404(Patient, user_id=patient_id)
+        action = request.data.get('action')
+
+        if action == 'SUSPEND':
+            patient.user.is_suspended = True
+            patient.user.save()
+        elif action == 'ACTIVATE':
+            patient.user.is_suspended = False
+            patient.user.save()
+        else:
+            return Response({"success": False, "error": "Invalid action"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Trigger Audit Log
+        AuditLog.objects.create(
+            admin_user=request.user,
+            action=f"PATIENT_{action}",
+            target_object_id=patient.user.id,
+            details={"patient_name": patient.full_name, "patient_email": patient.user.email}
+        )
+
+        return Response({"success": True, "message": f"Patient {action.lower()}d successfully."})
+
+
+class AuditLogView(APIView, AdminPagination):
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        queryset = AuditLog.objects.select_related('admin_user').all().order_by('-timestamp')
+        results = self.paginate_queryset(queryset, request)
+        
+        data = [{
+            "id": str(log.id),
+            "admin_email": log.admin_user.email if log.admin_user else "System",
+            "action": log.action,
+            "target_object_id": str(log.target_object_id),
+            "details": log.details,
+            "timestamp": log.timestamp
+        } for log in results]
+        
+        return self.get_paginated_response(data)

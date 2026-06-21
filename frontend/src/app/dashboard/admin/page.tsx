@@ -11,12 +11,14 @@ import { api } from "@/lib/api";
 
 export default function AdminDashboard() {
  const router = useRouter();
- const [activeTab, setActiveTab] = useState<"PROVIDERS" | "PAYOUTS" | "SETTINGS">("PROVIDERS");
+ const [activeTab, setActiveTab] = useState<"PROVIDERS" | "PAYOUTS" | "SETTINGS" | "PATIENTS" | "AUDIT_LOGS">("PROVIDERS");
  const [loading, setLoading] = useState(true);
  const [error, setError] = useState<string | null>(null);
  const [doctors, setDoctors] = useState<any[]>([]);
  const [payouts, setPayouts] = useState<any[]>([]);
  const [financialStats, setFinancialStats] = useState<any>(null);
+ const [patients, setPatients] = useState<any[]>([]);
+ const [auditLogs, setAuditLogs] = useState<any[]>([]);
  const [settings, setSettings] = useState<any[]>([]);
  const [isActionOpen, setIsActionOpen] = useState(false);
  const [selectedDoctorId, setSelectedDoctorId] = useState("");
@@ -56,6 +58,26 @@ export default function AdminDashboard() {
  }
  };
 
+ const fetchPatients = async () => {
+ try {
+ const res = await api.get("/admin/patients/");
+ setPatients(res.data.results || res.data.data || res.data);
+ } catch (err: any) {
+ console.error(err);
+ setError("Failed to load patients.");
+ }
+ };
+
+ const fetchAuditLogs = async () => {
+ try {
+ const res = await api.get("/admin/audit-logs/");
+ setAuditLogs(res.data.results || res.data.data || res.data);
+ } catch (err: any) {
+ console.error(err);
+ setError("Failed to load audit logs.");
+ }
+ };
+
  const fetchSettings = async () => {
  try {
  const res = await api.get("/admin/settings/");
@@ -70,6 +92,8 @@ export default function AdminDashboard() {
  setLoading(true);
  setError(null);
  if (activeTab === "PROVIDERS") fetchDoctors().finally(() => setLoading(false));
+ if (activeTab === "PATIENTS") fetchPatients().finally(() => setLoading(false));
+ if (activeTab === "AUDIT_LOGS") fetchAuditLogs().finally(() => setLoading(false));
  if (activeTab === "PAYOUTS") {
  Promise.all([fetchPayouts(), fetchFinancialStats()]).finally(() => setLoading(false));
  }
@@ -99,6 +123,16 @@ export default function AdminDashboard() {
  } catch { alert("Failed to process payout."); }
  };
 
+ const handlePatientAction = async (patientId: string, action: "SUSPEND" | "ACTIVATE") => {
+ if (!confirm(`Are you sure you want to ${action.toLowerCase()} this patient?`)) return;
+ try {
+ await api.post(`/admin/patients/${patientId}/action/`, { action });
+ fetchPatients();
+ } catch (err: any) {
+ alert(err?.response?.data?.error || `Failed to ${action.toLowerCase()} patient.`);
+ }
+ };
+
  const handleSaveSetting = async (e: React.FormEvent) => {
  e.preventDefault();
  if (!newSettingKey || !newSettingValue) return;
@@ -116,7 +150,9 @@ export default function AdminDashboard() {
 
  const tabs = [
  { id: "PROVIDERS" as const, label: "Provider Management", icon: Users },
+ { id: "PATIENTS" as const, label: "Patient Management", icon: Users },
  { id: "PAYOUTS" as const, label: "Financial Settlements", icon: CreditCard },
+ { id: "AUDIT_LOGS" as const, label: "System Audit Logs", icon: ShieldCheck },
  { id: "SETTINGS" as const, label: "Global Settings", icon: Settings },
  ];
 
@@ -357,6 +393,109 @@ export default function AdminDashboard() {
   </div>
   </div>
   )}
+  {activeTab === "PATIENTS" && (
+  <div className="card overflow-hidden">
+  <div className="overflow-x-auto">
+  <table className="w-full text-left text-sm">
+  <thead className="bg-surface border-b border-border">
+  <tr>
+  <th className="px-6 py-4 font-semibold text-text">Name</th>
+  <th className="px-6 py-4 font-semibold text-text">Contact</th>
+  <th className="px-6 py-4 font-semibold text-text">Demographics</th>
+  <th className="px-6 py-4 font-semibold text-text">Status</th>
+  <th className="px-6 py-4 font-semibold text-text text-right">Action</th>
+  </tr>
+  </thead>
+  <tbody className="divide-y divide-border">
+  {patients.length === 0 ? (
+  <tr><td colSpan={5} className="px-6 py-10 text-center text-text-secondary">No patients found.</td></tr>
+  ) : (
+  patients.map((p) => (
+  <tr key={p.id} className="hover:bg-surface/50 transition-colors">
+  <td className="px-6 py-4">
+  <p className="font-bold text-text">{p.full_name}</p>
+  <p className="text-xs text-text-secondary mt-0.5 font-mono">ID: {p.id.split('-')[0]}</p>
+  </td>
+  <td className="px-6 py-4">
+  <p className="text-text font-medium">{p.email}</p>
+  <p className="text-xs text-text-secondary mt-0.5">{p.phone}</p>
+  </td>
+  <td className="px-6 py-4">
+  <p className="text-text">{p.gender}</p>
+  <p className="text-xs text-text-secondary mt-0.5">{p.city}</p>
+  </td>
+  <td className="px-6 py-4">
+  {p.is_suspended ? (
+  <span className="px-2.5 py-1 rounded text-[10px] font-bold uppercase border bg-error/10 text-error border-error/20">
+  Suspended
+  </span>
+  ) : (
+  <span className="px-2.5 py-1 rounded text-[10px] font-bold uppercase border bg-accent/10 text-accent border-accent/20">
+  Active
+  </span>
+  )}
+  </td>
+  <td className="px-6 py-4 text-right">
+  {!p.is_suspended ? (
+  <button onClick={() => handlePatientAction(p.id, "SUSPEND")} className="px-3 py-1.5 bg-error/10 text-error hover:bg-error/20 text-xs font-semibold rounded-lg transition-all border border-error/10 inline-flex items-center gap-1">
+  <Ban className="h-3 w-3" /> Suspend
+  </button>
+  ) : (
+  <button onClick={() => handlePatientAction(p.id, "ACTIVATE")} className="px-3 py-1.5 bg-accent/10 text-accent hover:bg-accent/20 text-xs font-semibold rounded-lg transition-all border border-accent/20 inline-flex items-center gap-1">
+  <Activity className="h-3 w-3" /> Activate
+  </button>
+  )}
+  </td>
+  </tr>
+  ))
+  )}
+  </tbody>
+  </table>
+  </div>
+  </div>
+  )}
+
+  {activeTab === "AUDIT_LOGS" && (
+  <div className="card overflow-hidden">
+  <div className="overflow-x-auto">
+  <table className="w-full text-left text-sm">
+  <thead className="bg-surface border-b border-border">
+  <tr>
+  <th className="px-6 py-4 font-semibold text-text">Timestamp</th>
+  <th className="px-6 py-4 font-semibold text-text">Admin</th>
+  <th className="px-6 py-4 font-semibold text-text">Action</th>
+  <th className="px-6 py-4 font-semibold text-text">Details</th>
+  </tr>
+  </thead>
+  <tbody className="divide-y divide-border">
+  {auditLogs.length === 0 ? (
+  <tr><td colSpan={4} className="px-6 py-10 text-center text-text-secondary">No audit logs found.</td></tr>
+  ) : (
+  auditLogs.map((log) => (
+  <tr key={log.id} className="hover:bg-surface/50 transition-colors">
+  <td className="px-6 py-4 text-text-secondary text-xs whitespace-nowrap">
+  {new Date(log.timestamp).toLocaleString()}
+  </td>
+  <td className="px-6 py-4 font-medium text-text">{log.admin_email}</td>
+  <td className="px-6 py-4">
+  <span className="px-2.5 py-1 rounded text-[10px] font-bold uppercase border bg-surface border-border text-text">
+  {log.action}
+  </span>
+  </td>
+  <td className="px-6 py-4 text-text-secondary text-xs">
+  <pre className="font-mono bg-surface/50 p-2 rounded border border-border whitespace-pre-wrap">
+  {JSON.stringify(log.details, null, 2)}
+  </pre>
+  </td>
+  </tr>
+  ))
+  )}
+  </tbody>
+  </table>
+  </div>
+  </div>
+  )}
+
 
  {activeTab === "SETTINGS" && (
  <div className="grid md:grid-cols-2 gap-8">
