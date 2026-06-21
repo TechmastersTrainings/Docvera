@@ -328,8 +328,8 @@ export default function LandingPage() {
  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
  <div className="space-y-3">
  <span className="text-[#028597] font-bold tracking-wide uppercase text-[11px] bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] px-4 py-1.5 rounded-full">Verified Directory</span>
- <h2 className="text-3xl font-extrabold text-primary tracking-tight">Top Rated Specialists</h2>
- <p className="text-secondary font-medium">Docvera partners with premium healthcare professionals ensuring clinical quality.</p>
+ <h2 className="text-3xl font-extrabold text-[#031d44] tracking-tight">Top Rated Specialists</h2>
+ <p className="text-[#031d44]/80 font-medium">Docvera partners with premium healthcare professionals ensuring clinical quality.</p>
  </div>
  <Link
  href="/doctors"
@@ -342,7 +342,7 @@ export default function LandingPage() {
  <div className="grid md:grid-cols-3 gap-6">
  {isLoadingDoctors ? (
  [...Array(3)].map((_, idx) => (
- <div key={idx} className="p-6 glass-card bg-[#036C5E]/50 h-56 animate-pulse border-none" />
+ <div key={idx} className="p-6 glass-card bg-[#031d44]/50 h-56 animate-pulse border-none" />
  ))
  ) : doctors.length > 0 ? (
  doctors.slice(0, 3).map((doctor, idx) => (
@@ -350,8 +350,8 @@ export default function LandingPage() {
  key={doctor.user || idx}
  onClick={() => setSelectedPreviewIdx(idx)}
  className={`p-6 border rounded-2xl space-y-5 relative cursor-pointer transition-all duration-300 ${selectedPreviewIdx === idx
- ? "glass-card bg-[#036C5E] ring-2 ring-[#04defb]/20 -translate-y-1 shadow-[0_20px_40px_rgba(3,108,94,0.3)]"
- : "glass-secondary bg-[#036C5E]/90 hover:bg-[#036C5E] hover:ring-1 hover:ring-[#04defb]/10"
+ ? "glass-card bg-[#031d44] ring-2 ring-[#04defb]/20 -translate-y-1 shadow-[0_20px_40px_rgba(3,29,68,0.3)]"
+ : "glass-secondary bg-[#031d44]/90 hover:bg-[#031d44] hover:ring-1 hover:ring-[#04defb]/10"
  }`}
  >
  <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-[rgba(4,222,251,0.04)] border-l border-b border-[rgba(4,222,251,0.08)] text-[10px] font-bold rounded-bl-xl text-secondary">
