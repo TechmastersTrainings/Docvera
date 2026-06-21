@@ -6,7 +6,10 @@ from django.shortcuts import get_object_or_404
 from apps.admin.models import AuditLog, Payout, SystemSettings
 from apps.admin.permissions import IsAdminUser
 from apps.doctors.models import Doctor
-
+from django.utils import timezone
+from django.db.models import Sum
+from apps.appointments.models import Appointment
+from apps.payments.models import Payment
 
 class AdminPagination(PageNumberPagination):
     page_size = 20
@@ -138,3 +141,48 @@ class SystemSettingsView(APIView):
         )
 
         return Response({"success": True, "message": "System settings updated."})
+
+
+class FinancialStatsView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        today = timezone.now().date()
+
+        # 1. Patients for the day: distinct patients who booked an appointment today
+        patients_today = Appointment.objects.filter(created_at__date=today).values('patient').distinct().count()
+
+        # 2. Bookings for the day (INR): sum of CAPTURED payment amounts today
+        bookings_today = Payment.objects.filter(
+            status='CAPTURED', 
+            created_at__date=today
+        ).aggregate(total=Sum('amount'))['total'] or 0.00
+
+        # 3. Doctors available
+        doctors_available = Doctor.objects.filter(status='ACTIVE', approval_status='APPROVED').count()
+
+        # 4. Cancellations today
+        cancellations_today = Appointment.objects.filter(status='CANCELLED', updated_at__date=today).count()
+
+        # 5. Refunds today
+        refunds_today = Payment.objects.filter(
+            status='REFUNDED', 
+            updated_at__date=today
+        ).aggregate(total=Sum('amount'))['total'] or 0.00
+
+        # 6. Pending Payouts (INR)
+        pending_payouts = Payout.objects.filter(
+            status='PENDING'
+        ).aggregate(total=Sum('amount'))['total'] or 0.00
+
+        return Response({
+            "success": True,
+            "data": {
+                "patients_today": patients_today,
+                "bookings_today_inr": float(bookings_today),
+                "doctors_available": doctors_available,
+                "cancellations_today": cancellations_today,
+                "refunds_today_inr": float(refunds_today),
+                "pending_payouts_inr": float(pending_payouts)
+            }
+        })

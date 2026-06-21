@@ -3,7 +3,8 @@ from .views import (
     DoctorManagementView,
     DoctorActionView,
     PayoutManagementView,
-    SystemSettingsView
+    SystemSettingsView,
+    FinancialStatsView
 )
 
 urlpatterns = [
@@ -14,6 +15,7 @@ urlpatterns = [
     # Financial Engine
     path('payouts/', PayoutManagementView.as_view(), name='admin_payout_list'),
     path('payouts/<uuid:payout_id>/', PayoutManagementView.as_view(), name='admin_payout_process'),
+    path('financial-stats/', FinancialStatsView.as_view(), name='admin_financial_stats'),
 
     # Global Config
     path('settings/', SystemSettingsView.as_view(), name='admin_settings'),

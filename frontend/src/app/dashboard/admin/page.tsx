@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
  Users, ShieldCheck, CreditCard, Settings, LogOut,
- Loader, AlertCircle, CheckCircle2, XCircle, Ban, Activity
+ Loader, AlertCircle, CheckCircle2, XCircle, Ban, Activity,
+ TrendingUp, RefreshCcw, Wallet
 } from "lucide-react";
 import { api } from "@/lib/api";
 
@@ -15,6 +16,7 @@ export default function AdminDashboard() {
  const [error, setError] = useState<string | null>(null);
  const [doctors, setDoctors] = useState<any[]>([]);
  const [payouts, setPayouts] = useState<any[]>([]);
+ const [financialStats, setFinancialStats] = useState<any>(null);
  const [settings, setSettings] = useState<any[]>([]);
  const [isActionOpen, setIsActionOpen] = useState(false);
  const [selectedDoctorId, setSelectedDoctorId] = useState("");
@@ -44,6 +46,16 @@ export default function AdminDashboard() {
  }
  };
 
+ const fetchFinancialStats = async () => {
+ try {
+ const res = await api.get("/admin/financial-stats/");
+ if (res.data.success) setFinancialStats(res.data.data);
+ } catch (err: any) {
+ console.error(err);
+ setError("Failed to load financial stats.");
+ }
+ };
+
  const fetchSettings = async () => {
  try {
  const res = await api.get("/admin/settings/");
@@ -58,7 +70,9 @@ export default function AdminDashboard() {
  setLoading(true);
  setError(null);
  if (activeTab === "PROVIDERS") fetchDoctors().finally(() => setLoading(false));
- if (activeTab === "PAYOUTS") fetchPayouts().finally(() => setLoading(false));
+ if (activeTab === "PAYOUTS") {
+ Promise.all([fetchPayouts(), fetchFinancialStats()]).finally(() => setLoading(false));
+ }
  if (activeTab === "SETTINGS") fetchSettings().finally(() => setLoading(false));
  }, [activeTab]);
 
@@ -216,50 +230,127 @@ export default function AdminDashboard() {
  </div>
  )}
 
- {activeTab === "PAYOUTS" && (
- <div className="card overflow-hidden">
- <div className="overflow-x-auto">
- <table className="w-full text-left text-sm">
- <thead className="bg-surface border-b border-border">
- <tr>
- <th className="px-6 py-4 font-semibold text-text">Payout ID</th>
- <th className="px-6 py-4 font-semibold text-text">Doctor ID</th>
- <th className="px-6 py-4 font-semibold text-text">Amount</th>
- <th className="px-6 py-4 font-semibold text-text">Status</th>
- <th className="px-6 py-4 font-semibold text-text text-right">Action</th>
- </tr>
- </thead>
- <tbody className="divide-y divide-border">
- {payouts.length === 0 ? (
- <tr><td colSpan={5} className="px-6 py-10 text-center text-text-secondary">No payout records found.</td></tr>
- ) : (
- payouts.map((p) => (
- <tr key={p.id} className="hover:bg-surface/50 transition-colors">
- <td className="px-6 py-4 text-text font-mono text-xs">{p.id?.split('-')[0]}...</td>
- <td className="px-6 py-4 text-text font-mono text-xs">{p.doctor_id?.split('-')[0]}...</td>
- <td className="px-6 py-4 font-semibold text-text">₹{p.amount}</td>
- <td className="px-6 py-4">
- <span className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase border ${
- p.status === 'PAID' ? 'bg-accent/10 text-accent border-accent/20' : 'bg-warning/10 text-warning border-warning/20'
- }`}>
- {p.status}
- </span>
- </td>
- <td className="px-6 py-4 text-right">
- {p.status === 'PENDING' && (
- <button onClick={() => handleProcessPayout(p.id)} className="text-primary font-semibold hover:underline text-xs">
- Mark as Paid
- </button>
- )}
- </td>
- </tr>
- ))
- )}
- </tbody>
- </table>
- </div>
- </div>
- )}
+  {activeTab === "PAYOUTS" && (
+  <div className="space-y-8">
+  {/* Financial Overview Metrics Grid */}
+  {financialStats && (
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {/* Metric 1 */}
+  <div className="card p-6 border-l-4 border-l-primary flex items-center gap-5">
+  <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+  <Users className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Patients Today</p>
+  <h4 className="text-2xl font-black text-text mt-1">{financialStats.patients_today}</h4>
+  </div>
+  </div>
+
+  {/* Metric 2 */}
+  <div className="card p-6 border-l-4 border-l-accent flex items-center gap-5">
+  <div className="h-12 w-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent shrink-0">
+  <TrendingUp className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Bookings Today</p>
+  <h4 className="text-2xl font-black text-text mt-1">₹{financialStats.bookings_today_inr.toFixed(2)}</h4>
+  </div>
+  </div>
+
+  {/* Metric 3 */}
+  <div className="card p-6 border-l-4 border-l-[#3b82f6] flex items-center gap-5">
+  <div className="h-12 w-12 bg-[#3b82f6]/10 rounded-xl flex items-center justify-center text-[#3b82f6] shrink-0">
+  <Activity className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Available Doctors</p>
+  <h4 className="text-2xl font-black text-text mt-1">{financialStats.doctors_available}</h4>
+  </div>
+  </div>
+
+  {/* Metric 4 */}
+  <div className="card p-6 border-l-4 border-l-error flex items-center gap-5">
+  <div className="h-12 w-12 bg-error/10 rounded-xl flex items-center justify-center text-error shrink-0">
+  <XCircle className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Cancellations Today</p>
+  <h4 className="text-2xl font-black text-text mt-1">{financialStats.cancellations_today}</h4>
+  </div>
+  </div>
+
+  {/* Metric 5 */}
+  <div className="card p-6 border-l-4 border-l-warning flex items-center gap-5">
+  <div className="h-12 w-12 bg-warning/10 rounded-xl flex items-center justify-center text-warning shrink-0">
+  <RefreshCcw className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Refunds Today</p>
+  <h4 className="text-2xl font-black text-text mt-1">₹{financialStats.refunds_today_inr.toFixed(2)}</h4>
+  </div>
+  </div>
+
+  {/* Metric 6 */}
+  <div className="card p-6 border-l-4 border-l-[#8b5cf6] flex items-center gap-5">
+  <div className="h-12 w-12 bg-[#8b5cf6]/10 rounded-xl flex items-center justify-center text-[#8b5cf6] shrink-0">
+  <Wallet className="h-6 w-6" />
+  </div>
+  <div>
+  <p className="text-xs font-bold text-text-secondary uppercase tracking-wider">Pending Payouts</p>
+  <h4 className="text-2xl font-black text-text mt-1">₹{financialStats.pending_payouts_inr.toFixed(2)}</h4>
+  </div>
+  </div>
+  </div>
+  )}
+
+  {/* Payouts Table */}
+  <div className="space-y-4">
+  <h3 className="text-xl font-bold text-text px-1">Payout History</h3>
+  <div className="card overflow-hidden">
+  <div className="overflow-x-auto">
+  <table className="w-full text-left text-sm">
+  <thead className="bg-surface border-b border-border">
+  <tr>
+  <th className="px-6 py-4 font-semibold text-text">Payout ID</th>
+  <th className="px-6 py-4 font-semibold text-text">Doctor ID</th>
+  <th className="px-6 py-4 font-semibold text-text">Amount</th>
+  <th className="px-6 py-4 font-semibold text-text">Status</th>
+  <th className="px-6 py-4 font-semibold text-text text-right">Action</th>
+  </tr>
+  </thead>
+  <tbody className="divide-y divide-border">
+  {payouts.length === 0 ? (
+  <tr><td colSpan={5} className="px-6 py-10 text-center text-text-secondary">No payout records found.</td></tr>
+  ) : (
+  payouts.map((p) => (
+  <tr key={p.id} className="hover:bg-surface/50 transition-colors">
+  <td className="px-6 py-4 text-text font-mono text-xs">{p.id?.split('-')[0]}...</td>
+  <td className="px-6 py-4 text-text font-mono text-xs">{p.doctor_id?.split('-')[0]}...</td>
+  <td className="px-6 py-4 font-semibold text-text">₹{p.amount}</td>
+  <td className="px-6 py-4">
+  <span className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase border ${
+  p.status === 'PAID' ? 'bg-accent/10 text-accent border-accent/20' : 'bg-warning/10 text-warning border-warning/20'
+  }`}>
+  {p.status}
+  </span>
+  </td>
+  <td className="px-6 py-4 text-right">
+  {p.status === 'PENDING' && (
+  <button onClick={() => handleProcessPayout(p.id)} className="text-primary font-semibold hover:underline text-xs">
+  Mark as Paid
+  </button>
+  )}
+  </td>
+  </tr>
+  ))
+  )}
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </div>
+  )}
 
  {activeTab === "SETTINGS" && (
  <div className="grid md:grid-cols-2 gap-8">
