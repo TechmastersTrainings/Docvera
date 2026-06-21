@@ -18,11 +18,11 @@ export default function AvailabilityForm({ newSlot, setNewSlot, handleAddAvailab
     <DashboardCard className="max-w-4xl mx-auto p-6 sm:p-8">
       <SectionHeader title="Manage Weekly Availability" subtitle="Configure consultation timings and slot duration." />
 
-      <form onSubmit={handleAddAvailability} className="mt-8 bg-slate-50 p-6 rounded-2xl border border-slate-200 grid md:grid-cols-5 gap-4 items-end">
+      <form onSubmit={handleAddAvailability} className="mt-8 bg-[#eef2f7] p-6 rounded-2xl border border-[#537eac]/20 grid md:grid-cols-5 gap-4 items-end">
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Day</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Day</label>
           <select value={newSlot.day_of_week} onChange={(e) => setNewSlot({ ...newSlot, day_of_week: e.target.value })}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-medium outline-none shadow-sm transition-all">
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-3 py-2.5 text-sm text-[#0f4557] font-medium outline-none shadow-sm transition-all">
             <option value="MONDAY">Monday</option>
             <option value="TUESDAY">Tuesday</option>
             <option value="WEDNESDAY">Wednesday</option>
@@ -33,19 +33,19 @@ export default function AvailabilityForm({ newSlot, setNewSlot, handleAddAvailab
           </select>
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Start</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Start</label>
           <input type="time" value={newSlot.start_time} onChange={(e) => setNewSlot({ ...newSlot, start_time: e.target.value })}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-medium outline-none shadow-sm transition-all" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-3 py-2.5 text-sm text-[#0f4557] font-medium outline-none shadow-sm transition-all" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">End</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">End</label>
           <input type="time" value={newSlot.end_time} onChange={(e) => setNewSlot({ ...newSlot, end_time: e.target.value })}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-medium outline-none shadow-sm transition-all" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-3 py-2.5 text-sm text-[#0f4557] font-medium outline-none shadow-sm transition-all" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Duration (min)</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Duration (min)</label>
           <input type="number" value={newSlot.slot_duration_minutes} onChange={(e) => setNewSlot({ ...newSlot, slot_duration_minutes: parseInt(e.target.value) })}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-medium outline-none shadow-sm transition-all" placeholder="15" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-3 py-2.5 text-sm text-[#0f4557] font-medium outline-none shadow-sm transition-all" placeholder="15" />
         </div>
         <ActionButton type="submit" className="w-full justify-center">Add Slot</ActionButton>
       </form>

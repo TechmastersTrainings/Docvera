@@ -22,7 +22,7 @@ export default function BookingReceipt({
 }: BookingReceiptProps) {
   return (
     <div className="text-center py-12 space-y-6 animate-in zoom-in-50 duration-500">
-      <div className="h-20 w-20 bg-card border border-blue-100 text-blue-700 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-or-green/10">
+      <div className="h-20 w-20 bg-card border border-blue-100 text-[#025964] rounded-full flex items-center justify-center mx-auto shadow-lg shadow-or-green/10">
         <CheckCircle2 className="h-10 w-10 animate-bounce" />
       </div>
       
@@ -90,7 +90,7 @@ export default function BookingReceipt({
           </div>
           <div className="flex justify-between text-base font-bold text-foreground pt-2 border-t border-white/10/50">
             <span>Total Paid</span>
-            <span className="text-blue-700">₹{totalFee.toFixed(2)}</span>
+            <span className="text-[#025964]">₹{totalFee.toFixed(2)}</span>
           </div>
         </div>
       </div>

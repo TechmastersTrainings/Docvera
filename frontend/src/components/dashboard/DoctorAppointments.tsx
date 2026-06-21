@@ -28,7 +28,7 @@ export default function DoctorAppointments({
 }: Props) {
   return (
     <DashboardCard>
-      <div className="p-6 border-b border-slate-200">
+      <div className="p-6 border-b border-[#537eac]/20">
         <SectionHeader title={title} subtitle={subtitle} action={action} />
       </div>
       {appointments.length === 0 ? (

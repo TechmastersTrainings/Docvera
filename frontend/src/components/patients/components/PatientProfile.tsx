@@ -97,8 +97,8 @@ export default function PatientProfile({ profile, onUpdate }: PatientProfileProp
         )}
       </div>
 
-      {error && <div className="mb-4 p-3 bg-red-50 border border-red-100 rounded-xl text-red-500 text-xs flex items-center gap-2"><AlertCircle className="h-4 w-4" />{error}</div>}
-      {success && <div className="mb-4 p-3 bg-card border border-blue-100 rounded-xl text-blue-700 text-xs flex items-center gap-2"><CheckCircle className="h-4 w-4" />{success}</div>}
+      {error && <div className="mb-4 p-3 bg-[#fde7e9] border border-red-100 rounded-xl text-[#ee1123] text-xs flex items-center gap-2"><AlertCircle className="h-4 w-4" />{error}</div>}
+      {success && <div className="mb-4 p-3 bg-card border border-blue-100 rounded-xl text-[#025964] text-xs flex items-center gap-2"><CheckCircle className="h-4 w-4" />{success}</div>}
 
       <div className="grid md:grid-cols-3 gap-8">
         {/* Profile Photo */}
@@ -143,7 +143,7 @@ export default function PatientProfile({ profile, onUpdate }: PatientProfileProp
 
           {/* Blood Group */}
           <div className="space-y-1">
-            <label className="text-[10px] font-semibold text-foreground uppercase flex items-center gap-1"><Droplet className="h-3 w-3 text-red-500" /> Blood Group</label>
+            <label className="text-[10px] font-semibold text-foreground uppercase flex items-center gap-1"><Droplet className="h-3 w-3 text-[#ee1123]" /> Blood Group</label>
             {isEditing ? (
               <select value={editedProfile.blood_group || ''} onChange={(e) => setEditedProfile({...editedProfile, blood_group: e.target.value})} className="w-full bg-card border border-white/10 focus:border-blue-100 rounded-lg px-3 py-2 text-sm text-foreground outline-none">
                 <option value="">Select Blood Group</option>

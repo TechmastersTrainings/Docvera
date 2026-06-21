@@ -172,7 +172,7 @@ export default function RegisterPage() {
  <div className="glass-card p-6 sm:p-8 space-y-8">
  <div className="text-center space-y-2">
  <Link href="/" className="inline-flex items-center gap-2 group">
- <div className="p-2 bg-blue-600 group-hover:bg-blue-700 transition-colors rounded-lg">
+ <div className="p-2 bg-[#028597] group-hover:bg-[#025964] transition-colors rounded-lg">
  <Activity className="h-5 w-5 text-white" />
  </div>
  <span className="text-lg font-bold text-primary tracking-tight">Docvera</span>
@@ -187,7 +187,7 @@ export default function RegisterPage() {
  type="button"
  onClick={() => setRole("PATIENT")}
  className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${role === "PATIENT"
- ? "bg-[rgba(11,170,244,0.1)] text-accent border border-[rgba(11,170,244,0.2)]"
+ ? "bg-[rgba(2,133,151,0.1)] text-accent border border-[rgba(2,133,151,0.2)]"
  : "text-muted hover:text-secondary"
  }`}
  >
@@ -197,7 +197,7 @@ export default function RegisterPage() {
  type="button"
  onClick={() => setRole("DOCTOR")}
  className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${role === "DOCTOR"
- ? "bg-[rgba(11,170,244,0.1)] text-accent border border-[rgba(11,170,244,0.2)]"
+ ? "bg-[rgba(2,133,151,0.1)] text-accent border border-[rgba(2,133,151,0.2)]"
  : "text-muted hover:text-secondary"
  }`}
  >
@@ -207,14 +207,14 @@ export default function RegisterPage() {
 
  <form onSubmit={handleRegister} className="space-y-6">
  {error && (
- <div className="p-4 bg-red-50 border border-red-100 rounded-xl flex items-start gap-3 text-red-600 text-sm font-medium">
+ <div className="p-4 bg-[#fde7e9] border border-red-100 rounded-xl flex items-start gap-3 text-[#ee1123] text-sm font-medium">
  <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
  <span className="break-all">{error}</span>
  </div>
  )}
 
  {success && (
- <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl flex items-start gap-3 text-emerald-600 text-sm font-medium">
+ <div className="p-4 bg-[#eef2f7] border border-emerald-100 rounded-xl flex items-start gap-3 text-[#028597] text-sm font-medium">
  <CheckCircle className="h-5 w-5 shrink-0 mt-0.5" />
  <span>{success}</span>
  </div>
@@ -225,30 +225,30 @@ export default function RegisterPage() {
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Full Name</label>
  <input type="text" required placeholder="Sarah Jenkins" value={fullName}
  onChange={(e) => setFullName(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Email Address</label>
  <input type="email" required placeholder="jenkins@docvera.com" value={email}
  onChange={(e) => setEmail(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Password</label>
  <input type="password" required placeholder="Create a password" value={password}
  onChange={(e) => setPassword(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Mobile Number</label>
  <input type="text" required placeholder="+91 9876543210" value={phone}
  onChange={(e) => setPhone(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Gender</label>
  <select value={gender} onChange={(e) => setGender(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium">
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium">
  <option value="MALE">Male</option>
  <option value="FEMALE">Female</option>
  <option value="OTHER">Other</option>
@@ -257,25 +257,25 @@ export default function RegisterPage() {
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Date of Birth</label>
  <input type="date" required value={dob} onChange={(e) => setDob(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">City</label>
  <input type="text" required placeholder="Bengaluru" value={city}
  onChange={(e) => setCity(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">PIN Code</label>
  <input type="text" required placeholder="560001" value={pinCode}
  onChange={(e) => setPinCode(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Residential Address</label>
  <textarea required rows={2} placeholder="House No, Street, Landmark..." value={address}
  onChange={(e) => setAddress(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 resize-none font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 resize-none font-medium" />
  </div>
  </div>
 
@@ -283,7 +283,7 @@ export default function RegisterPage() {
  <div className="border-t border-[rgba(255,255,255,0.08)] pt-6 space-y-8">
  <div className="space-y-5">
  <h3 className="text-sm font-bold text-primary flex items-center gap-2">
- <Briefcase className="h-4 w-4 text-[var(--accent)]" />
+ <Briefcase className="h-4 w-4 text-[#ee1123]" />
  Professional Medical Credentials
  </h3>
  <div className="grid md:grid-cols-2 gap-5">
@@ -291,12 +291,12 @@ export default function RegisterPage() {
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Medical Degree</label>
  <input type="text" required placeholder="MBBS, MD - Cardiology" value={degree}
  onChange={(e) => setDegree(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Specialization</label>
  <select value={specialization} onChange={(e) => setSpecialization(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium">
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium">
  <option value="CARDIOLOGY">Cardiology</option>
  <option value="DERMATOLOGY">Dermatology</option>
  <option value="PEDIATRICS">Pediatrics</option>
@@ -311,13 +311,13 @@ export default function RegisterPage() {
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Experience (Years)</label>
  <input type="number" required placeholder="12" value={experienceYears}
  onChange={(e) => setExperienceYears(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Medical Council Number</label>
  <input type="text" required placeholder="KMC-87654" value={medicalCouncilNumber}
  onChange={(e) => setMedicalCouncilNumber(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Consultation Fees (INR)</label>
@@ -325,7 +325,7 @@ export default function RegisterPage() {
  <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted opacity-60" />
  <input type="number" required placeholder="800" value={consultationFees}
  onChange={(e) => setConsultationFees(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  </div>
  </div>
@@ -333,7 +333,7 @@ export default function RegisterPage() {
 
  <div className="space-y-5">
  <h3 className="text-sm font-bold text-primary flex items-center gap-2">
- <Building2 className="h-4 w-4 text-[var(--accent)]" />
+ <Building2 className="h-4 w-4 text-[#ee1123]" />
  Clinic / Hospital Information
  </h3>
  <div className="grid md:grid-cols-2 gap-5">
@@ -341,26 +341,26 @@ export default function RegisterPage() {
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Clinic / Hospital Name</label>
  <input type="text" required placeholder="City Heart Care Center" value={clinicName}
  onChange={(e) => setClinicName(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Clinic City</label>
  <input type="text" required placeholder="Bengaluru" value={clinicCity}
  onChange={(e) => setClinicCity(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Clinic PIN Code</label>
  <input type="text" required placeholder="560001" value={clinicPinCode}
  onChange={(e) => setClinicPinCode(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Clinic Full Address</label>
  <textarea required rows={2} placeholder="100 Feet Road, Near Metro Station" value={clinicAddress}
  onChange={(e) => setClinicAddress(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 resize-none font-medium" />
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 resize-none font-medium" />
  </div>
  </div>
  </div>
@@ -369,7 +369,7 @@ export default function RegisterPage() {
  <button
  type="submit"
  disabled={loading}
- className="w-full flex items-center justify-center gap-2 py-3.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all disabled:opacity-50 text-sm shadow-sm"
+ className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#028597] text-white font-bold rounded-xl hover:bg-[#025964] transition-all disabled:opacity-50 text-sm shadow-sm"
  >
  <span>{loading ? "Registering..." : "Complete Registration"}</span>
  </button>
@@ -380,7 +380,7 @@ export default function RegisterPage() {
  <div className="text-center text-sm font-medium text-muted space-y-4">
  <div>
  Already have an account?{" "}
- <Link href="/login" className="text-[var(--accent)] font-bold hover:text-blue-700">
+ <Link href="/login" className="text-[#ee1123] font-bold hover:text-[#025964]">
  Sign In
  </Link>
  </div>

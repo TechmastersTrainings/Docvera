@@ -52,7 +52,7 @@ function SearchResults() {
  <select
  value={selectedSpecialty}
  onChange={(e) => setSelectedSpecialty(e.target.value)}
- className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(50,109,205,0.15)] rounded-xl px-4 py-2.5 text-sm text-primary outline-none font-medium transition-all"
+ className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[#ee1123] focus:ring-4 focus:ring-[rgba(83,126,172,0.15)] rounded-xl px-4 py-2.5 text-sm text-primary outline-none font-medium transition-all"
  >
  <option value="" className="bg-[#180c0c] text-primary">All Specializations</option>
  <option value="CARDIOLOGY" className="bg-[#180c0c] text-primary">Cardiology</option>
@@ -73,7 +73,7 @@ function SearchResults() {
  placeholder="e.g. Bengaluru"
  value={cityFilter}
  onChange={(e) => setCityFilter(e.target.value)}
- className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(50,109,205,0.15)] rounded-xl px-4 py-2.5 text-sm text-primary outline-none placeholder:text-muted font-medium transition-all"
+ className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[#ee1123] focus:ring-4 focus:ring-[rgba(83,126,172,0.15)] rounded-xl px-4 py-2.5 text-sm text-primary outline-none placeholder:text-muted font-medium transition-all"
  />
  </div>
 
@@ -89,11 +89,11 @@ function SearchResults() {
  {/* Results */}
  {loading ? (
  <div className="flex flex-col items-center justify-center py-20 space-y-4">
- <Loader className="h-8 w-8 text-[var(--accent)] animate-spin" />
+ <Loader className="h-8 w-8 text-[#ee1123] animate-spin" />
  <span className="text-secondary text-sm font-medium">Searching our certified medical registry...</span>
  </div>
  ) : error ? (
- <div className="p-6 bg-[rgba(11,170,244,0.1)] border border-[rgba(11,170,244,0.2)] text-[var(--accent)] text-sm rounded-2xl font-medium">
+ <div className="p-6 bg-[rgba(2,133,151,0.1)] border border-[rgba(2,133,151,0.2)] text-[#ee1123] text-sm rounded-2xl font-medium">
  {error}
  </div>
  ) : doctors.length === 0 ? (
@@ -107,23 +107,23 @@ function SearchResults() {
  ) : (
  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
  {doctors.map((doc) => (
- <div key={doc.user} className="glass-secondary hover:border-[var(--accent)] hover:shadow-[0_4px_20px_rgba(50,109,205,0.1)] p-6 flex flex-col justify-between transition-all relative overflow-hidden group">
- <div className="absolute top-0 right-0 px-3 py-1.5 bg-[rgba(255,255,255,0.04)] border-l border-b border-[rgba(255,255,255,0.08)] text-muted text-xs font-bold rounded-bl-xl group-hover:bg-[rgba(50,109,205,0.1)] group-hover:text-[var(--accent)] group-hover:border-[rgba(50,109,205,0.2)] transition-colors">
+ <div key={doc.user} className="glass-secondary hover:border-[#ee1123] hover:shadow-[0_4px_20px_rgba(83,126,172,0.1)] p-6 flex flex-col justify-between transition-all relative overflow-hidden group">
+ <div className="absolute top-0 right-0 px-3 py-1.5 bg-[rgba(255,255,255,0.04)] border-l border-b border-[rgba(255,255,255,0.08)] text-muted text-xs font-bold rounded-bl-xl group-hover:bg-[rgba(83,126,172,0.1)] group-hover:text-[#ee1123] group-hover:border-[rgba(83,126,172,0.2)] transition-colors">
  {doc.experience_years} Years
  </div>
 
  <div className="space-y-4">
- <span className="px-2.5 py-1 bg-[rgba(50,109,205,0.1)] text-[var(--accent)] border border-[rgba(50,109,205,0.2)] rounded-md text-[10px] font-bold tracking-wider uppercase">
+ <span className="px-2.5 py-1 bg-[rgba(83,126,172,0.1)] text-[#ee1123] border border-[rgba(83,126,172,0.2)] rounded-md text-[10px] font-bold tracking-wider uppercase">
  {doc.specialization}
  </span>
  <div className="space-y-1">
- <h3 className="text-lg font-bold text-primary group-hover:text-[var(--accent)] transition-colors">
+ <h3 className="text-lg font-bold text-primary group-hover:text-[#ee1123] transition-colors">
  Dr. {doc.full_name}
  </h3>
  <p className="text-xs font-medium text-secondary">{doc.degree}</p>
  </div>
  <div className="flex items-center gap-2 text-xs font-medium text-muted">
- <MapPin className="h-4 w-4 text-[var(--accent)]" />
+ <MapPin className="h-4 w-4 text-[#ee1123]" />
  <span>{doc.clinic_city} ({doc.clinic_pin_code})</span>
  </div>
  <p className="text-xs text-secondary line-clamp-2 leading-relaxed font-medium">
@@ -140,7 +140,7 @@ function SearchResults() {
  </div>
  <Link
  href={`/booking?doctor_id=${doc.user}`}
- className="inline-flex items-center gap-2 px-4 py-2.5 bg-[var(--accent)] text-white hover:bg-[#0988C3] text-xs font-bold rounded-xl transition-all shadow-[0_4px_15px_rgba(11,170,244,0.3)] hover:shadow-[0_6px_20px_rgba(11,170,244,0.4)] hover:-translate-y-0.5"
+ className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#ee1123] text-white hover:bg-[#025964] text-xs font-bold rounded-xl transition-all shadow-[0_4px_15px_rgba(2,133,151,0.3)] hover:shadow-[0_6px_20px_rgba(2,133,151,0.4)] hover:-translate-y-0.5"
  >
  Book Now
  <ArrowRight className="h-3.5 w-3.5" />
@@ -160,7 +160,7 @@ export default function DoctorsSearchPage() {
  <Navbar />
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
  <div className="space-y-2">
- <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold text-secondary hover:text-[var(--accent)] transition-colors">
+ <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold text-secondary hover:text-[#ee1123] transition-colors">
  <ArrowLeft className="h-4 w-4" />
  Back to Home
  </Link>
@@ -170,7 +170,7 @@ export default function DoctorsSearchPage() {
 
  <Suspense fallback={
  <div className="flex flex-col items-center justify-center py-20 space-y-4">
- <Loader className="h-8 w-8 text-[var(--accent)] animate-spin" />
+ <Loader className="h-8 w-8 text-[#ee1123] animate-spin" />
  <span className="text-secondary font-medium text-sm">Loading...</span>
  </div>
  }>

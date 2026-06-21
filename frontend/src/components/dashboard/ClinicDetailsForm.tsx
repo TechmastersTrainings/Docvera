@@ -38,24 +38,24 @@ export default function ClinicDetailsForm({
 
       <form onSubmit={handleProfileUpdate} className="mt-8 space-y-5">
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Clinic Name</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Clinic Name</label>
           <input type="text" value={clinicName} onChange={(e) => setClinicName(e.target.value)}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium outline-none transition-all shadow-sm" placeholder="Clinic Name" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-3 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" placeholder="Clinic Name" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">City</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">City</label>
           <input type="text" value={clinicCity} onChange={(e) => setClinicCity(e.target.value)}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium outline-none transition-all shadow-sm" placeholder="City" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-3 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" placeholder="City" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Address</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Address</label>
           <textarea rows={3} value={clinicAddress} onChange={(e) => setClinicAddress(e.target.value)}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium outline-none transition-all resize-none shadow-sm" placeholder="Address" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-3 text-sm text-[#0f4557] font-medium outline-none transition-all resize-none shadow-sm" placeholder="Address" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">Consultation Fee (INR)</label>
+          <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Consultation Fee (INR)</label>
           <input type="number" value={consultationFees} onChange={(e) => setConsultationFees(e.target.value)}
-            className="w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 rounded-xl px-4 py-3 text-sm text-slate-900 font-medium outline-none transition-all shadow-sm" placeholder="Fee" />
+            className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-3 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" placeholder="Fee" />
         </div>
 
         <ActionButton type="submit" className="w-full justify-center">

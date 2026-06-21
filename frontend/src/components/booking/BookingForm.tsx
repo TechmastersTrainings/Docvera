@@ -45,7 +45,7 @@ export default function BookingForm({
 
       {/* Error Display */}
       {error && (
-        <div className="bg-red-50 border border-red-100 text-red-500 px-5 py-4 rounded-2xl text-sm flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
+        <div className="bg-[#fde7e9] border border-red-100 text-[#ee1123] px-5 py-4 rounded-2xl text-sm flex items-center gap-2 animate-in fade-in slide-in-from-top-2">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -62,7 +62,7 @@ export default function BookingForm({
            <select 
              value={selectedHospitalId}
              onChange={(e) => setSelectedHospitalId(e.target.value)}
-             className="w-full bg-card border border-white/10 focus:border-blue-100 rounded-xl px-4 py-3 text-sm text-foreground outline-none transition-colors"
+             className="w-full bg-card border border-white/10 focus:border-[#028597]/20 rounded-xl px-4 py-3 text-sm text-foreground outline-none transition-colors"
            >
              {affiliatedHospitals.map((hosp: any) => (
                <option key={hosp.id} value={hosp.id}>
@@ -71,7 +71,7 @@ export default function BookingForm({
              ))}
            </select>
         ) : (
-          <div className="p-4 bg-card shadow-xl shadow-black/50/50/10 border border-blue-100/20 rounded-xl text-foreground text-xs flex items-center gap-2">
+          <div className="p-4 bg-card shadow-xl shadow-black/50/50/10 border border-[#028597]/20/20 rounded-xl text-foreground text-xs flex items-center gap-2">
             <AlertCircle className="h-4 w-4" />
             No hospitals linked to this doctor. Please contact admin.
           </div>
@@ -93,14 +93,14 @@ export default function BookingForm({
             // Reset slot when date changes to avoid invalid selections
             if (typeof setSelectedTimeSlot === 'function') setSelectedTimeSlot(null);
           }}
-          className="w-full bg-card border border-white/10 focus:border-blue-100 rounded-2xl px-4 py-3 text-foreground outline-none transition-colors"
+          className="w-full bg-card border border-white/10 focus:border-[#028597]/20 rounded-2xl px-4 py-3 text-foreground outline-none transition-colors"
         />
       </div>
 
       {/* 3. Slot Selection */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <Clock className="h-5 w-5 text-blue-700" />
+          <Clock className="h-5 w-5 text-[#025964]" />
           <h3 className="text-lg font-bold text-foreground">
             Available Slots
           </h3>
@@ -121,8 +121,8 @@ export default function BookingForm({
                 onClick={() => setSelectedTimeSlot(slot)}
                 className={`py-3 rounded-xl border text-sm font-bold transition-all ${
                   selectedTimeSlot?.label === slot.label
-                    ? "bg-or-green border-or-green text-foreground shadow-lg shadow-or-green/20 scale-105"
-                    : "bg-card border-white/10 text-foreground hover:border-blue-100 hover:text-blue-900"
+                    ? "bg-[#028597] border-or-green text-foreground shadow-lg shadow-or-green/20 scale-105"
+                    : "bg-card border-white/10 text-foreground hover:border-[#028597]/20 hover:text-[#025964]"
                 }`}
               >
                 {slot.label}

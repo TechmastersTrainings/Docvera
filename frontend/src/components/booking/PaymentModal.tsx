@@ -40,7 +40,7 @@ export default function PaymentModal({
         
         {/* Close Button */}
         {onClose && (
-            <button onClick={onClose} className="absolute top-4 right-4 text-foreground hover:text-blue-900 transition-colors">
+            <button onClick={onClose} className="absolute top-4 right-4 text-foreground hover:text-[#025964] transition-colors">
                 ✕
             </button>
         )}
@@ -48,7 +48,7 @@ export default function PaymentModal({
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-4 border-b border-white/10">
           <div className="flex items-center space-x-2.5">
-            <div className="p-2 bg-blue-600 rounded-lg text-foreground font-extrabold text-xs">RP</div>
+            <div className="p-2 bg-[#028597] rounded-lg text-foreground font-extrabold text-xs">RP</div>
             <div className="space-y-0.5">
               <h4 className="text-sm font-bold text-foreground">Razorpay Secure</h4>
               <p className="text-[10px] text-foreground truncate max-w-[150px]">Order: {orderId}</p>
@@ -135,7 +135,7 @@ export default function PaymentModal({
                     <button 
                       type="button"
                       onClick={() => setShowManualUpi(true)}
-                      className="text-[11px] text-foreground font-bold hover:text-blue-900 transition-colors py-1"
+                      className="text-[11px] text-foreground font-bold hover:text-[#025964] transition-colors py-1"
                     >
                       QR not working? Enter UPI ID manually
                     </button>
@@ -163,7 +163,7 @@ export default function PaymentModal({
                         setShowManualUpi(false);
                         setUpiId("");
                       }}
-                      className="text-[10px] text-foreground hover:text-blue-900 transition-colors"
+                      className="text-[10px] text-foreground hover:text-[#025964] transition-colors"
                     >
                       ← Back to QR Code
                     </button>

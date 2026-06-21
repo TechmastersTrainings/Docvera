@@ -175,7 +175,7 @@ export default function PrescriptionPreview({
 
                       </h3>
 
-                      <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">
+                      <span className="px-3 py-1 rounded-full bg-[#eef2f7] text-[#028597] text-xs font-bold">
 
                         {
                           medicine.duration

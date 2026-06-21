@@ -60,8 +60,8 @@ export default function LoginPage() {
  <div className="glass-card p-8 space-y-8">
  <div className="text-center space-y-3">
  <Link href="/" className="inline-flex items-center gap-2.5 group">
- <div className="p-2 bg-[rgba(11,170,244,0.1)] group-hover:bg-[var(--accent)] transition-colors rounded-xl">
- <Activity className="h-5 w-5 text-[var(--accent)] group-hover:text-white" />
+ <div className="p-2 bg-[rgba(2,133,151,0.1)] group-hover:bg-[#ee1123] transition-colors rounded-xl">
+ <Activity className="h-5 w-5 text-[#ee1123] group-hover:text-white" />
  </div>
  <span className="text-xl font-bold text-primary tracking-tight">Docvera</span>
  </Link>
@@ -71,38 +71,36 @@ export default function LoginPage() {
 
  <form onSubmit={handleLogin} className="space-y-5">
  {error && (
- <div className="p-4 bg-[rgba(11,170,244,0.1)] border border-[rgba(11,170,244,0.2)] rounded-xl flex items-start gap-3 text-[var(--accent)] text-sm font-medium">
+ <div className="p-4 bg-[#fde7e9] border border-[#f8a0a7] rounded-xl flex items-start gap-3 text-[#ee1123] text-sm font-medium">
  <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
  <span>{error}</span>
  </div>
  )}
 
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-muted uppercase tracking-wide">Email Address</label>
- <div className="relative">
- <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+ <label className="flex items-center gap-1.5 text-xs font-bold text-muted uppercase tracking-wide">
+ <Mail className="h-4 w-4 text-[#537eac]" /> Email Address
+ </label>
  <input
  type="email"
  placeholder="doctor@docvera.com"
  value={email}
  onChange={(e) => setEmail(e.target.value)}
- className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(50,109,205,0.15)] rounded-xl pl-11 pr-4 py-3 text-sm outline-none text-primary transition-all placeholder:text-muted font-medium"
+ className="w-full font-medium h-[48px] rounded-xl border border-gray-200 outline-none focus:border-[#ee1123] focus:ring-2 focus:ring-[#ee1123]/10"
  />
- </div>
  </div>
 
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-muted uppercase tracking-wide">Password</label>
- <div className="relative">
- <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+ <label className="flex items-center gap-1.5 text-xs font-bold text-muted uppercase tracking-wide">
+ <Lock className="h-4 w-4 text-[#537eac]" /> Password
+ </label>
  <input
  type="password"
  placeholder="Enter your password"
  value={password}
  onChange={(e) => setPassword(e.target.value)}
- className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(50,109,205,0.15)] rounded-xl pl-11 pr-4 py-3 text-sm outline-none text-primary transition-all placeholder:text-muted font-medium"
+ className="w-full font-medium h-[48px] rounded-xl border border-gray-200 outline-none focus:border-[#ee1123] focus:ring-2 focus:ring-[#ee1123]/10"
  />
- </div>
  </div>
 
  <button
@@ -115,17 +113,17 @@ export default function LoginPage() {
  </button>
  </form>
 
- <hr className="border-[rgba(255,255,255,0.08)]" />
+ <hr className="border-[#bacbde]" />
 
  <div className="text-center text-sm font-medium text-secondary space-y-4">
  <div>
  Don't have an account?{" "}
- <Link href="/register" className="text-[var(--accent)] font-bold hover:text-[#0988C3]">
+ <Link href="/register" className="text-[#ee1123] font-bold hover:text-[#025964]">
  Create one
  </Link>
  </div>
  <div className="inline-flex items-center gap-1.5 text-xs text-muted">
- <ShieldCheck className="h-4 w-4 text-[var(--accent)]" />
+ <ShieldCheck className="h-4 w-4 text-[#ee1123]" />
  <span>256-bit AES Encrypted</span>
  </div>
  </div>

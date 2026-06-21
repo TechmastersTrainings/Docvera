@@ -196,7 +196,7 @@ export default function ConsultationRoom({
           <div className="bg-card shadow-xl shadow-black/50/50 border border-white/10 rounded-3xl p-6 space-y-4">
 
             <div className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-blue-700" />
+              <FileText className="h-5 w-5 text-[#025964]" />
 
               <h3 className="text-lg font-bold text-foreground">
                 Diagnosis

@@ -28,7 +28,7 @@ export default function ExportReportButton({ appointments }: ExportReportButtonP
   };
 
   return (
-    <button onClick={exportToCSV} className="flex items-center gap-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-sm">
+    <button onClick={exportToCSV} className="flex items-center gap-2 bg-white border border-[#537eac]/20 hover:bg-[#eef2f7] text-[#537eac] px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-sm">
       <Download className="h-4 w-4" />
       Export Report (CSV)
     </button>

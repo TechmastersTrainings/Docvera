@@ -55,7 +55,7 @@ export default function DoctorDashboardContent() {
  action={
  <button
  onClick={() => setShowAllCompleted(!showAllCompleted)}
- className="text-sm px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 rounded-lg transition-colors font-bold shadow-sm"
+ className="text-sm px-4 py-2 bg-white border border-[#537eac]/20 hover:bg-[#eef2f7] text-[#537eac] rounded-lg transition-colors font-bold shadow-sm"
  >
  {showAllCompleted ? "Show Recent (24h)" : "Show All Past"}
  </button>

@@ -24,7 +24,7 @@ export default function AppointmentList({ appointments, loading, error, onCancel
   }
 
   if (error) {
-    return <div className="p-4 bg-red-50 border border-red-100 rounded-2xl text-red-500 text-base">{error}</div>;
+    return <div className="p-4 bg-[#fde7e9] border border-red-100 rounded-2xl text-[#ee1123] text-base">{error}</div>;
   }
 
   if (appointments.length === 0) {
@@ -44,22 +44,22 @@ export default function AppointmentList({ appointments, loading, error, onCancel
   return (
     <div className="grid gap-6">
       {appointments.map((appt) => (
-        <div key={appt.id} className="p-6 bg-card shadow-xl shadow-black/50/50 border border-white/10 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-750 transition-all">
+        <div key={appt.id} className="p-6 bg-card shadow-xl shadow-black/50/50 border border-white/10 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-[#537eac]/30 transition-all">
           
           <div className="space-y-4">
             {/* Status & ID */}
             <div className="flex items-center space-x-3">
               <span className={`px-3 py-1 rounded-md text-xs font-bold tracking-wider ${
-                appt.status === "CONFIRMED" ? "bg-card text-blue-700 border border-blue-100" :
-                appt.status === "PENDING" ? "bg-card shadow-xl shadow-black/50/50/10 text-foreground border border-blue-100/20" :
-                appt.status === "CANCELLED" ? "bg-red-50 text-red-500 border border-red-100" :
-                "bg-card shadow-xl shadow-black/50/50 text-foreground border border-slate-750"
+                appt.status === "CONFIRMED" ? "bg-card text-[#025964] border border-[#028597]/20" :
+                appt.status === "PENDING" ? "bg-card shadow-xl shadow-black/50/50/10 text-foreground border border-[#028597]/20/20" :
+                appt.status === "CANCELLED" ? "bg-[#fde7e9] text-[#ee1123] border border-red-100" :
+                "bg-card shadow-xl shadow-black/50/50 text-foreground border border-[#537eac]/30"
               }`}>{appt.status}</span>
               
               {/* Payment Status Badge */}
               <span className={`px-3 py-1 rounded-md text-xs font-bold tracking-wider flex items-center gap-1 ${
                 appt.payment_status === "CAPTURED" ? "bg-surgical-steel/10 text-foreground border border-white/10/20" :
-                "bg-card shadow-xl shadow-black/50/50 text-foreground border border-slate-750"
+                "bg-card shadow-xl shadow-black/50/50 text-foreground border border-[#537eac]/30"
               }`}>
                 <CreditCard className="h-3 w-3" />
                 {appt.payment_status === "CAPTURED" ? "Paid" : "Unpaid"}
@@ -98,7 +98,7 @@ export default function AppointmentList({ appointments, loading, error, onCancel
             {["PENDING", "CONFIRMED"].includes(appt.status) && (
               <button 
                 onClick={() => onCancel(appt.id)} 
-                className="px-4 py-2.5 bg-red-50 hover:bg-red-100/20 text-red-500 border border-red-100 hover:border-emergency-red/30 text-sm font-bold rounded-xl transition-all flex items-center gap-2"
+                className="px-4 py-2.5 bg-[#fde7e9] hover:bg-[#fde7e9]/20 text-[#ee1123] border border-red-100 hover:border-emergency-red/30 text-sm font-bold rounded-xl transition-all flex items-center gap-2"
               >
                 <Trash2 className="h-4 w-4" /> Cancel
               </button>
@@ -107,14 +107,14 @@ export default function AppointmentList({ appointments, loading, error, onCancel
             {appt.status === "COMPLETED" && !appt.review && (
               <button 
                 onClick={() => onReview(appt.id)} 
-                className="px-4 py-2.5 bg-card shadow-xl shadow-black/50/50/15 hover:bg-card shadow-xl shadow-black/50/50 hover:text-blue-900 text-foreground hover:text-blue-900 border border-blue-100/20 hover:border-blue-100 text-sm font-bold rounded-xl transition-all"
+                className="px-4 py-2.5 bg-card shadow-xl shadow-black/50/50/15 hover:bg-card shadow-xl shadow-black/50/50 hover:text-[#025964] text-foreground hover:text-[#025964] border border-[#028597]/20/20 hover:border-[#028597]/20 text-sm font-bold rounded-xl transition-all"
               >
                 Write Review
               </button>
             )}
 
             {appt.review && (
-              <div className="inline-flex items-center space-x-1.5 px-3 py-2 bg-card border border-slate-805 rounded-xl text-sm text-foreground font-semibold">
+              <div className="inline-flex items-center space-x-1.5 px-3 py-2 bg-card border border-[#537eac]/20 rounded-xl text-sm text-foreground font-semibold">
                 <Star className="h-4 w-4 text-foreground fill-hospital-orange" /><span>Reviewed</span>
               </div>
             )}

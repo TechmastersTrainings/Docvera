@@ -15,7 +15,7 @@ interface Props {
 export default function PendingAppointments({ appointments, handleStatusChange }: Props) {
   return (
     <DashboardCard>
-      <div className="p-6 border-b border-slate-200">
+      <div className="p-6 border-b border-[#537eac]/20">
         <SectionHeader
           title="Pending Appointments"
           subtitle="Appointments waiting for confirmation or payment."

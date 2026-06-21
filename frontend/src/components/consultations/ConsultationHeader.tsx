@@ -23,7 +23,7 @@ export default function ConsultationHeader({
 
       <div className="flex items-center gap-4">
 
-        <div className="p-4 bg-card shadow-xl shadow-black/50/50/10 rounded-2xl border border-blue-100/20">
+        <div className="p-4 bg-card shadow-xl shadow-black/50/50/10 rounded-2xl border border-[#028597]/20/20">
 
           <Stethoscope className="h-7 w-7 text-foreground" />
 
@@ -44,7 +44,7 @@ export default function ConsultationHeader({
       {handleCompleteConsultation && (
         <ActionButton
           onClick={handleCompleteConsultation}
-          className="bg-or-green hover:bg-emerald-700 text-foreground font-bold px-6 py-3"
+          className="bg-[#028597] hover:bg-[#025964] text-foreground font-bold px-6 py-3"
         >
           Complete Consultation
         </ActionButton>

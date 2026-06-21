@@ -25,14 +25,14 @@ function DoctorNav() {
 
  return (
  <>
- <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+ <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#537eac]/20 shadow-sm">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <div className="flex items-center justify-between h-16">
  <Link href="/" className="flex items-center gap-2 group">
- <div className="p-1.5 bg-blue-600 group-hover:bg-blue-700 transition-colors rounded-lg">
+ <div className="p-1.5 bg-[#028597] group-hover:bg-[#025964] transition-colors rounded-lg">
  <Activity className="h-5 w-5 text-white" />
  </div>
- <span className="text-lg font-bold text-slate-900 tracking-tight">Docvera</span>
+ <span className="text-lg font-bold text-[#0f4557] tracking-tight">Docvera</span>
  </Link>
 
  <nav className="hidden md:flex items-center gap-1">
@@ -42,20 +42,20 @@ function DoctorNav() {
  href={`/dashboard/doctor?tab=${link.tab}`}
  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${
  currentTab === link.tab
- ? "bg-blue-50 text-blue-600 border border-blue-100 shadow-sm"
- : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+ ? "bg-[#eef2f7] text-[#028597] border border-blue-100 shadow-sm"
+ : "text-[#537eac] hover:text-[#0f4557] hover:bg-[#eef2f7]"
  }`}
  >
  <link.icon className="h-4 w-4" />
  <span>{link.name}</span>
  </Link>
  ))}
- <button onClick={handleLogout} className="ml-4 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-red-600 hover:bg-red-50 transition-all">
+ <button onClick={handleLogout} className="ml-4 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-[#ee1123] hover:bg-[#fde7e9] transition-all">
  <LogOut className="h-4 w-4" /> Logout
  </button>
  </nav>
 
- <button className="md:hidden text-slate-500 hover:text-slate-700 p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+ <button className="md:hidden text-[#537eac] hover:text-[#0f4557] p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
  </button>
  </div>
@@ -63,21 +63,21 @@ function DoctorNav() {
  </header>
 
  {isMobileMenuOpen && (
- <div className="md:hidden border-b border-slate-200 bg-white px-4 py-3 space-y-2 shadow-sm">
+ <div className="md:hidden border-b border-[#537eac]/20 bg-white px-4 py-3 space-y-2 shadow-sm">
  {navLinks.map((link) => (
  <Link
  key={link.tab}
  href={`/dashboard/doctor?tab=${link.tab}`}
  onClick={() => setIsMobileMenuOpen(false)}
  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold ${
- currentTab === link.tab ? "bg-blue-50 text-blue-600" : "text-slate-500"
+ currentTab === link.tab ? "bg-[#eef2f7] text-[#028597]" : "text-[#537eac]"
  }`}
  >
  <link.icon className="h-4 w-4" />
  {link.name}
  </Link>
  ))}
- <button onClick={handleLogout} className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-red-600 w-full">
+ <button onClick={handleLogout} className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-[#ee1123] w-full">
  <LogOut className="h-4 w-4" /> Logout
  </button>
  </div>
@@ -90,14 +90,14 @@ export default function DoctorDashboardLayout({ children }: { children: React.Re
  return (
  <div className="min-h-screen bg-transparent flex flex-col">
  <Suspense fallback={
- <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+ <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#537eac]/20 shadow-sm">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <div className="flex items-center justify-between h-16">
  <div className="flex items-center gap-2">
- <div className="p-1.5 bg-blue-600 rounded-lg">
+ <div className="p-1.5 bg-[#028597] rounded-lg">
  <Activity className="h-5 w-5 text-white" />
  </div>
- <span className="text-lg font-bold text-slate-900 tracking-tight">Docvera</span>
+ <span className="text-lg font-bold text-[#0f4557] tracking-tight">Docvera</span>
  </div>
  </div>
  </div>

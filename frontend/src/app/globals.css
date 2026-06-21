@@ -1,32 +1,47 @@
 @import "tailwindcss";
 @import "aos/dist/aos.css";
 
-/* ── CSS CUSTOM PROPERTIES ───────────────────────────────── */
-:root {
-  /* === BACKGROUND SYSTEM === */
-  --background:           linear-gradient(180deg, #090C1A 0%, #0E1125 30%, #141A1F 100%);
-  --background-section-1: #0E1125;
-  --background-section-2: #1B214B;
+/* ══════════════════════════════════════════════════════════
+   5-COLOR PALETTE (EXACT USER SPECIFICATION)
+   ──────────────────────────────────────────────────────────
+   dark-teal:       #05181e → #08222b → #0f4557 → #176782 → #26acd9
+   teal:            #011f23 → #012c32 → #025964 → #028597 → #04defb
+   frosted-mint:    #052202 → #083003 → #0f6006 → #179009 → #26f00f
+   baltic-blue:     #0c1218 → #111922 → #213245 → #324c67 → #537eac
+   bubblegum-pink:  #210205 → #300307 → #5f070e → #8f0a15 → #ee1123
+   ══════════════════════════════════════════════════════════ */
 
-  /* === CARD DESIGN === */
-  --card:                 rgba(27, 33, 75, 0.85);
-  --card-border:          rgba(255, 255, 255, 0.08);
-  --card-secondary:       rgba(20, 44, 82, 0.85);
-  --card-secondary-border: rgba(11, 170, 244, 0.12);
+:root {
+  /* === BACKGROUND === */
+  --background:
+    linear-gradient(
+      180deg,
+      #eef2f7 0%,
+      #dde5ee 50%,
+      #eef2f7 100%
+    );
+  --background-section-1: #eef2f7;
+  --background-section-2: #dde5ee;
+
+  /* === CARDS === */
+  --card:                 #FFFFFF;
+  --card-border:          #bacbde;
+  --card-secondary:       #eef2f7;
+  --card-secondary-border: #bacbde;
 
   /* === TEXT === */
-  --text-primary:         #FFFFFF;
-  --text-secondary:       rgba(255, 255, 255, 0.75);
-  --text-muted:           rgba(255, 255, 255, 0.55);
+  --text-primary:         #08222b;
+  --text-secondary:       #42658a;
+  --text-muted:           #537eac;
 
-  /* === BRAND COLORS === */
-  --primary:              #4454BB;
-  --secondary:            #326DCD;
-  --accent:               #0BAAF4;
-  --cerulean:             #29A5D6;
-  --powder-blue:          #62849D;
-  
-  --radius:               24px;
+  /* === BRAND === */
+  --primary:              #0f4557;
+  --secondary:            #028597;
+  --accent:               #ee1123;
+  --cerulean:             #04defb;
+  --powder-blue:          #537eac;
+
+  --radius:               20px;
 }
 
 /* ── BASE RESET ──────────────────────────────────────────── */
@@ -37,69 +52,85 @@
     background: var(--background);
     background-attachment: fixed;
     color: var(--text-primary);
-    font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* ── INPUTS ───────────────────────────────────────────────── */
+  input, select, textarea {
+    background: #FFFFFF;
+    border: 1px solid #bacbde;
+    color: #08222b;
+    border-radius: 16px;
+    min-height: 56px;
+    transition: all 0.25s ease;
+    padding: 0.875rem 1rem;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #028597;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(2, 133, 151, 0.15);
+  }
+  input::placeholder, textarea::placeholder {
+    color: #7598bd;
   }
 }
 
-/* ── BASE COMPONENTS ───────────────────────────────────────── */
-input, select, textarea {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
-  border-radius: 12px;
-  min-height: 48px;
-  transition: all 0.25s ease;
-  padding: 0.75rem 1rem;
-}
-input:focus, select:focus, textarea:focus {
-  border-color: #0BAAF4;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(11, 170, 244, 0.15);
-}
-input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
 
-/* ── LUXURY COMPONENTS ───────────────────────────────────────── */
+
+/* ── COMPONENTS ───────────────────────────────────────────── */
 @layer components {
-  /* CARDS */
+
+  /* ── CARDS ── */
   .glass-card {
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+    background: #FFFFFF;
+    border: 1px solid #bacbde;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow:
+      0 4px 6px rgba(17, 25, 34, 0.05),
+      0 12px 40px rgba(17, 25, 34, 0.1);
     border-radius: 24px;
     transition: transform 250ms ease, box-shadow 250ms ease;
-    color: var(--text-primary);
+    color: #08222b;
   }
   .glass-card:hover {
     transform: translateY(-4px);
+    box-shadow:
+      0 8px 16px rgba(17, 25, 34, 0.07),
+      0 24px 56px rgba(17, 25, 34, 0.14);
   }
 
   .glass-secondary {
-    background: var(--card-secondary);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--card-secondary-border);
+    background: #FFFFFF;
+    border: 1px solid #bacbde;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow:
+      0 2px 4px rgba(17, 25, 34, 0.04),
+      0 8px 28px rgba(17, 25, 34, 0.08);
     border-radius: 20px;
-    transition: transform 250ms ease;
-    color: var(--text-primary);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+    color: #08222b;
   }
   .glass-secondary:hover {
     transform: translateY(-4px);
+    box-shadow:
+      0 6px 12px rgba(17, 25, 34, 0.06),
+      0 20px 48px rgba(17, 25, 34, 0.12);
   }
 
-  /* BUTTONS */
+  /* ── BUTTONS ── */
   .btn-primary {
-    background: #4454BB;
+    background: #0f4557;
     color: #FFFFFF;
     font-weight: 600;
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
-    box-shadow: 0 10px 30px rgba(68, 84, 187, 0.35);
+    border-radius: 16px;
+    padding: 0.875rem 1.75rem;
+    box-shadow: 0 12px 30px rgba(15, 69, 87, 0.25);
     transition: all 250ms ease;
     border: none;
     cursor: pointer;
@@ -108,17 +139,17 @@ input::placeholder, textarea::placeholder {
     justify-content: center;
   }
   .btn-primary:hover {
-    background: #364396;
+    background: #08222b;
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(68, 84, 187, 0.45);
+    box-shadow: 0 16px 40px rgba(15, 69, 87, 0.35);
   }
 
   .btn-secondary {
-    background: #326DCD;
+    background: #028597;
     color: #FFFFFF;
     font-weight: 600;
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
+    border-radius: 16px;
+    padding: 0.875rem 1.75rem;
     transition: all 250ms ease;
     border: none;
     cursor: pointer;
@@ -127,16 +158,16 @@ input::placeholder, textarea::placeholder {
     justify-content: center;
   }
   .btn-secondary:hover {
-    background: #2857A4;
+    background: #025964;
     transform: translateY(-2px);
   }
 
   .btn-accent {
-    background: #0BAAF4;
+    background: #ee1123;
     color: #FFFFFF;
     font-weight: 600;
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
+    border-radius: 16px;
+    padding: 0.875rem 1.75rem;
     transition: all 250ms ease;
     border: none;
     cursor: pointer;
@@ -145,17 +176,17 @@ input::placeholder, textarea::placeholder {
     justify-content: center;
   }
   .btn-accent:hover {
-    background: #0988C3;
+    background: #bf0d1c;
     transform: translateY(-2px);
   }
 
   .btn-ghost {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #FFFFFF;
+    background: #FFFFFF;
+    border: 1px solid #bacbde;
+    color: #0f4557;
     font-weight: 600;
-    border-radius: 12px;
-    padding: 0.75rem 1.5rem;
+    border-radius: 16px;
+    padding: 0.875rem 1.75rem;
     transition: all 250ms ease;
     cursor: pointer;
     display: inline-flex;
@@ -163,50 +194,52 @@ input::placeholder, textarea::placeholder {
     justify-content: center;
   }
   .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: #eef2f7;
+    border-color: #028597;
+    transform: translateY(-1px);
   }
 
-  /* TYPOGRAPHY */
-  .text-primary { color: #FFFFFF; }
-  .text-secondary { color: rgba(255, 255, 255, 0.75); }
-  .text-muted { color: rgba(255, 255, 255, 0.55); }
-  
-  /* TABLES */
+  /* ── TYPOGRAPHY ── */
+  .text-primary { color: #08222b; }
+  .text-secondary { color: #42658a; }
+  .text-muted { color: #537eac; }
+
+  /* ── TABLES ── */
   .dark-table-header {
-    background: #1B214B;
+    background: #08222b;
     color: #FFFFFF;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid #213245;
+    font-weight: 600;
   }
   .dark-table-row {
     background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid #dde5ee;
     transition: background 250ms ease;
   }
   .dark-table-row:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: #eef2f7;
   }
-  
-  /* SIDEBAR */
+
+  /* ── SIDEBAR ── */
   .sidebar-dark {
-    background: #090C1A;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    background: #08222b;
+    border-right: 1px solid #213245;
   }
   .sidebar-item-active {
-    background: rgba(11, 170, 244, 0.15);
-    color: #0BAAF4;
-    border-left: 4px solid #0BAAF4;
+    background: rgba(2, 133, 151, 0.15);
+    color: #04defb;
+    border-left: 4px solid #028597;
+    font-weight: 600;
   }
 }
 
 /* ── SCROLLBAR ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #090C1A; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+::-webkit-scrollbar-track { background: #eef2f7; }
+::-webkit-scrollbar-thumb { background: #98b2cd; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #537eac; }
 
 /* ── ANIMATIONS ───────────────────────────────────────────── */
-/* We exclusively use premium micro-interactions (no float/pulsing glow/bouncing) */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }

@@ -15,9 +15,9 @@ export default function ActionButton({
   children, onClick, type = "button", variant = "primary", className = "", disabled = false,
 }: Props) {
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-sm",
-    danger: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
-    secondary: "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 shadow-sm",
+    primary: "bg-[#028597] text-white hover:bg-[#025964] shadow-sm",
+    danger: "bg-[#ee1123] text-white hover:bg-[#bf0d1c] shadow-sm",
+    secondary: "bg-white text-[#0f4557] border border-[#537eac]/20 hover:bg-[#eef2f7] shadow-sm",
   };
 
   return (

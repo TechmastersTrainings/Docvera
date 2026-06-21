@@ -6,7 +6,7 @@ import { Loader } from "lucide-react";
 export default function DashboardLoader() {
   return (
     <div className="flex justify-center items-center h-full min-h-[400px]">
-      <Loader className="animate-spin text-blue-600 h-8 w-8" />
+      <Loader className="animate-spin text-[#028597] h-8 w-8" />
     </div>
   );
 }
