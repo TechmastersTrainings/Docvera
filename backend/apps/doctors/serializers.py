@@ -88,6 +88,7 @@ class DoctorSerializer(serializers.ModelSerializer):
             'clinic_pin_code',
             'clinic_latitude',
             'clinic_longitude',
+            'status',
             'approval_status',
             'rejection_reason',
             'availabilities',

@@ -231,6 +231,7 @@ export default function AdminDashboard() {
  <div>
  <h3 className="text-xl font-bold text-text">Dr. {doc.full_name}</h3>
  <p className="text-sm text-text-secondary">{doc.degree} &bull; {doc.clinic_name}</p>
+ <p className="text-xs text-text-secondary mt-1">Joined: {new Date(doc.created_at).toLocaleDateString()}</p>
  </div>
  </div>
 
