@@ -212,15 +212,21 @@ export default function AdminDashboard() {
  </>
  )}
  {doc.approval_status === 'APPROVED' && doc.status === 'ACTIVE' && (
+ <>
  <button onClick={() => { setSelectedDoctorId(doc.user); setActionType("SUSPEND"); setIsActionOpen(true); }}
  className="px-4 py-2 bg-warning/10 text-warning hover:bg-warning/20 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border border-warning/20">
- <Ban className="h-4 w-4" /> Suspend
+ <Ban className="h-4 w-4" /> Deactivate
  </button>
+ <button onClick={() => { setSelectedDoctorId(doc.user); setActionType("REJECT"); setIsActionOpen(true); }}
+ className="px-4 py-2 bg-error/10 text-error hover:bg-error/20 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border border-error/10">
+ <XCircle className="h-4 w-4" /> Reject
+ </button>
+ </>
  )}
  {doc.approval_status === 'APPROVED' && doc.status === 'SUSPENDED' && (
  <button onClick={() => { setSelectedDoctorId(doc.user); setActionType("ACTIVATE"); setIsActionOpen(true); }}
  className="px-4 py-2 bg-accent/10 text-accent hover:bg-accent/20 text-sm font-semibold rounded-xl transition-all flex items-center gap-2 border border-accent/20">
- <Activity className="h-4 w-4" /> Reactivate
+ <Activity className="h-4 w-4" /> Activate
  </button>
  )}
  </div>
