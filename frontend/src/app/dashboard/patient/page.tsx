@@ -10,6 +10,7 @@ import { api } from "@/lib/api";
 import Navbar from "@/components/Navbar";
 import CancelAppointmentModal from "@/components/patients/components/CancelAppointmentModal";
 import ReviewModal from "@/components/patients/components/ReviewModal";
+import PrescriptionModal from "@/components/patients/components/PrescriptionModal";
 
 export default function PatientDashboard() {
  const [profile, setProfile] = useState<any>(null);
@@ -29,6 +30,7 @@ export default function PatientDashboard() {
  const [formMessage, setFormMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
  const [cancelModal, setCancelModal] = useState<{ open: boolean; id: string | null }>({ open: false, id: null });
  const [reviewModal, setReviewModal] = useState<{ open: boolean; id: string }>({ open: false, id: "" });
+ const [prescriptionModal, setPrescriptionModal] = useState<{ open: boolean; appt: any | null }>({ open: false, appt: null });
 
  useEffect(() => { fetchDashboardData(); }, []);
 
@@ -290,13 +292,23 @@ export default function PatientDashboard() {
  </button>
  )}
  {appt.status === "COMPLETED" && (
- <button
- onClick={() => setReviewModal({ open: true, id: appt.id })}
- className="px-4 py-2 bg-white hover:bg-[#eef2f7] border border-[#537eac]/20 text-[#0f4557] text-xs font-bold rounded-xl transition-all shadow-sm"
- >
- Review
- </button>
- )}
+  <>
+  {appt.prescriptions && appt.prescriptions.length > 0 && (
+    <button
+      onClick={() => setPrescriptionModal({ open: true, appt })}
+      className="px-4 py-2 bg-[#eef2f7] hover:bg-[#dfe6f0] border border-[#537eac]/30 text-[#028597] text-xs font-bold rounded-xl transition-all shadow-sm"
+    >
+      View Prescription
+    </button>
+  )}
+  <button
+  onClick={() => setReviewModal({ open: true, id: appt.id })}
+  className="px-4 py-2 bg-white hover:bg-[#eef2f7] border border-[#537eac]/20 text-[#0f4557] text-xs font-bold rounded-xl transition-all shadow-sm"
+  >
+  Review
+  </button>
+  </>
+  )}
  </div>
  </div>
  </div>
@@ -414,15 +426,24 @@ export default function PatientDashboard() {
 
  <CancelAppointmentModal
  isOpen={cancelModal.open}
- appointmentId={cancelModal.id}
  onClose={() => setCancelModal({ open: false, id: null })}
- onSuccess={() => { setCancelModal({ open: false, id: null }); fetchDashboardData(); }}
+ appointmentId={cancelModal.id!}
+ onSuccess={fetchDashboardData}
  />
+ {reviewModal.open && (
  <ReviewModal
  isOpen={reviewModal.open}
- appointmentId={reviewModal.id}
  onClose={() => setReviewModal({ open: false, id: "" })}
- onSuccess={() => { setReviewModal({ open: false, id: "" }); fetchDashboardData(); }}
+ appointmentId={reviewModal.id}
+ onSuccess={fetchDashboardData}
+ />
+ )}
+ <PrescriptionModal
+ open={prescriptionModal.open}
+ onClose={() => setPrescriptionModal({ open: false, appt: null })}
+ prescriptions={prescriptionModal.appt?.prescriptions || []}
+ doctorName={prescriptionModal.appt?.doctor_name || ""}
+ date={prescriptionModal.appt?.booking_date || ""}
  />
  </div>
  );

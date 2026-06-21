@@ -11,6 +11,7 @@ from django.db.models import Sum
 from apps.appointments.models import Appointment
 from apps.payments.models import Payment
 from apps.patients.models import Patient
+from apps.reviews.models import Review
 
 class AdminPagination(PageNumberPagination):
     page_size = 20
@@ -252,5 +253,24 @@ class AuditLogView(APIView, AdminPagination):
             "details": log.details,
             "timestamp": log.timestamp
         } for log in results]
+        
+        return self.get_paginated_response(data)
+
+
+class AdminReviewManagementView(APIView, AdminPagination):
+    permission_classes = [IsAdminUser]
+
+    def get(self, request):
+        queryset = Review.objects.select_related('patient', 'doctor').all().order_by('-created_at')
+        results = self.paginate_queryset(queryset, request)
+        
+        data = [{
+            "id": str(r.id),
+            "patient_name": r.patient.full_name,
+            "doctor_name": r.doctor.full_name,
+            "rating": r.rating,
+            "comment": r.comment,
+            "created_at": r.created_at
+        } for r in results]
         
         return self.get_paginated_response(data)

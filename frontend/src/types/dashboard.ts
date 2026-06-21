@@ -20,6 +20,13 @@ export interface Appointment {
   clinic_address?: string;
 
   clinic_city?: string;
+
+  review?: {
+    rating: number;
+    comment: string;
+  };
+
+  prescriptions?: any[];
 }
 
 export interface DashboardStats {

@@ -7,7 +7,8 @@ from .views import (
     FinancialStatsView,
     PatientManagementView,
     PatientActionView,
-    AuditLogView
+    AuditLogView,
+    AdminReviewManagementView
 )
 
 urlpatterns = [
@@ -26,6 +27,7 @@ urlpatterns = [
 
     # Audit & Security
     path('audit-logs/', AuditLogView.as_view(), name='admin_audit_logs'),
+    path('reviews/', AdminReviewManagementView.as_view(), name='admin_reviews'),
 
     # Global Config
     path('settings/', SystemSettingsView.as_view(), name='admin_settings'),

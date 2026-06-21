@@ -11,7 +11,7 @@ import { api } from "@/lib/api";
 
 export default function AdminDashboard() {
  const router = useRouter();
- const [activeTab, setActiveTab] = useState<"PROVIDERS" | "PAYOUTS" | "SETTINGS" | "PATIENTS" | "AUDIT_LOGS">("PROVIDERS");
+ const [activeTab, setActiveTab] = useState<"PROVIDERS" | "PAYOUTS" | "SETTINGS" | "PATIENTS" | "AUDIT_LOGS" | "REVIEWS">("PROVIDERS");
  const [loading, setLoading] = useState(true);
  const [error, setError] = useState<string | null>(null);
  const [doctors, setDoctors] = useState<any[]>([]);
@@ -19,6 +19,7 @@ export default function AdminDashboard() {
  const [financialStats, setFinancialStats] = useState<any>(null);
  const [patients, setPatients] = useState<any[]>([]);
  const [auditLogs, setAuditLogs] = useState<any[]>([]);
+ const [reviews, setReviews] = useState<any[]>([]);
  const [settings, setSettings] = useState<any[]>([]);
  const [isActionOpen, setIsActionOpen] = useState(false);
  const [selectedDoctorId, setSelectedDoctorId] = useState("");
@@ -78,6 +79,16 @@ export default function AdminDashboard() {
  }
  };
 
+ const fetchReviews = async () => {
+ try {
+ const res = await api.get("/admin/reviews/");
+ setReviews(res.data.results || res.data.data || res.data);
+ } catch (err: any) {
+ console.error(err);
+ setError("Failed to load platform reviews.");
+ }
+ };
+
  const fetchSettings = async () => {
  try {
  const res = await api.get("/admin/settings/");
@@ -94,6 +105,7 @@ export default function AdminDashboard() {
  if (activeTab === "PROVIDERS") fetchDoctors().finally(() => setLoading(false));
  if (activeTab === "PATIENTS") fetchPatients().finally(() => setLoading(false));
  if (activeTab === "AUDIT_LOGS") fetchAuditLogs().finally(() => setLoading(false));
+ if (activeTab === "REVIEWS") fetchReviews().finally(() => setLoading(false));
  if (activeTab === "PAYOUTS") {
  Promise.all([fetchPayouts(), fetchFinancialStats()]).finally(() => setLoading(false));
  }
@@ -153,6 +165,7 @@ export default function AdminDashboard() {
  { id: "PATIENTS" as const, label: "Patient Management", icon: Users },
  { id: "PAYOUTS" as const, label: "Financial Settlements", icon: CreditCard },
  { id: "AUDIT_LOGS" as const, label: "System Audit Logs", icon: ShieldCheck },
+ { id: "REVIEWS" as const, label: "Platform Reviews", icon: Activity },
  { id: "SETTINGS" as const, label: "Global Settings", icon: Settings },
  ];
 
@@ -487,6 +500,57 @@ export default function AdminDashboard() {
   <pre className="font-mono bg-surface/50 p-2 rounded border border-border whitespace-pre-wrap">
   {JSON.stringify(log.details, null, 2)}
   </pre>
+  </td>
+  </tr>
+  ))
+  )}
+  </tbody>
+  </table>
+  </div>
+  </div>
+  )}
+  {activeTab === "REVIEWS" && (
+  <div className="card overflow-hidden">
+  <div className="p-6 border-b border-border flex items-center justify-between">
+    <div>
+    <h2 className="text-xl font-bold text-text">Platform Reviews</h2>
+    <p className="text-sm text-text-secondary mt-1">Monitor all patient feedback and ratings across the platform.</p>
+    </div>
+    <span className="px-4 py-1.5 bg-surface border border-border rounded-full text-sm font-semibold text-text">
+    {reviews.length} Reviews
+    </span>
+  </div>
+  <div className="overflow-x-auto">
+  <table className="w-full text-left text-sm">
+  <thead className="bg-surface border-b border-border">
+  <tr>
+  <th className="px-6 py-4 font-bold text-text uppercase tracking-wider text-xs">Date</th>
+  <th className="px-6 py-4 font-bold text-text uppercase tracking-wider text-xs">Patient</th>
+  <th className="px-6 py-4 font-bold text-text uppercase tracking-wider text-xs">Doctor</th>
+  <th className="px-6 py-4 font-bold text-text uppercase tracking-wider text-xs">Rating</th>
+  <th className="px-6 py-4 font-bold text-text uppercase tracking-wider text-xs">Comment</th>
+  </tr>
+  </thead>
+  <tbody className="divide-y divide-border">
+  {reviews.length === 0 ? (
+  <tr><td colSpan={5} className="px-6 py-8 text-center text-text-secondary">No reviews found.</td></tr>
+  ) : (
+  reviews.map((r, idx) => (
+  <tr key={idx} className="hover:bg-surface/50 transition-colors">
+  <td className="px-6 py-4 text-text-secondary whitespace-nowrap">{new Date(r.created_at).toLocaleDateString()}</td>
+  <td className="px-6 py-4 text-text font-semibold">{r.patient_name}</td>
+  <td className="px-6 py-4 text-text font-semibold">Dr. {r.doctor_name}</td>
+  <td className="px-6 py-4">
+    <div className="flex items-center gap-1">
+    {[...Array(5)].map((_, i) => (
+      <svg key={i} className={`w-4 h-4 ${i < r.rating ? "text-amber-400" : "text-amber-100"}`} fill="currentColor" viewBox="0 0 20 20">
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    ))}
+    </div>
+  </td>
+  <td className="px-6 py-4">
+    <p className="text-text-secondary italic line-clamp-2 max-w-md">"{r.comment}"</p>
   </td>
   </tr>
   ))

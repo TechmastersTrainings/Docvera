@@ -17,6 +17,10 @@ class AppointmentSerializer(serializers.ModelSerializer):
     # Payment Status Field (Assuming you have a related Payment model)
     payment_status = serializers.SerializerMethodField()
 
+    # Prescriptions and Reviews
+    prescriptions = serializers.SerializerMethodField()
+    review = serializers.SerializerMethodField()
+
     def get_patient_name(self, obj):
         try:
             return obj.patient.full_name
@@ -47,6 +51,26 @@ class AppointmentSerializer(serializers.ModelSerializer):
             return obj.payment.status  # e.g., 'CAPTURED', 'PENDING'
         return 'UNPAID'
 
+    def get_prescriptions(self, obj):
+        try:
+            if hasattr(obj, 'consultation') and obj.consultation:
+                prescriptions = obj.consultation.prescriptions.all()
+                if prescriptions.exists():
+                    from apps.prescriptions.serializers import PrescriptionSerializer
+                    return PrescriptionSerializer(prescriptions, many=True).data
+        except Exception:
+            pass
+        return []
+
+    def get_review(self, obj):
+        try:
+            if hasattr(obj, 'review') and obj.review:
+                from apps.reviews.serializers import ReviewSerializer
+                return ReviewSerializer(obj.review).data
+        except Exception:
+            pass
+        return None
+
     class Meta:
         model = Appointment
         fields = (
@@ -70,6 +94,8 @@ class AppointmentSerializer(serializers.ModelSerializer):
             'platform_fee',
             'total_amount',
             'payment_status',  # Added
+            'prescriptions',
+            'review',
             'lock_expires_at',
             'created_at',
             'updated_at'
