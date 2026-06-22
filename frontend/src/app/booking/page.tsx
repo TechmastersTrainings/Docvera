@@ -243,9 +243,9 @@ function BookingDetails() {
  const locationName = hospitalIdFromUrl ? appointmentData?.hospital_name : doctor.clinic_name;
 
  return (
- <div className="min-h-screen bg-card py-8 px-4 sm:px-6">
- <div className="max-w-7xl mx-auto">
+ <div className="min-h-screen bg-card">
  <Navbar />
+ <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6">
  <Link href="/" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary mb-6 transition-colors">
  <ArrowLeft className="h-4 w-4" /> Back to Home
  </Link>
