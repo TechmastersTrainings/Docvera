@@ -57,7 +57,8 @@ export default function PatientDashboard() {
  }
  }
  if (apptRes.data.success) {
- setAppointments(apptRes.data.data);
+ const activeBookings = apptRes.data.data.filter((appt: any) => appt.status !== "PENDING");
+ setAppointments(activeBookings);
  }
  } catch (err) {
  console.error("Error loading system metrics:", err);

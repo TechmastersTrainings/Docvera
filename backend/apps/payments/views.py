@@ -7,6 +7,7 @@ import hashlib
 
 from apps.common.utils import api_response
 from .models import Payment
+from apps.appointments.emails import send_booking_confirmation_email
 
 import csv
 from django.http import HttpResponse
@@ -87,6 +88,9 @@ class RazorpayPaymentVerifyView(APIView):
                 appointment.status = 'CONFIRMED'
                 appointment.lock_expires_at = None
                 appointment.save()
+
+                # Send confirmation email asynchronously
+                send_booking_confirmation_email(appointment)
 
                 return api_response(
                     success=True, 

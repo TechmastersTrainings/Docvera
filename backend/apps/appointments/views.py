@@ -23,6 +23,7 @@ from apps.payments.models import Payment
 from .models import Appointment
 from .serializers import AppointmentSerializer
 from apps.notifications.utils import create_notification
+from .emails import send_booking_confirmation_email
 
 
 class AppointmentStatusUpdateView(APIView):
@@ -259,6 +260,9 @@ class RazorpayVerificationView(APIView):
                     appointment.lock_expires_at = None
                     appointment.save()
 
+                    # Send confirmation email asynchronously
+                    send_booking_confirmation_email(appointment)
+
                 return api_response(success=True, data={"message": "Payment verified successfully"})
 
             else:
@@ -370,7 +374,7 @@ class PatientDashboardAppointmentsView(APIView):
         if request.user.role != 'PATIENT':
             return api_response(success=False, error="Patient access required", status=status.HTTP_403_FORBIDDEN)
 
-        appointments = Appointment.objects.filter(patient__user=request.user).order_by('-booking_date', '-start_time')
+        appointments = Appointment.objects.filter(patient__user=request.user).exclude(status='PENDING').order_by('-booking_date', '-start_time')
         serializer = AppointmentSerializer(appointments, many=True)
         return api_response(success=True, data=serializer.data)
 
