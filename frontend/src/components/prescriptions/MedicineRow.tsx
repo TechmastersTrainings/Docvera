@@ -55,6 +55,7 @@ export default function MedicineRow({
       </div>
 
       <div className="flex flex-col gap-4">
+        {/* Medicine Name - Full Width */}
         <div className="flex flex-col gap-1.5">
           <label className="text-sm font-semibold text-slate-800">
             Medicine Name
@@ -68,93 +69,99 @@ export default function MedicineRow({
           />
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-slate-800">
-            Dosage
-          </label>
-          <select
-            value={medicine.dosage}
-            onChange={(e) => updateMedicine(index, "dosage", e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
-          >
-            <option value="">Select Dosage...</option>
-            <option value="1 Tablet">1 Tablet</option>
-            <option value="2 Tablets">2 Tablets</option>
-            <option value="1 Capsule">1 Capsule</option>
-            <option value="250mg">250mg</option>
-            <option value="500mg">500mg</option>
-            <option value="650mg">650mg</option>
-            <option value="1g">1g</option>
-            <option value="5ml">5ml</option>
-            <option value="10ml">10ml</option>
-            <option value="15ml">15ml</option>
-            <option value="1 Drop">1 Drop</option>
-            <option value="2 Drops">2 Drops</option>
-          </select>
+        {/* Dosage and Frequency - 2 Columns */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-slate-800">
+              Dosage
+            </label>
+            <select
+              value={medicine.dosage}
+              onChange={(e) => updateMedicine(index, "dosage", e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
+            >
+              <option value="">Select Dosage...</option>
+              <option value="1 Tablet">1 Tablet</option>
+              <option value="2 Tablets">2 Tablets</option>
+              <option value="1 Capsule">1 Capsule</option>
+              <option value="250mg">250mg</option>
+              <option value="500mg">500mg</option>
+              <option value="650mg">650mg</option>
+              <option value="1g">1g</option>
+              <option value="5ml">5ml</option>
+              <option value="10ml">10ml</option>
+              <option value="15ml">15ml</option>
+              <option value="1 Drop">1 Drop</option>
+              <option value="2 Drops">2 Drops</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-slate-800">
+              Frequency
+            </label>
+            <select
+              value={medicine.frequency}
+              onChange={(e) => updateMedicine(index, "frequency", e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
+            >
+              <option value="">Select Frequency...</option>
+              <option value="Once a day (OD)">Once a day (OD)</option>
+              <option value="Twice a day (BID)">Twice a day (BID)</option>
+              <option value="Three times a day (TID)">Three times a day (TID)</option>
+              <option value="Four times a day (QID)">Four times a day (QID)</option>
+              <option value="Every 4 hours">Every 4 hours</option>
+              <option value="Every 6 hours">Every 6 hours</option>
+              <option value="Every 8 hours">Every 8 hours</option>
+              <option value="As needed (PRN)">As needed (PRN)</option>
+              <option value="Before sleep (HS)">Before sleep (HS)</option>
+            </select>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-slate-800">
-            Frequency
-          </label>
-          <select
-            value={medicine.frequency}
-            onChange={(e) => updateMedicine(index, "frequency", e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
-          >
-            <option value="">Select Frequency...</option>
-            <option value="Once a day (OD)">Once a day (OD)</option>
-            <option value="Twice a day (BID)">Twice a day (BID)</option>
-            <option value="Three times a day (TID)">Three times a day (TID)</option>
-            <option value="Four times a day (QID)">Four times a day (QID)</option>
-            <option value="Every 4 hours">Every 4 hours</option>
-            <option value="Every 6 hours">Every 6 hours</option>
-            <option value="Every 8 hours">Every 8 hours</option>
-            <option value="As needed (PRN)">As needed (PRN)</option>
-            <option value="Before sleep (HS)">Before sleep (HS)</option>
-          </select>
-        </div>
+        {/* Duration and Instructions - 2 Columns */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-slate-800">
+              Duration
+            </label>
+            <select
+              value={medicine.duration}
+              onChange={(e) => updateMedicine(index, "duration", e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
+            >
+              <option value="">Select Duration...</option>
+              <option value="1 Day">1 Day</option>
+              <option value="3 Days">3 Days</option>
+              <option value="5 Days">5 Days</option>
+              <option value="7 Days (1 Week)">7 Days (1 Week)</option>
+              <option value="10 Days">10 Days</option>
+              <option value="14 Days (2 Weeks)">14 Days (2 Weeks)</option>
+              <option value="30 Days (1 Month)">30 Days (1 Month)</option>
+              <option value="Until finished">Until finished</option>
+              <option value="Ongoing">Ongoing</option>
+            </select>
+          </div>
 
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-slate-800">
-            Duration
-          </label>
-          <select
-            value={medicine.duration}
-            onChange={(e) => updateMedicine(index, "duration", e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
-          >
-            <option value="">Select Duration...</option>
-            <option value="1 Day">1 Day</option>
-            <option value="3 Days">3 Days</option>
-            <option value="5 Days">5 Days</option>
-            <option value="7 Days (1 Week)">7 Days (1 Week)</option>
-            <option value="10 Days">10 Days</option>
-            <option value="14 Days (2 Weeks)">14 Days (2 Weeks)</option>
-            <option value="30 Days (1 Month)">30 Days (1 Month)</option>
-            <option value="Until finished">Until finished</option>
-            <option value="Ongoing">Ongoing</option>
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-slate-800">
-            Instructions
-          </label>
-          <select
-            value={medicine.instructions}
-            onChange={(e) => updateMedicine(index, "instructions", e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
-          >
-            <option value="">Select Instructions...</option>
-            <option value="After food">After food</option>
-            <option value="Before food">Before food</option>
-            <option value="Empty stomach">Empty stomach</option>
-            <option value="With warm water">With warm water</option>
-            <option value="With milk">With milk</option>
-            <option value="Do not crush or chew">Do not crush or chew</option>
-            <option value="Take exactly as directed">Take exactly as directed</option>
-          </select>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-slate-800">
+              Instructions
+            </label>
+            <select
+              value={medicine.instructions}
+              onChange={(e) => updateMedicine(index, "instructions", e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-800 outline-none focus:border-[#08A29E] focus:shadow-sm transition-all text-sm appearance-none"
+            >
+              <option value="">Select Instructions...</option>
+              <option value="After food">After food</option>
+              <option value="Before food">Before food</option>
+              <option value="Empty stomach">Empty stomach</option>
+              <option value="With warm water">With warm water</option>
+              <option value="With milk">With milk</option>
+              <option value="Do not crush or chew">Do not crush or chew</option>
+              <option value="Take exactly as directed">Take exactly as directed</option>
+            </select>
+          </div>
         </div>
       </div>
 
