@@ -98,7 +98,7 @@ export default function PrescriptionForm({
                 <h2 className="text-2xl font-black text-white">
                   Vitals
                 </h2>
-                <p className="text-sm text-white/80 mt-1">
+                <p className="text-sm text-white mt-1">
                   {isCompleted ? "Stored vitals" : isRevisit ? "Previous vitals (Stored)" : "Enter vitals"}
                 </p>
               </div>
@@ -110,19 +110,19 @@ export default function PrescriptionForm({
                   <div className="bg-[#6c757d]/40 p-6 rounded-2xl border border-white/10 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Blood Pressure</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Blood Pressure</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.blood_pressure || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Pulse Rate</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Pulse Rate</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.pulse_rate || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Temperature</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Temperature</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.temperature || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">O2 Saturation</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">O2 Saturation</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.oxygen_saturation || "N/A"}</span>
                       </div>
                     </div>
@@ -133,19 +133,19 @@ export default function PrescriptionForm({
                   <div className="bg-[#6c757d]/40 p-6 rounded-2xl border border-white/10 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Blood Pressure</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Blood Pressure</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.blood_pressure || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Pulse Rate</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Pulse Rate</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.pulse_rate || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Temperature</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">Temperature</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.temperature || "N/A"}</span>
                       </div>
                       <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
-                        <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">O2 Saturation</span>
+                        <span className="text-xs text-white block uppercase font-bold tracking-wider">O2 Saturation</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.oxygen_saturation || "N/A"}</span>
                       </div>
                     </div>
@@ -155,7 +155,7 @@ export default function PrescriptionForm({
                 vitals && setVitals && (
                   <div className="grid grid-cols-2 gap-4 mb-2">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold text-white/70">Blood Pressure</label>
+                      <label className="text-xs font-semibold text-white">Blood Pressure</label>
                       <input
                         type="text"
                         placeholder="e.g. 120/80"
@@ -166,7 +166,7 @@ export default function PrescriptionForm({
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold text-white/70">Pulse Rate</label>
+                      <label className="text-xs font-semibold text-white">Pulse Rate</label>
                       <input
                         type="text"
                         placeholder="e.g. 80"
@@ -177,7 +177,7 @@ export default function PrescriptionForm({
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold text-white/70">Temperature</label>
+                      <label className="text-xs font-semibold text-white">Temperature</label>
                       <input
                         type="text"
                         placeholder="e.g. 98.6"
@@ -188,7 +188,7 @@ export default function PrescriptionForm({
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold text-white/70">O2 Saturation</label>
+                      <label className="text-xs font-semibold text-white">O2 Saturation</label>
                       <input
                         type="text"
                         placeholder="e.g. 98"
@@ -216,7 +216,7 @@ export default function PrescriptionForm({
                 <h2 className="text-2xl font-black text-white">
                   Prescription Details
                 </h2>
-                <p className="text-sm text-white/80 mt-1">
+                <p className="text-sm text-white mt-1">
                   {isRevisit ? "Previous & current consultation details" : "Clinical notes and patient diagnosis"}
                 </p>
               </div>
@@ -229,7 +229,7 @@ export default function PrescriptionForm({
                   <h3 className="text-sm font-bold text-white border-b border-white/10 pb-2">Last Visit Details</h3>
                   
                   <div>
-                    <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-1">Diagnosis Given Last Time</span>
+                    <span className="text-xs text-white block font-bold uppercase tracking-wider mb-1">Diagnosis Given Last Time</span>
                     <div className="w-full bg-[#6c757d]/40 border border-white/5 rounded-xl px-4 py-2.5 text-white text-sm">
                       {lastPrescription.diagnosis || "No diagnosis recorded."}
                     </div>
@@ -237,8 +237,8 @@ export default function PrescriptionForm({
 
                   {lastPrescription.notes && (
                     <div>
-                      <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-1">Doctor Notes Given Last Time</span>
-                      <div className="w-full bg-[#6c757d]/40 border border-white/5 rounded-xl px-4 py-2.5 text-white/80 text-sm">
+                      <span className="text-xs text-white block font-bold uppercase tracking-wider mb-1">Doctor Notes Given Last Time</span>
+                      <div className="w-full bg-[#6c757d]/40 border border-white/5 rounded-xl px-4 py-2.5 text-white text-sm">
                         {lastPrescription.notes}
                       </div>
                     </div>
@@ -246,16 +246,16 @@ export default function PrescriptionForm({
 
                   {lastPrescription.medicines && lastPrescription.medicines.length > 0 && (
                     <div>
-                      <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-2">Medicines Given Last Time</span>
+                      <span className="text-xs text-white block font-bold uppercase tracking-wider mb-2">Medicines Given Last Time</span>
                       <div className="grid gap-2">
                         {lastPrescription.medicines.map((med: any, medIndex: number) => (
                           <div key={medIndex} className="bg-[#6c757d]/60 border border-white/5 rounded-xl p-3 text-xs text-white flex items-center justify-between">
                             <div>
                               <span className="font-bold text-white">{med.medicine_name}</span>
-                              <span className="text-white/60 block mt-0.5">{med.dosage} • {med.frequency} • {med.duration}</span>
+                              <span className="text-white block mt-0.5">{med.dosage} • {med.frequency} • {med.duration}</span>
                             </div>
                             {med.instructions && (
-                              <span className="text-[10px] font-semibold px-2 py-0.5 bg-white/5 border border-white/10 rounded text-white/70">{med.instructions}</span>
+                              <span className="text-[10px] font-semibold px-2 py-0.5 bg-white/5 border border-white/10 rounded text-white">{med.instructions}</span>
                             )}
                           </div>
                         ))}
@@ -304,7 +304,7 @@ export default function PrescriptionForm({
 
               {isCompleted && medicines && medicines.filter(m => m.medicine_name).length > 0 && (
                 <div className="pt-4 mt-4 space-y-2 border-t border-white/10">
-                  <label className="block text-sm font-semibold text-white/85 mb-2">
+                  <label className="block text-sm font-semibold text-white mb-2">
                     Prescribed Medicines
                   </label>
                   <div className="grid gap-3">
@@ -312,10 +312,10 @@ export default function PrescriptionForm({
                       <div key={medIndex} className="bg-[#6c757d]/40 border border-white/5 rounded-2xl p-4 text-sm text-white flex items-center justify-between">
                         <div>
                           <span className="font-bold text-white text-base">{med.medicine_name}</span>
-                          <span className="text-white/60 text-xs block mt-1">{med.dosage} • {med.frequency} • {med.duration}</span>
+                          <span className="text-white text-xs block mt-1">{med.dosage} • {med.frequency} • {med.duration}</span>
                         </div>
                         {med.instructions && (
-                          <span className="text-xs font-semibold px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white/70">{med.instructions}</span>
+                          <span className="text-xs font-semibold px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-white">{med.instructions}</span>
                         )}
                       </div>
                     ))}
@@ -338,7 +338,7 @@ export default function PrescriptionForm({
                 <h2 className="text-2xl font-black text-white">
                   Medicines
                 </h2>
-                <p className="text-sm text-white/80 mt-1">
+                <p className="text-sm text-white mt-1">
                   Prescribe medicines
                 </p>
               </div>

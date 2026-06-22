@@ -68,16 +68,16 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
       >
         <div className="flex items-center gap-4">
           <div className="p-3 rounded-2xl bg-[#08A29E]/15 border border-[#08A29E]/30 shrink-0">
-            <Stethoscope className="h-5 w-5 text-[#08A29E]" />
+            <Stethoscope className="h-5 w-5 text-white" />
           </div>
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-white/50 mb-1">
+            <p className="text-xs font-bold uppercase tracking-widest text-white mb-1">
               Visit Record
             </p>
             <h3 className="text-base font-black text-white leading-tight">
               {item.diagnosis || "General Consultation"}
             </h3>
-            <div className="flex items-center gap-2 mt-1.5 text-xs text-white/60">
+            <div className="flex items-center gap-2 mt-1.5 text-xs text-white">
               <Clock3 className="h-3.5 w-3.5" />
               <span>{formattedDate}</span>
             </div>
@@ -85,12 +85,12 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
         </div>
         <div className="shrink-0 flex items-center gap-3">
           {hasMedicines && (
-            <span className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#4F8EF7]/15 border border-[#4F8EF7]/30 rounded-full text-xs font-bold text-[#4F8EF7]">
+            <span className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-[#4F8EF7]/15 border border-[#4F8EF7]/30 rounded-full text-xs font-bold text-white">
               <Pill className="h-3 w-3" />
               {item.medicines!.length} Med{item.medicines!.length > 1 ? "s" : ""}
             </span>
           )}
-          <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-white/60">
+          <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-white">
             {expanded ? (
               <ChevronUp className="h-4 w-4" />
             ) : (
@@ -108,15 +108,15 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
           {hasVitals && (
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center gap-2 mb-4">
-                <Activity className="h-4 w-4 text-[#08A29E]" />
-                <p className="text-xs font-black uppercase tracking-widest text-[#08A29E]">
+                <Activity className="h-4 w-4 text-white" />
+                <p className="text-xs font-black uppercase tracking-widest text-white">
                   Recorded Vitals
                 </p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {item.vitals?.blood_pressure && (
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
-                    <p className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-1">
+                    <p className="text-xs text-white font-semibold uppercase tracking-wider mb-1">
                       Blood Pressure
                     </p>
                     <p className="text-base font-black text-white">
@@ -126,7 +126,7 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
                 )}
                 {item.vitals?.pulse_rate && (
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
-                    <p className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-1">
+                    <p className="text-xs text-white font-semibold uppercase tracking-wider mb-1">
                       Pulse Rate
                     </p>
                     <p className="text-base font-black text-white">
@@ -136,7 +136,7 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
                 )}
                 {item.vitals?.temperature && (
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
-                    <p className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-1">
+                    <p className="text-xs text-white font-semibold uppercase tracking-wider mb-1">
                       Temperature
                     </p>
                     <p className="text-base font-black text-white">
@@ -146,7 +146,7 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
                 )}
                 {item.vitals?.oxygen_saturation && (
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
-                    <p className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-1">
+                    <p className="text-xs text-white font-semibold uppercase tracking-wider mb-1">
                       O2 Saturation
                     </p>
                     <p className="text-base font-black text-white">
@@ -162,14 +162,14 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
           {(item.diagnosis || item.notes) && (
             <div className="p-6 border-b border-white/10 space-y-4">
               <div className="flex items-center gap-2 mb-2">
-                <FileText className="h-4 w-4 text-amber-400" />
-                <p className="text-xs font-black uppercase tracking-widest text-amber-400">
+                <FileText className="h-4 w-4 text-white" />
+                <p className="text-xs font-black uppercase tracking-widest text-white">
                   Prescription Details
                 </p>
               </div>
               {item.diagnosis && (
                 <div>
-                  <p className="text-xs font-bold text-white/50 mb-1.5 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-white mb-1.5 uppercase tracking-wider">
                     Diagnosis
                   </p>
                   <p className="text-sm text-white leading-relaxed bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
@@ -179,10 +179,10 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
               )}
               {item.notes && (
                 <div>
-                  <p className="text-xs font-bold text-white/50 mb-1.5 uppercase tracking-wider">
+                  <p className="text-xs font-bold text-white mb-1.5 uppercase tracking-wider">
                     Doctor Notes
                   </p>
-                  <p className="text-sm text-white/80 leading-relaxed bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
+                  <p className="text-sm text-white leading-relaxed bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
                     {item.notes}
                   </p>
                 </div>
@@ -194,8 +194,8 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
           {hasMedicines && (
             <div className="p-6">
               <div className="flex items-center gap-2 mb-4">
-                <Pill className="h-4 w-4 text-[#4F8EF7]" />
-                <p className="text-xs font-black uppercase tracking-widest text-[#4F8EF7]">
+                <Pill className="h-4 w-4 text-white" />
+                <p className="text-xs font-black uppercase tracking-widest text-white">
                   Prescribed Medicines
                 </p>
               </div>
@@ -212,27 +212,27 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
                           {med.medicine_name}
                         </p>
                       </div>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/60 ml-4">
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white ml-4">
                         {med.dosage && (
                           <span>
-                            <span className="text-white/40">Dosage: </span>
-                            <span className="text-white/80 font-semibold">
+                            <span className="text-white">Dosage: </span>
+                            <span className="text-white font-semibold">
                               {med.dosage}
                             </span>
                           </span>
                         )}
                         {med.frequency && (
                           <span>
-                            <span className="text-white/40">Freq: </span>
-                            <span className="text-white/80 font-semibold">
+                            <span className="text-white">Freq: </span>
+                            <span className="text-white font-semibold">
                               {med.frequency}
                             </span>
                           </span>
                         )}
                         {med.duration && (
                           <span>
-                            <span className="text-white/40">Duration: </span>
-                            <span className="text-white/80 font-semibold">
+                            <span className="text-white">Duration: </span>
+                            <span className="text-white font-semibold">
                               {med.duration}
                             </span>
                           </span>
@@ -240,7 +240,7 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
                       </div>
                     </div>
                     {med.instructions && (
-                      <span className="shrink-0 text-xs font-semibold px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-300">
+                      <span className="shrink-0 text-xs font-semibold px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-white">
                         {med.instructions}
                       </span>
                     )}
@@ -277,7 +277,7 @@ export default function PrescriptionHistory({ prescriptionHistory }: Props) {
 
       {prescriptionHistory.length === 0 ? (
         <div className="bg-[#6c757d] border border-white/10 rounded-3xl p-12 text-center">
-          <p className="text-white/60 text-base">
+          <p className="text-white text-base">
             No previous prescription history found for this patient.
           </p>
         </div>
