@@ -257,17 +257,17 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
 
 export default function PrescriptionHistory({ prescriptionHistory }: Props) {
   return (
-    <div className="space-y-6 mt-4 pb-12">
+    <div className="space-y-6 mt-4 pb-12 max-w-4xl mx-auto">
       {/* Section Header */}
       <div className="flex items-center gap-4">
         <div className="p-3 bg-[#6c757d] shadow-xl border border-white/10 rounded-2xl shrink-0">
-          <NotebookPen className="h-6 w-6 text-white" />
+          <NotebookPen className="h-6 w-6 text-black" />
         </div>
         <div>
-          <h2 className="text-2xl font-black text-white">
+          <h2 className="text-2xl font-black text-black">
             Previous Visit History
           </h2>
-          <p className="text-sm text-white/60 mt-0.5">
+          <p className="text-sm text-black mt-0.5 font-medium">
             {prescriptionHistory.length} previous visit
             {prescriptionHistory.length !== 1 ? "s" : ""} on record — click a
             card to expand

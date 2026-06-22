@@ -30,7 +30,7 @@ export default function ConsultationPageContent() {
 
  if (loading) {
  return (
- <div className="h-full bg-[#6c757d] flex items-center justify-center text-text">
+ <div className="h-full bg-[#6c757d] flex items-center justify-center text-white">
  Loading Consultation...
  </div>
  );

@@ -41,7 +41,7 @@ export default function MedicineRow({
           <div className="p-2 bg-white/5 border border-white/10 rounded-xl">
             <Pill className="h-4 w-4 text-white" />
           </div>
-          <h3 className="text-sm font-bold text-foreground">
+          <h3 className="text-sm font-bold text-white">
             Medicine {index + 1}
           </h3>
         </div>
@@ -56,7 +56,7 @@ export default function MedicineRow({
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-foreground">
+          <label className="text-sm font-semibold text-white">
             Medicine Name
           </label>
           <input
@@ -64,18 +64,18 @@ export default function MedicineRow({
             value={medicine.medicine_name}
             onChange={(e) => updateMedicine(index, "medicine_name", e.target.value)}
             placeholder="Paracetamol"
-            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:border-or-green text-sm"
           />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-foreground">
+          <label className="text-sm font-semibold text-white">
             Dosage
           </label>
           <select
             value={medicine.dosage}
             onChange={(e) => updateMedicine(index, "dosage", e.target.value)}
-            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Dosage...</option>
             <option value="1 Tablet">1 Tablet</option>
@@ -94,13 +94,13 @@ export default function MedicineRow({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-foreground">
+          <label className="text-sm font-semibold text-white">
             Frequency
           </label>
           <select
             value={medicine.frequency}
             onChange={(e) => updateMedicine(index, "frequency", e.target.value)}
-            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Frequency...</option>
             <option value="Once a day (OD)">Once a day (OD)</option>
@@ -116,13 +116,13 @@ export default function MedicineRow({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-foreground">
+          <label className="text-sm font-semibold text-white">
             Duration
           </label>
           <select
             value={medicine.duration}
             onChange={(e) => updateMedicine(index, "duration", e.target.value)}
-            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Duration...</option>
             <option value="1 Day">1 Day</option>
@@ -138,13 +138,13 @@ export default function MedicineRow({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className="text-sm font-semibold text-foreground">
+          <label className="text-sm font-semibold text-white">
             Instructions
           </label>
           <select
             value={medicine.instructions}
             onChange={(e) => updateMedicine(index, "instructions", e.target.value)}
-            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Instructions...</option>
             <option value="After food">After food</option>
