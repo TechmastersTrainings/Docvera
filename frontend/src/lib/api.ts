@@ -17,7 +17,11 @@ api.interceptors.request.use(
   (config) => {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("access_token");
-      if (token && config.headers) {
+      
+      // Do not attach token for auth endpoints to prevent 401 errors on registration/login with expired tokens
+      const isAuthEndpoint = config.url?.includes('/auth/register') || config.url?.includes('/auth/token');
+      
+      if (token && config.headers && !isAuthEndpoint) {
         config.headers.Authorization = `Bearer ${token}`;
       }
     }
