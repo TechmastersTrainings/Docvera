@@ -127,11 +127,8 @@ function BookingDetails() {
  const availableSlots = bookingDate ? generateSlotsForDate(bookingDate) : [];
 
  const consultationFee = parseFloat(doctor?.consultation_fees || 0);
- const platformFee = 5.00;
- const platformTax = platformFee * 0.18;
- const baseTotalBeforeGateway = consultationFee + platformFee + platformTax;
- const gatewayCommission = baseTotalBeforeGateway * 0.0236;
- const totalFee = baseTotalBeforeGateway + gatewayCommission;
+ const platformFee = 39.00;
+ const totalFee = consultationFee + platformFee;
 
  const openRazorpayCheckout = (orderId: string, keyId: string, amount: number) => {
  if (orderId && orderId.startsWith("order_mock_")) {
@@ -333,19 +330,17 @@ function BookingDetails() {
  key={index}
  onClick={() => !slot.disabled && setSelectedTimeSlot(slot)}
  disabled={slot.disabled}
- className={`py-3 rounded-xl border text-sm font-semibold transition-all relative ${
+ className={`py-3 rounded-xl border text-sm font-semibold transition-all relative flex flex-col items-center justify-center ${
  slot.disabled
- ? "bg-surface border-border text-text-muted cursor-not-allowed"
+ ? "bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed opacity-70"
  : selectedTimeSlot?.label === slot.label
- ? "bg-primary border-primary text-foreground shadow-md"
- : "bg-card border-border text-text-secondary hover:border-primary/50 hover:text-text"
+ ? "bg-[#04defb] border-[#04defb] text-[#20063b] shadow-md transform scale-[1.02]"
+ : "bg-white border-slate-200 text-[#0f4557] hover:border-[#04defb] hover:bg-[#f0fcfe]"
  }`}
  >
- {slot.label}
+ <span>{slot.label}</span>
  {slot.disabled && (
- <div className="absolute inset-0 bg-card/60 flex items-center justify-center rounded-xl">
- <span className="text-[10px] text-text-muted">Booked</span>
- </div>
+ <span className="text-[9px] mt-0.5 text-slate-400 font-medium">Unavailable</span>
  )}
  </button>
  ))}
@@ -353,45 +348,45 @@ function BookingDetails() {
  )}
  </div>
 
+ <div className="flex gap-4 w-full pt-4">
+ <button
+ onClick={() => router.back()}
+ className="flex-1 py-4 rounded-xl border border-red-500/30 text-red-500 font-semibold hover:bg-red-50 transition-all text-sm"
+ >
+ Cancel
+ </button>
  <button
  onClick={handleAcquireLock}
  disabled={loading || !bookingDate || !selectedTimeSlot || selectedTimeSlot?.disabled}
- className="w-full bg-primary text-foreground font-semibold py-4 rounded-xl hover:bg-primary-light transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 text-sm"
+ className="flex-[2] bg-[#04defb] text-[#20063b] font-bold py-4 rounded-xl hover:bg-[#03b8d4] transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 text-sm"
  >
  {loading ? <Loader className="animate-spin h-5 w-5" /> : <ShieldCheck className="h-5 w-5" />}
- <span>{loading ? "Securing Slot..." : `Confirm & Pay ₹${totalFee.toFixed(2)}`}</span>
+ <span>{loading ? "Securing Slot..." : `Confirm ₹${totalFee.toFixed(2)}`}</span>
  </button>
+ </div>
  </div>
  )}
  </div>
 
  <div className="lg:col-span-5 card p-6 sm:p-8 space-y-6 h-fit sticky top-24">
  <h3 className="text-lg font-bold text-text">Booking Summary</h3>
- <div className="card p-4 space-y-3">
+ <div className="card p-5 space-y-4 border border-[#04defb]/20 bg-white">
  <div className="flex justify-between text-sm">
  <span className="text-text-secondary">Doctor</span>
- <span className="text-text font-medium">Dr. {doctor.full_name}</span>
+ <span className="text-[#0f4557] font-bold">Dr. {doctor.full_name}</span>
  </div>
  <div className="flex justify-between text-sm">
  <span className="text-text-secondary">Consultation Fee</span>
- <span className="text-text font-medium">₹{consultationFee.toFixed(2)}</span>
+ <span className="text-[#0f4557] font-medium">₹{consultationFee.toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-sm">
- <span className="text-text-secondary">Platform Fee</span>
- <span className="text-text font-medium">₹{platformFee.toFixed(2)}</span>
+ <span className="text-text-secondary">Platform Fee (incl. GST)</span>
+ <span className="text-[#0f4557] font-medium">₹{platformFee.toFixed(2)}</span>
  </div>
- <div className="flex justify-between text-sm">
- <span className="text-text-secondary">Platform GST (18%)</span>
- <span className="text-text font-medium">₹{platformTax.toFixed(2)}</span>
- </div>
- <div className="flex justify-between text-sm">
- <span className="text-text-secondary">Gateway Fee (2.36%)</span>
- <span className="text-text font-medium">₹{gatewayCommission.toFixed(2)}</span>
- </div>
- <hr className="border-border" />
- <div className="flex justify-between text-base font-bold">
- <span className="text-text">Total</span>
- <span className="text-primary">₹{totalFee.toFixed(2)}</span>
+ <hr className="border-slate-200" />
+ <div className="flex justify-between text-base font-black">
+ <span className="text-[#0f4557]">Total</span>
+ <span className="text-[#028597] text-lg">₹{totalFee.toFixed(2)}</span>
  </div>
  </div>
 

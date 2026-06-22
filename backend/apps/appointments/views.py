@@ -141,7 +141,7 @@ class BookingCreateView(APIView):
 
                 # 2. Calculate Amounts
                 base_amount = doctor.consultation_fees
-                platform_fee = Decimal('5.00')
+                platform_fee = Decimal('39.00')
                 total_amount = base_amount + platform_fee
                 lock_duration = now + timedelta(minutes=10)
 
