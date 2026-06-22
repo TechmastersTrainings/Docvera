@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 
 import ConsultationHeader from "@/components/consultations/ConsultationHeader";
 import PrescriptionForm from "@/components/prescriptions/PrescriptionForm";
-import PrescriptionHistory from "@/components/prescriptions/PrescriptionHistory";
 
 import useConsultationRoom from "@/hooks/useConsultationRoom";
 import usePrescription from "@/hooks/usePrescription";
@@ -67,9 +66,6 @@ export default function ConsultationPageContent() {
  prescriptionHistory={prescriptionHistory}
  />
 
- {hasHistory && (
- <PrescriptionHistory prescriptionHistory={prescriptionHistory} />
- )}
  </div>
  );
 }
