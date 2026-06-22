@@ -10,7 +10,7 @@ const ConsultationPageContent = dynamic(
 
 export default function ConsultationPage() {
  return (
- <Suspense fallback={<div className="h-full bg-card flex items-center justify-center text-text">Loading consultation...</div>}>
+ <Suspense fallback={<div className="h-full bg-[#6c757d] flex items-center justify-center text-text">Loading consultation...</div>}>
  <ConsultationPageContent />
  </Suspense>
  );

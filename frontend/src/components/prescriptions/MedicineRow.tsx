@@ -34,7 +34,7 @@ export default function MedicineRow({
 }: Props) {
 
   return (
-    <div className="bg-card border border-white/10 rounded-3xl p-5 relative">
+    <div className="bg-[#6c757d] border border-white/10 rounded-3xl p-5 relative">
       
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function MedicineRow({
             value={medicine.medicine_name}
             onChange={(e) => updateMedicine(index, "medicine_name", e.target.value)}
             placeholder="Paracetamol"
-            className="w-full bg-card shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm"
           />
         </div>
 
@@ -75,7 +75,7 @@ export default function MedicineRow({
           <select
             value={medicine.dosage}
             onChange={(e) => updateMedicine(index, "dosage", e.target.value)}
-            className="w-full bg-card shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Dosage...</option>
             <option value="1 Tablet">1 Tablet</option>
@@ -100,7 +100,7 @@ export default function MedicineRow({
           <select
             value={medicine.frequency}
             onChange={(e) => updateMedicine(index, "frequency", e.target.value)}
-            className="w-full bg-card shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Frequency...</option>
             <option value="Once a day (OD)">Once a day (OD)</option>
@@ -122,7 +122,7 @@ export default function MedicineRow({
           <select
             value={medicine.duration}
             onChange={(e) => updateMedicine(index, "duration", e.target.value)}
-            className="w-full bg-card shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Duration...</option>
             <option value="1 Day">1 Day</option>
@@ -144,7 +144,7 @@ export default function MedicineRow({
           <select
             value={medicine.instructions}
             onChange={(e) => updateMedicine(index, "instructions", e.target.value)}
-            className="w-full bg-card shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
+            className="w-full bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-foreground outline-none focus:border-or-green text-sm appearance-none"
           >
             <option value="">Select Instructions...</option>
             <option value="After food">After food</option>

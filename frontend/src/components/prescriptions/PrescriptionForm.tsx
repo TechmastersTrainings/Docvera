@@ -86,7 +86,7 @@ export default function PrescriptionForm({
     <div className="space-y-8 w-full">
       <div className="flex flex-col lg:flex-row gap-6 items-stretch w-full">
         {/* LEFT COLUMN (50%): Merged Vitals & Prescription Details */}
-        <div className="flex-1 p-8 bg-card shadow-xl shadow-black/50 border border-white/10 rounded-3xl space-y-6 flex flex-col min-w-[320px]">
+        <div className="flex-1 p-8 bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-3xl space-y-6 flex flex-col min-w-[320px]">
           
           {/* Section 1: Vitals */}
           <div className="space-y-6">
@@ -107,21 +107,21 @@ export default function PrescriptionForm({
             <div className="space-y-6 mt-2">
               {isCompleted ? (
                 vitals && (
-                  <div className="bg-card/40 p-6 rounded-2xl border border-white/10 space-y-4">
+                  <div className="bg-[#6c757d]/40 p-6 rounded-2xl border border-white/10 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Blood Pressure</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.blood_pressure || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Pulse Rate</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.pulse_rate || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Temperature</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.temperature || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">O2 Saturation</span>
                         <span className="text-base font-bold text-white mt-1 block">{vitals.oxygen_saturation || "N/A"}</span>
                       </div>
@@ -130,21 +130,21 @@ export default function PrescriptionForm({
                 )
               ) : isRevisit ? (
                 lastPrescription?.vitals && (
-                  <div className="bg-card/40 p-6 rounded-2xl border border-white/10 space-y-4">
+                  <div className="bg-[#6c757d]/40 p-6 rounded-2xl border border-white/10 space-y-4">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Blood Pressure</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.blood_pressure || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Pulse Rate</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.pulse_rate || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">Temperature</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.temperature || "N/A"}</span>
                       </div>
-                      <div className="bg-card/60 p-4 rounded-xl border border-white/5">
+                      <div className="bg-[#6c757d]/60 p-4 rounded-xl border border-white/5">
                         <span className="text-xs text-white/60 block uppercase font-bold tracking-wider">O2 Saturation</span>
                         <span className="text-base font-bold text-white mt-1 block">{lastPrescription.vitals.oxygen_saturation || "N/A"}</span>
                       </div>
@@ -162,7 +162,7 @@ export default function PrescriptionForm({
                         value={vitals.blood_pressure || ""}
                         disabled={isCompleted}
                         onChange={(e) => setVitals({ ...vitals, blood_pressure: e.target.value })}
-                        className="bg-card border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
+                        className="bg-[#6c757d] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -173,7 +173,7 @@ export default function PrescriptionForm({
                         value={vitals.pulse_rate || ""}
                         disabled={isCompleted}
                         onChange={(e) => setVitals({ ...vitals, pulse_rate: e.target.value })}
-                        className="bg-card border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
+                        className="bg-[#6c757d] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -184,7 +184,7 @@ export default function PrescriptionForm({
                         value={vitals.temperature || ""}
                         disabled={isCompleted}
                         onChange={(e) => setVitals({ ...vitals, temperature: e.target.value })}
-                        className="bg-card border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
+                        className="bg-[#6c757d] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -195,7 +195,7 @@ export default function PrescriptionForm({
                         value={vitals.oxygen_saturation || ""}
                         disabled={isCompleted}
                         onChange={(e) => setVitals({ ...vitals, oxygen_saturation: e.target.value })}
-                        className="bg-card border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
+                        className="bg-[#6c757d] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-white transition-colors w-full"
                       />
                     </div>
                   </div>
@@ -230,7 +230,7 @@ export default function PrescriptionForm({
                   
                   <div>
                     <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-1">Diagnosis Given Last Time</span>
-                    <div className="w-full bg-card/40 border border-white/5 rounded-xl px-4 py-2.5 text-white text-sm">
+                    <div className="w-full bg-[#6c757d]/40 border border-white/5 rounded-xl px-4 py-2.5 text-white text-sm">
                       {lastPrescription.diagnosis || "No diagnosis recorded."}
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function PrescriptionForm({
                   {lastPrescription.notes && (
                     <div>
                       <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-1">Doctor Notes Given Last Time</span>
-                      <div className="w-full bg-card/40 border border-white/5 rounded-xl px-4 py-2.5 text-white/80 text-sm">
+                      <div className="w-full bg-[#6c757d]/40 border border-white/5 rounded-xl px-4 py-2.5 text-white/80 text-sm">
                         {lastPrescription.notes}
                       </div>
                     </div>
@@ -249,7 +249,7 @@ export default function PrescriptionForm({
                       <span className="text-xs text-white/60 block font-bold uppercase tracking-wider mb-2">Medicines Given Last Time</span>
                       <div className="grid gap-2">
                         {lastPrescription.medicines.map((med: any, medIndex: number) => (
-                          <div key={medIndex} className="bg-card/60 border border-white/5 rounded-xl p-3 text-xs text-white flex items-center justify-between">
+                          <div key={medIndex} className="bg-[#6c757d]/60 border border-white/5 rounded-xl p-3 text-xs text-white flex items-center justify-between">
                             <div>
                               <span className="font-bold text-white">{med.medicine_name}</span>
                               <span className="text-white/60 block mt-0.5">{med.dosage} • {med.frequency} • {med.duration}</span>
@@ -270,7 +270,7 @@ export default function PrescriptionForm({
                   {isRevisit ? "Further Diagnosis (Today's Diagnosis)" : "Diagnosis"}
                 </label>
                 {isCompleted ? (
-                  <div className="w-full bg-card/40 border border-white/10 rounded-2xl px-4 py-3 text-white min-h-[100px] whitespace-pre-wrap text-sm leading-relaxed">
+                  <div className="w-full bg-[#6c757d]/40 border border-white/10 rounded-2xl px-4 py-3 text-white min-h-[100px] whitespace-pre-wrap text-sm leading-relaxed">
                     {diagnosis || "No diagnosis recorded."}
                   </div>
                 ) : (
@@ -279,7 +279,7 @@ export default function PrescriptionForm({
                     placeholder="Enter diagnosis..."
                     value={diagnosis}
                     onChange={(e) => setDiagnosis(e.target.value)}
-                    className="w-full bg-card border border-white/10 rounded-2xl px-4 py-3 text-white outline-none focus:border-white transition-colors resize-none"
+                    className="w-full bg-[#6c757d] border border-white/10 rounded-2xl px-4 py-3 text-white outline-none focus:border-white transition-colors resize-none"
                   />
                 )}
               </div>
@@ -288,7 +288,7 @@ export default function PrescriptionForm({
                   {isRevisit ? "Further Doctor Notes (Today's Notes)" : "Doctor Notes"}
                 </label>
                 {isCompleted ? (
-                  <div className="w-full bg-card/40 border border-white/10 rounded-2xl px-4 py-3 text-white min-h-[100px] whitespace-pre-wrap text-sm leading-relaxed">
+                  <div className="w-full bg-[#6c757d]/40 border border-white/10 rounded-2xl px-4 py-3 text-white min-h-[100px] whitespace-pre-wrap text-sm leading-relaxed">
                     {notes || "No notes recorded."}
                   </div>
                 ) : (
@@ -297,7 +297,7 @@ export default function PrescriptionForm({
                     placeholder="Additional instructions or notes..."
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="w-full bg-card border border-white/10 rounded-2xl px-4 py-3 text-white outline-none focus:border-white transition-colors resize-none"
+                    className="w-full bg-[#6c757d] border border-white/10 rounded-2xl px-4 py-3 text-white outline-none focus:border-white transition-colors resize-none"
                   />
                 )}
               </div>
@@ -309,7 +309,7 @@ export default function PrescriptionForm({
                   </label>
                   <div className="grid gap-3">
                     {medicines.filter(m => m.medicine_name).map((med: any, medIndex: number) => (
-                      <div key={medIndex} className="bg-card/40 border border-white/5 rounded-2xl p-4 text-sm text-white flex items-center justify-between">
+                      <div key={medIndex} className="bg-[#6c757d]/40 border border-white/5 rounded-2xl p-4 text-sm text-white flex items-center justify-between">
                         <div>
                           <span className="font-bold text-white text-base">{med.medicine_name}</span>
                           <span className="text-white/60 text-xs block mt-1">{med.dosage} • {med.frequency} • {med.duration}</span>
@@ -329,7 +329,7 @@ export default function PrescriptionForm({
 
         {/* RIGHT COLUMN (50%): Medicines Inputs */}
         {!isCompleted && medicines && (
-          <div className="flex-1 p-8 bg-card shadow-xl shadow-black/50 border border-white/10 rounded-3xl space-y-6 flex flex-col min-w-[320px]">
+          <div className="flex-1 p-8 bg-[#6c757d] shadow-xl shadow-black/50 border border-white/10 rounded-3xl space-y-6 flex flex-col min-w-[320px]">
             <div className="flex items-center gap-4">
               <div className="p-4 rounded-2xl w-fit bg-white/5 border border-white/10 text-white shadow-inner">
                 <Pill className="h-7 w-7 text-white" />

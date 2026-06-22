@@ -60,7 +60,7 @@ function HistoryCard({ item, index }: { item: HistoryItem; index: number }) {
   });
 
   return (
-    <div className="bg-card border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-black/40 transition-all duration-300">
+    <div className="bg-[#6c757d] border border-white/10 rounded-3xl overflow-hidden shadow-xl shadow-black/40 transition-all duration-300">
       {/* Card Header - always visible */}
       <button
         onClick={() => setExpanded(!expanded)}
@@ -260,7 +260,7 @@ export default function PrescriptionHistory({ prescriptionHistory }: Props) {
     <div className="space-y-6 mt-4 pb-12">
       {/* Section Header */}
       <div className="flex items-center gap-4">
-        <div className="p-3 bg-card shadow-xl border border-white/10 rounded-2xl shrink-0">
+        <div className="p-3 bg-[#6c757d] shadow-xl border border-white/10 rounded-2xl shrink-0">
           <NotebookPen className="h-6 w-6 text-white" />
         </div>
         <div>
@@ -276,7 +276,7 @@ export default function PrescriptionHistory({ prescriptionHistory }: Props) {
       </div>
 
       {prescriptionHistory.length === 0 ? (
-        <div className="bg-card border border-white/10 rounded-3xl p-12 text-center">
+        <div className="bg-[#6c757d] border border-white/10 rounded-3xl p-12 text-center">
           <p className="text-white/60 text-base">
             No previous prescription history found for this patient.
           </p>
