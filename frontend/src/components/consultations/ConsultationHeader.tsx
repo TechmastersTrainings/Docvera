@@ -1,11 +1,7 @@
 "use client";
 
 import React from "react";
-
-import {
-  Stethoscope,
-} from "lucide-react";
-
+import { Stethoscope } from "lucide-react";
 import ActionButton from "@/components/dashboard/ActionButton";
 
 interface Props {
@@ -17,39 +13,28 @@ export default function ConsultationHeader({
   patientName,
   handleCompleteConsultation,
 }: Props) {
-
   return (
-    <div className="bg-card shadow-xl shadow-black/50/50 border border-white/10 rounded-3xl p-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-
+    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 w-full">
       <div className="flex items-center gap-4">
-
-        <div className="p-4 bg-card shadow-xl shadow-black/50/50/10 rounded-2xl border border-[#028597]/20/20">
-
-          <Stethoscope className="h-7 w-7 text-foreground" />
-
+        <div className="p-3 bg-[#08A29E]/10 rounded-xl border border-[#08A29E]/20 text-[#08A29E]">
+          <Stethoscope className="h-6 w-6 text-[#08A29E]" />
         </div>
-
         <div>
-
-          <h1 className="text-2xl font-black text-foreground">
-
-            Patient: {patientName}
-
+          <h1 className="text-xl font-black text-slate-800">
+            Consultation: {patientName}
           </h1>
-
+          <p className="text-sm text-slate-500 font-medium">Manage patient details and medical records</p>
         </div>
-
       </div>
 
       {handleCompleteConsultation && (
         <ActionButton
           onClick={handleCompleteConsultation}
-          className="bg-[#028597] hover:bg-[#025964] text-foreground font-bold px-6 py-3"
+          className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl shadow-sm border-none transition-colors whitespace-nowrap"
         >
           Complete Consultation
         </ActionButton>
       )}
-
-      </div>
+    </div>
   );
 }
