@@ -251,7 +251,7 @@ export default function PatientDashboard() {
  <div className="divide-y divide-slate-100">
  {appointments.length > 0 ? (
  appointments.map((appt) => (
- <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#eef2f7] transition-all group">
+ <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#2FA084] transition-all group">
  <div className="space-y-2.5">
  <div className="flex flex-wrap items-center gap-2">
  <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#eef2f7] text-[#537eac] border border-[#537eac]/20 uppercase tracking-widest">
