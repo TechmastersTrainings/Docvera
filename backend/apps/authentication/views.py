@@ -15,7 +15,16 @@ class PatientRegisterView(APIView):
     def post(self, request):
         serializer = PatientRegisterSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            user = serializer.save()
+            
+            # Send welcome email asynchronously
+            try:
+                patient = user.patient_profile
+                from apps.appointments.emails import send_patient_welcome_email
+                send_patient_welcome_email(patient)
+            except Exception as e:
+                print(f"Welcome email failed to trigger: {str(e)}")
+
             return api_response(
                 success=True, 
                 data={"message": "Patient registered successfully"}, 

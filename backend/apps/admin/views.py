@@ -72,6 +72,17 @@ class DoctorActionView(APIView):
 
         doctor.save()
 
+        # Trigger email notifications for approval/rejection
+        try:
+            if action == 'APPROVE':
+                from apps.appointments.emails import send_doctor_approval_email
+                send_doctor_approval_email(doctor)
+            elif action == 'REJECT':
+                from apps.appointments.emails import send_doctor_rejection_email
+                send_doctor_rejection_email(doctor, reason)
+        except Exception as e:
+            print(f"Doctor email notification failed to trigger: {str(e)}")
+
         # Trigger Audit Log
         AuditLog.objects.create(
             admin_user=request.user,

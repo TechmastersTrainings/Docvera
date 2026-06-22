@@ -37,6 +37,7 @@ class Appointment(models.Model):
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     lock_expires_at = models.DateTimeField(null=True, blank=True)
+    reminder_sent = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

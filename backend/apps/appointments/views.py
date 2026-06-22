@@ -430,3 +430,36 @@ class SlotAvailabilityView(APIView):
 
         except Exception as e:
             return api_response(success=False, error=str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AdminTriggerRemindersView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        if request.user.role != 'ADMIN':
+            return api_response(success=False, error="Admin access required", status=status.HTTP_403_FORBIDDEN)
+
+        tomorrow = timezone.now().date() + timedelta(days=1)
+        
+        appointments = Appointment.objects.filter(
+            status='CONFIRMED',
+            booking_date=tomorrow,
+            reminder_sent=False
+        )
+        
+        count = appointments.count()
+        sent_count = 0
+        for appt in appointments:
+            try:
+                send_appointment_reminder_email(appt)
+                appt.reminder_sent = True
+                appt.save()
+                sent_count += 1
+            except Exception as e:
+                print(f"Failed to send reminder email in API view: {str(e)}")
+
+        return api_response(success=True, data={
+            "total_upcoming": count,
+            "reminders_sent": sent_count,
+            "target_date": str(tomorrow)
+        })

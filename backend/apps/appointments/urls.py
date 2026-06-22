@@ -7,7 +7,8 @@ from .views import (
     DoctorDashboardAppointmentsView,
     RazorpayVerificationView,
     SlotAvailabilityView,
-    AppointmentStatusUpdateView
+    AppointmentStatusUpdateView,
+    AdminTriggerRemindersView
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('verify-payment/', RazorpayVerificationView.as_view(), name='verify_payment'),
     path('slots/availability/', SlotAvailabilityView.as_view(), name='slot_availability'),
     path('<uuid:pk>/status/', AppointmentStatusUpdateView.as_view(), name='appointment_status_update'),
+    path('send-reminders/', AdminTriggerRemindersView.as_view(), name='admin_send_reminders'),
 ]

@@ -133,15 +133,10 @@ class DoctorApprovalActionView(APIView):
             doctor.save()
             
             try:
-                send_mail(
-                    subject="Doctor Account Approved - Docvera",
-                    message=f"Dear Dr. {doctor.full_name}, your account application has been APPROVED. You can now access your provider dashboard.",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[doctor.user.email, 'techmasterstrainings@gmail.com'],
-                    fail_silently=True
-                )
-            except Exception:
-                pass
+                from apps.appointments.emails import send_doctor_approval_email
+                send_doctor_approval_email(doctor)
+            except Exception as e:
+                print(f"Doctor approval email failed to trigger: {str(e)}")
                 
             return api_response(success=True, data={"message": "Doctor profile approved successfully"})
             
@@ -157,15 +152,10 @@ class DoctorApprovalActionView(APIView):
             doctor.save()
             
             try:
-                send_mail(
-                    subject="Doctor Account Application Status Update - Docvera",
-                    message=f"Dear Dr. {doctor.full_name}, your application was not approved. Reason: {rejection_reason}",
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[doctor.user.email, 'techmasterstrainings@gmail.com'],
-                    fail_silently=True
-                )
-            except Exception:
-                pass
+                from apps.appointments.emails import send_doctor_rejection_email
+                send_doctor_rejection_email(doctor, rejection_reason)
+            except Exception as e:
+                print(f"Doctor rejection email failed to trigger: {str(e)}")
                 
             return api_response(success=True, data={"message": "Doctor profile rejected successfully"})
             
