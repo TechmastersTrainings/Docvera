@@ -251,7 +251,7 @@ export default function PatientDashboard() {
  <div className="divide-y divide-slate-100">
  {appointments.length > 0 ? (
  appointments.map((appt) => (
- <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#2FA084] transition-all group">
+ <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#DCCFC0] transition-all group">
  <div className="space-y-2.5">
  <div className="flex flex-wrap items-center gap-2">
  <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#eef2f7] text-[#537eac] border border-[#537eac]/20 uppercase tracking-widest">
@@ -264,8 +264,8 @@ export default function PatientDashboard() {
  {appt.status}
  </span>
  </div>
- <h4 className="text-[#0f4557] font-bold text-lg group-hover:text-[#028597] transition-colors">Dr. {appt.doctor_name || "Specialist"}</h4>
- <div className="flex flex-wrap gap-4 text-sm font-medium text-[#537eac]">
+ <h4 className="text-[#0f4557] font-bold text-lg group-hover:text-white transition-colors">Dr. {appt.doctor_name || "Specialist"}</h4>
+ <div className="flex flex-wrap gap-4 text-sm font-medium text-[#537eac] group-hover:text-white transition-colors">
  <div className="flex items-center gap-2">
  <Calendar className="h-4 w-4 text-[#028597]" />
  <span>{appt.booking_date}</span>
@@ -279,8 +279,8 @@ export default function PatientDashboard() {
 
  <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-0 border-[#537eac]/15 pt-4 sm:pt-0">
  <div className="text-left sm:text-right space-y-1">
- <span className="block text-[10px] text-[#537eac] font-bold uppercase tracking-wider">Fee</span>
- <span className="text-[#0f4557] font-bold text-lg">₹{appt.base_amount}</span>
+ <span className="block text-[10px] text-[#537eac] font-bold uppercase tracking-wider group-hover:text-white transition-colors">Fee</span>
+ <span className="text-[#0f4557] font-bold text-lg group-hover:text-white transition-colors">₹{appt.base_amount}</span>
  </div>
  <div className="flex items-center gap-2">
  {(appt.status === "PENDING" || appt.status === "CONFIRMED") && (

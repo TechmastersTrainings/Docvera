@@ -22,8 +22,8 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl w-full max-w-lg shadow-xl overflow-hidden border border-[#537eac]/20">
-        <div className="flex items-center justify-between p-5 border-b border-[#537eac]/15 bg-[#f8fafc]">
+      <div className="bg-[linear-gradient(90deg,#22C1C3_21%,#FDBB2D_100%)] rounded-2xl w-full max-w-lg shadow-xl overflow-hidden border border-white/20">
+        <div className="flex items-center justify-between p-5 border-b border-white/20">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#eef2f7] rounded-xl border border-blue-100">
               <FileText className="h-5 w-5 text-[#028597]" />
@@ -42,8 +42,8 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
           {prescriptions && prescriptions.length > 0 ? (
             <div className="space-y-4">
               {prescriptions.map((presc, idx) => (
-                <div key={idx} className="p-4 border border-[#537eac]/20 rounded-xl bg-white shadow-sm flex items-start gap-4">
-                  <div className="p-2 bg-[#eef2f7] rounded-lg">
+                <div key={idx} className="p-4 border border-white/30 rounded-xl bg-white/40 backdrop-blur-sm shadow-sm flex items-start gap-4">
+                  <div className="p-2 bg-white/50 rounded-lg">
                     <Pill className="h-5 w-5 text-[#028597]" />
                   </div>
                   <div className="space-y-1 w-full">
@@ -69,7 +69,7 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
           )}
         </div>
 
-        <div className="p-5 border-t border-[#537eac]/15 bg-[#f8fafc] flex justify-end">
+        <div className="p-5 border-t border-white/20 flex justify-end">
           <button
             onClick={onClose}
             className="px-5 py-2.5 bg-white border border-[#537eac]/20 text-[#0f4557] font-bold text-sm rounded-xl hover:bg-[#eef2f7] transition-all"
