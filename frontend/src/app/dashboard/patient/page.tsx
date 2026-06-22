@@ -117,36 +117,36 @@ export default function PatientDashboard() {
 
  if (loading) {
  return (
- <div className="min-h-screen bg-transparent flex items-center justify-center">
+ <div className="min-h-screen bg-[#20063b] flex items-center justify-center">
  <div className="text-center space-y-4">
- <Loader className="h-10 w-10 text-[#028597] animate-spin mx-auto" />
- <p className="text-[#537eac] text-sm font-medium">Loading your health profile...</p>
+ <Loader className="h-10 w-10 text-[#04defb] animate-spin mx-auto" />
+ <p className="text-[#04defb]/70 text-sm font-medium">Loading your health profile...</p>
  </div>
  </div>
  );
  }
 
  return (
- <div className="min-h-screen bg-transparent">
+ <div className="min-h-screen bg-[#20063b]">
  <Navbar />
  <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 space-y-8">
  {/* Header */}
- <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-8 border-b border-[#537eac]/20">
+ <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-8 border-b border-[#04defb]/20">
  <div className="space-y-1">
- <h1 className="text-3xl sm:text-4xl font-bold text-[#0f4557] tracking-tight">Patient Dashboard</h1>
- <p className="text-[#537eac] font-medium">Manage your appointments, update your profile, and track your health journey.</p>
+ <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Patient Dashboard</h1>
+ <p className="text-[#04defb]/70 font-medium">Manage your appointments, update your profile, and track your health journey.</p>
  </div>
  <div className="flex items-center gap-3 w-full lg:w-auto">
  <button
  onClick={() => { setFormMessage(null); setActiveTab(activeTab === "overview" ? "edit-profile" : "overview"); }}
  className={`flex-1 lg:flex-none px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm ${activeTab === "overview"
- ? "bg-white text-[#0f4557] border border-[#537eac]/20 hover:bg-[#eef2f7]"
- : "bg-[#028597] text-white hover:bg-[#025964]"
+ ? "glass-card bg-[#301053]/60 backdrop-blur-xl text-white border border-[#04defb]/20 hover:bg-[#4a2b6e]/40"
+ : "bg-[#04defb] text-[#20063b] hover:bg-[#03b8d4]"
  }`}
  >
  {activeTab === "overview" ? "Edit Profile" : "Back to Overview"}
  </button>
- <Link href="/doctors" className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#028597] hover:bg-[#025964] text-white font-bold rounded-xl transition-all text-sm shadow-sm">
+ <Link href="/doctors" className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#04defb] text-[#20063b] hover:bg-[#03b8d4] font-bold rounded-xl transition-all text-sm shadow-sm">
  <Plus className="h-4 w-4" />
  Book Appointment
  </Link>
@@ -157,73 +157,73 @@ export default function PatientDashboard() {
  <div className="grid lg:grid-cols-12 gap-8 items-start">
  {/* Profile Card */}
  <div className="lg:col-span-4 space-y-6">
- <div className="bg-white border border-[#537eac]/20 rounded-2xl overflow-hidden shadow-sm">
- <div className="h-24 bg-gradient-to-r from-blue-600 to-indigo-500" />
+ <div className="glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 rounded-2xl overflow-hidden shadow-sm">
+ <div className="h-24 bg-gradient-to-r from-[#301053] to-[#4a2b6e] border-b border-[#04defb]/20" />
  <div className="relative px-6 -mt-14">
  <div className="relative group w-fit">
  {photoPreview ? (
- <img src={photoPreview} alt="Profile" className="h-28 w-28 rounded-2xl object-cover border-4 border-white shadow-lg" />
+ <img src={photoPreview} alt="Profile" className="h-28 w-28 rounded-2xl object-cover border-4 border-[#20063b] shadow-lg" />
  ) : (
- <div className="h-28 w-28 rounded-2xl bg-[#eef2f7] border-4 border-white shadow-lg flex items-center justify-center">
- <span className="font-bold text-4xl text-[#028597]">
+ <div className="h-28 w-28 rounded-2xl bg-[#4a2b6e]/40 border-4 border-[#20063b] shadow-lg flex items-center justify-center">
+ <span className="font-bold text-4xl text-[#04defb]">
  {profile?.full_name?.charAt(0) || "P"}
  </span>
  </div>
  )}
- <div className="absolute bottom-3 right-3 h-4 w-4 bg-[#eef2f7]0 rounded-full border-2 border-white shadow" />
+ <div className="absolute bottom-3 right-3 h-4 w-4 bg-[#04defb] rounded-full border-2 border-[#20063b] shadow" />
  </div>
  </div>
  <div className="px-6 pt-3 pb-6 space-y-4">
  <div>
- <h3 className="font-bold text-xl text-[#0f4557]">{profile?.full_name}</h3>
- <p className="text-[#537eac] font-medium text-sm mt-0.5">Patient &bull; {profile?.city || "Location not set"}</p>
+ <h3 className="font-bold text-xl text-white">{profile?.full_name}</h3>
+ <p className="text-[#04defb]/70 font-medium text-sm mt-0.5">Patient &bull; {profile?.city || "Location not set"}</p>
  </div>
  <div className="flex flex-wrap gap-2">
- <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eef2f7] border border-[#537eac]/20 rounded-lg text-xs text-[#0f4557] font-bold">
+ <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4a2b6e]/40 border border-[#04defb]/20 rounded-lg text-xs text-white font-bold">
  {profile?.blood_group?.replace("_POSITIVE", "+")?.replace("_NEGATIVE", "-") || "N/A"}
  </span>
- <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eef2f7] border border-blue-100 rounded-lg text-xs text-[#025964] font-bold">
+ <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4a2b6e]/40 border border-[#04defb]/30 rounded-lg text-xs text-[#025964] font-bold">
  <UserCheck className="h-3 w-3" />
  Verified
  </span>
  </div>
  </div>
- <hr className="border-[#537eac]/15" />
+ <hr className="border-[#04defb]/10" />
  <div className="p-6 space-y-4">
  <div className="flex items-center gap-4">
- <div className="p-2.5 bg-[#eef2f7] rounded-xl border border-blue-100">
- <Mail className="h-5 w-5 text-[#028597]" />
+ <div className="p-2.5 bg-[#4a2b6e]/40 rounded-xl border border-[#04defb]/30">
+ <Mail className="h-5 w-5 text-[#04defb]" />
  </div>
  <div className="min-w-0 flex-1">
- <p className="text-[10px] uppercase font-bold text-[#537eac] tracking-wider">Email</p>
- <p className="text-sm text-[#0f4557] font-bold truncate">{profile?.email}</p>
+ <p className="text-[10px] uppercase font-bold text-[#04defb]/70 tracking-wider">Email</p>
+ <p className="text-sm text-white font-bold truncate">{profile?.email}</p>
  </div>
  </div>
  <div className="flex items-center gap-4">
- <div className="p-2.5 bg-[#eef2f7] rounded-xl border border-blue-100">
- <Phone className="h-5 w-5 text-[#028597]" />
+ <div className="p-2.5 bg-[#4a2b6e]/40 rounded-xl border border-[#04defb]/30">
+ <Phone className="h-5 w-5 text-[#04defb]" />
  </div>
  <div className="min-w-0 flex-1">
- <p className="text-[10px] uppercase font-bold text-[#537eac] tracking-wider">Phone</p>
- <p className="text-sm text-[#0f4557] font-bold">{profile?.phone || "Not provided"}</p>
+ <p className="text-[10px] uppercase font-bold text-[#04defb]/70 tracking-wider">Phone</p>
+ <p className="text-sm text-white font-bold">{profile?.phone || "Not provided"}</p>
  </div>
  </div>
  <div className="flex items-center gap-4">
- <div className="p-2.5 bg-[#eef2f7] rounded-xl border border-blue-100">
- <MapPin className="h-5 w-5 text-[#028597]" />
+ <div className="p-2.5 bg-[#4a2b6e]/40 rounded-xl border border-[#04defb]/30">
+ <MapPin className="h-5 w-5 text-[#04defb]" />
  </div>
  <div className="min-w-0 flex-1">
- <p className="text-[10px] uppercase font-bold text-[#537eac] tracking-wider">Location</p>
- <p className="text-sm text-[#0f4557] font-bold">{profile?.city || "Not set"}</p>
+ <p className="text-[10px] uppercase font-bold text-[#04defb]/70 tracking-wider">Location</p>
+ <p className="text-sm text-white font-bold">{profile?.city || "Not set"}</p>
  </div>
  </div>
  </div>
  {profile?.address && (
  <>
- <hr className="border-[#537eac]/15" />
+ <hr className="border-[#04defb]/10" />
  <div className="p-6">
- <p className="text-[10px] uppercase font-bold text-[#537eac] tracking-wider mb-2">Address</p>
- <p className="text-sm font-medium text-[#537eac] leading-relaxed">{profile?.address}</p>
+ <p className="text-[10px] uppercase font-bold text-[#04defb]/70 tracking-wider mb-2">Address</p>
+ <p className="text-sm font-medium text-[#04defb]/70 leading-relaxed">{profile?.address}</p>
  </div>
  </>
  )}
@@ -232,18 +232,18 @@ export default function PatientDashboard() {
 
  {/* Appointments */}
  <div className="lg:col-span-8 space-y-6">
- <div className="bg-white border border-[#537eac]/20 rounded-2xl overflow-hidden shadow-sm">
- <div className="p-6 border-b border-[#537eac]/15 flex items-center justify-between">
+ <div className="glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 rounded-2xl overflow-hidden shadow-sm">
+ <div className="p-6 border-b border-[#04defb]/10 flex items-center justify-between">
  <div className="flex items-center gap-3">
- <div className="p-2.5 bg-[#eef2f7] rounded-xl border border-blue-100">
- <Calendar className="h-5 w-5 text-[#028597]" />
+ <div className="p-2.5 bg-[#4a2b6e]/40 rounded-xl border border-[#04defb]/30">
+ <Calendar className="h-5 w-5 text-[#04defb]" />
  </div>
  <div>
- <h2 className="text-lg font-bold text-[#0f4557]">Your Appointments</h2>
- <p className="text-xs font-medium text-[#537eac]">Manage your scheduled visits</p>
+ <h2 className="text-lg font-bold text-white">Your Appointments</h2>
+ <p className="text-xs font-medium text-[#04defb]/70">Manage your scheduled visits</p>
  </div>
  </div>
- <span className="px-3 py-1 rounded-full text-xs bg-[#eef2f7] border border-[#537eac]/20 font-bold text-[#537eac]">
+ <span className="px-3 py-1 rounded-full text-xs bg-[#4a2b6e]/40 border border-[#04defb]/20 font-bold text-[#04defb]/70">
  {appointments.length} Total
  </span>
  </div>
@@ -251,59 +251,59 @@ export default function PatientDashboard() {
  <div className="divide-y divide-slate-100">
  {appointments.length > 0 ? (
  appointments.map((appt) => (
- <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#eef2f7] transition-all group">
+ <div key={appt.id} className="p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 hover:bg-[#4a2b6e]/40 transition-all group">
  <div className="space-y-2.5">
  <div className="flex flex-wrap items-center gap-2">
- <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#eef2f7] text-[#537eac] border border-[#537eac]/20 uppercase tracking-widest">
+ <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#4a2b6e]/40 text-[#04defb]/70 border border-[#04defb]/20 uppercase tracking-widest">
  {appt.specialization || "General"}
  </span>
- <span className={`px-3 py-1 text-[11px] font-bold rounded-xl border uppercase tracking-wider ${appt.status === "COMPLETED" ? "bg-[#eef2f7] text-[#028597] border-[#028597]/30" :
+ <span className={`px-3 py-1 text-[11px] font-bold rounded-xl border uppercase tracking-wider ${appt.status === "COMPLETED" ? "bg-[#4a2b6e]/40 text-[#04defb] border-[#04defb]/30" :
  appt.status === "CANCELLED" ? "bg-[#fde7e9] text-[#ee1123] border-[#ee1123]/30" :
- "bg-[#eef2f7] text-[#028597] border-[#028597]/30"
+ "bg-[#4a2b6e]/40 text-[#04defb] border-[#04defb]/30"
  }`}>
  {appt.status}
  </span>
  </div>
- <h4 className="text-[#0f4557] font-bold text-lg group-hover:text-[#028597] transition-colors">Dr. {appt.doctor_name || "Specialist"}</h4>
- <div className="flex flex-wrap gap-4 text-sm font-medium text-[#537eac]">
+ <h4 className="text-white font-bold text-lg group-hover:text-[#04defb] transition-colors">Dr. {appt.doctor_name || "Specialist"}</h4>
+ <div className="flex flex-wrap gap-4 text-sm font-medium text-[#04defb]/70">
  <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4 text-[#028597]" />
+ <Calendar className="h-4 w-4 text-[#04defb]" />
  <span>{appt.booking_date}</span>
  </div>
  <div className="flex items-center gap-2">
- <Clock className="h-4 w-4 text-[#028597]" />
+ <Clock className="h-4 w-4 text-[#04defb]" />
  <span>{appt.start_time} - {appt.end_time}</span>
  </div>
  </div>
  </div>
 
- <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-0 border-[#537eac]/15 pt-4 sm:pt-0">
+ <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-0 border-[#04defb]/10 pt-4 sm:pt-0">
  <div className="text-left sm:text-right space-y-1">
- <span className="block text-[10px] text-[#537eac] font-bold uppercase tracking-wider">Fee</span>
- <span className="text-[#0f4557] font-bold text-lg">₹{appt.base_amount}</span>
+ <span className="block text-[10px] text-[#04defb]/70 font-bold uppercase tracking-wider">Fee</span>
+ <span className="text-white font-bold text-lg">₹{appt.base_amount}</span>
  </div>
  <div className="flex items-center gap-2">
  {(appt.status === "PENDING" || appt.status === "CONFIRMED") && (
- <button
- onClick={() => setCancelModal({ open: true, id: appt.id })}
- className="px-4 py-2 bg-[#fde7e9] hover:bg-[#fde7e9] border border-[#ee1123]/30 text-[#ee1123] text-xs font-bold rounded-xl transition-all"
- >
- Cancel
- </button>
+  <button
+  onClick={() => setCancelModal({ open: true, id: appt.id })}
+  className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 text-xs font-bold rounded-xl transition-all"
+  >
+  Cancel
+  </button>
  )}
  {appt.status === "COMPLETED" && (
   <>
   {appt.prescriptions && appt.prescriptions.length > 0 && (
     <button
       onClick={() => setPrescriptionModal({ open: true, appt })}
-      className="px-4 py-2 bg-[#eef2f7] hover:bg-[#dfe6f0] border border-[#537eac]/30 text-[#028597] text-xs font-bold rounded-xl transition-all shadow-sm"
+      className="px-4 py-2 bg-[#4a2b6e]/40 hover:bg-[#4a2b6e]/80 border border-[#04defb]/30 text-[#04defb] text-xs font-bold rounded-xl transition-all shadow-sm"
     >
       View Prescription
     </button>
   )}
   <button
   onClick={() => setReviewModal({ open: true, id: appt.id })}
-  className="px-4 py-2 bg-white hover:bg-[#eef2f7] border border-[#537eac]/20 text-[#0f4557] text-xs font-bold rounded-xl transition-all shadow-sm"
+  className="px-4 py-2 glass-card bg-[#301053]/60 backdrop-blur-xl hover:bg-[#4a2b6e]/40 border border-[#04defb]/20 text-white text-xs font-bold rounded-xl transition-all shadow-sm"
   >
   Review
   </button>
@@ -315,12 +315,12 @@ export default function PatientDashboard() {
  ))
  ) : (
  <div className="p-16 text-center space-y-4">
- <div className="p-4 bg-[#eef2f7] border border-[#537eac]/20 rounded-2xl w-fit mx-auto">
- <Calendar className="h-6 w-6 text-[#537eac]" />
+ <div className="p-4 bg-[#4a2b6e]/40 border border-[#04defb]/20 rounded-2xl w-fit mx-auto">
+ <Calendar className="h-6 w-6 text-[#04defb]/70" />
  </div>
  <div className="space-y-1">
- <p className="text-[#0f4557] font-bold">No appointments yet</p>
- <p className="text-[#537eac] font-medium text-sm">Book your first appointment to get started</p>
+ <p className="text-white font-bold">No appointments yet</p>
+ <p className="text-[#04defb]/70 font-medium text-sm">Book your first appointment to get started</p>
  </div>
  </div>
  )}
@@ -331,9 +331,9 @@ export default function PatientDashboard() {
  ) : (
  /* Edit Profile */
  <div className="max-w-3xl mx-auto">
- <div className="bg-white border border-[#537eac]/20 shadow-sm rounded-2xl p-6 sm:p-8">
+ <div className="glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 shadow-sm rounded-2xl p-6 sm:p-8">
  {formMessage && (
- <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 text-sm font-bold border ${formMessage.type === "success" ? "bg-[#eef2f7] text-[#028597] border-[#028597]/30" : "bg-[#fde7e9] text-[#ee1123] border-[#ee1123]/30"
+ <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 text-sm font-bold border ${formMessage.type === "success" ? "bg-[#4a2b6e]/40 text-[#04defb] border-[#04defb]/30" : "bg-[#fde7e9] text-[#ee1123] border-[#ee1123]/30"
  }`}>
  {formMessage.type === "success" ? <CheckCircle2 className="h-5 w-5 shrink-0" /> : <AlertCircle className="h-5 w-5 shrink-0" />}
  <span>{formMessage.text}</span>
@@ -341,12 +341,12 @@ export default function PatientDashboard() {
  )}
 
  <form onSubmit={handleProfileUpdate} className="space-y-8">
- <div className="flex flex-col sm:flex-row items-center gap-6 p-6 bg-[#eef2f7] border border-[#537eac]/20 rounded-2xl">
+ <div className="flex flex-col sm:flex-row items-center gap-6 p-6 bg-[#4a2b6e]/40 border border-[#04defb]/20 rounded-2xl">
  <div className="relative group overflow-hidden rounded-xl shrink-0">
  {photoPreview ? (
- <img src={photoPreview} alt="Preview" className="h-24 w-24 rounded-xl object-cover border border-[#537eac]/20 shadow-sm" />
+ <img src={photoPreview} alt="Preview" className="h-24 w-24 rounded-xl object-cover border border-[#04defb]/20 shadow-sm" />
  ) : (
- <div className="h-24 w-24 rounded-xl bg-[#eef2f7] border border-[#537eac]/25 flex items-center justify-center text-[#537eac]">
+ <div className="h-24 w-24 rounded-xl bg-[#4a2b6e]/40 border border-[#537eac]/25 flex items-center justify-center text-[#04defb]/70">
  <User className="h-8 w-8" />
  </div>
  )}
@@ -356,30 +356,30 @@ export default function PatientDashboard() {
  <input id="photo-upload" type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
  </div>
  <div className="text-center sm:text-left">
- <h4 className="text-base font-bold text-[#0f4557]">Profile Photo</h4>
- <p className="text-xs font-medium text-[#537eac] mt-1">Click the photo to upload a new image.</p>
+ <h4 className="text-base font-bold text-white">Profile Photo</h4>
+ <p className="text-xs font-medium text-[#04defb]/70 mt-1">Click the photo to upload a new image.</p>
  </div>
  </div>
 
  <div className="grid sm:grid-cols-2 gap-5">
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Full Name</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">Full Name</label>
  <input type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" />
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all shadow-sm" />
  </div>
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Gender</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">Gender</label>
  <select value={gender} onChange={(e) => setGender(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm">
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all shadow-sm">
  <option value="MALE">Male</option>
  <option value="FEMALE">Female</option>
  <option value="OTHER">Other</option>
  </select>
  </div>
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Blood Group</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">Blood Group</label>
  <select value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm">
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all shadow-sm">
  <option value="">Select</option>
  <option value="A_POSITIVE">A+</option>
  <option value="A_NEGATIVE">A-</option>
@@ -392,29 +392,29 @@ export default function PatientDashboard() {
  </select>
  </div>
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Emergency Contact</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">Emergency Contact</label>
  <input type="text" placeholder="+91 00000 00000" value={emergencyContact} onChange={(e) => setEmergencyContact(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all placeholder:text-[#537eac] shadow-sm" />
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all placeholder:text-[#04defb]/70 shadow-sm" />
  </div>
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">City</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">City</label>
  <input type="text" required value={city} onChange={(e) => setCity(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" />
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all shadow-sm" />
  </div>
  <div className="space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">PIN Code</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">PIN Code</label>
  <input type="text" required value={pinCode} onChange={(e) => setPinCode(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all shadow-sm" />
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all shadow-sm" />
  </div>
  <div className="sm:col-span-2 space-y-1.5">
- <label className="text-xs font-bold text-[#0f4557] uppercase tracking-wide">Full Address</label>
+ <label className="text-xs font-bold text-white uppercase tracking-wide">Full Address</label>
  <textarea required rows={3} value={address} onChange={(e) => setAddress(e.target.value)}
- className="w-full bg-white border border-[#537eac]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-[#0f4557] font-medium outline-none transition-all resize-none shadow-sm" />
+ className="w-full glass-card bg-[#301053]/60 backdrop-blur-xl border border-[#04defb]/20 focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-white font-medium outline-none transition-all resize-none shadow-sm" />
  </div>
  </div>
 
  <button type="submit" disabled={updating}
- className="w-full flex items-center justify-center gap-2.5 py-3.5 bg-[#028597] hover:bg-[#025964] text-white font-bold rounded-xl transition-all disabled:opacity-50 text-sm shadow-sm">
+ className="w-full flex items-center justify-center gap-2.5 py-3.5 bg-[#04defb] text-[#20063b] hover:bg-[#03b8d4] hover:bg-[#03b8d4] text-white font-bold rounded-xl transition-all disabled:opacity-50 text-sm shadow-sm">
  {updating ? <Loader className="animate-spin h-5 w-5" /> : <Save className="h-5 w-5" />}
  <span>Save Changes</span>
  </button>
