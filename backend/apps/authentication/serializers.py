@@ -25,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PatientRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    phone = serializers.CharField(required=False, allow_blank=True, allow_null=True)
 
     full_name = serializers.CharField()
     gender = serializers.ChoiceField(choices=Patient.GENDER_CHOICES)
@@ -47,6 +48,13 @@ class PatientRegisterSerializer(serializers.ModelSerializer):
             'pin_code',
             'address'
         )
+
+    def validate_phone(self, value):
+        if not value or str(value).strip() == "":
+            return None
+        if User.objects.filter(phone=value).exists():
+            raise serializers.ValidationError("user with this phone already exists.")
+        return value
 
     def create(self, validated_data):
         with transaction.atomic():
@@ -72,6 +80,7 @@ class PatientRegisterSerializer(serializers.ModelSerializer):
 
 class DoctorRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    phone = serializers.CharField(required=False, allow_blank=True, allow_null=True)
 
     full_name = serializers.CharField()
     gender = serializers.ChoiceField(choices=Doctor.GENDER_CHOICES)
@@ -170,6 +179,13 @@ class DoctorRegisterSerializer(serializers.ModelSerializer):
             'clinic_latitude',
             'clinic_longitude'
         )
+
+    def validate_phone(self, value):
+        if not value or str(value).strip() == "":
+            return None
+        if User.objects.filter(phone=value).exists():
+            raise serializers.ValidationError("user with this phone already exists.")
+        return value
 
     def create(self, validated_data):
         with transaction.atomic():
