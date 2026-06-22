@@ -22,18 +22,18 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-      <div className="bg-[linear-gradient(90deg,#22C1C3_21%,#FDBB2D_100%)] rounded-2xl w-full max-w-lg shadow-xl overflow-hidden border border-white/20">
+      <div className="bg-gradient-to-br from-[#4682B4] to-[#2B547E] rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-white/30">
         <div className="flex items-center justify-between p-5 border-b border-white/20">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-[#eef2f7] rounded-xl border border-blue-100">
-              <FileText className="h-5 w-5 text-[#028597]" />
+            <div className="p-2.5 bg-white/20 shadow-inner backdrop-blur-md rounded-xl border border-white/30">
+              <FileText className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-[#0f4557]">Prescription</h3>
-              <p className="text-xs font-medium text-[#537eac]">Dr. {doctorName} &bull; {date}</p>
+              <h3 className="font-bold text-lg text-white">Prescription</h3>
+              <p className="text-xs font-medium text-white/80">Dr. {doctorName} &bull; {date}</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 text-[#537eac] hover:bg-[#eef2f7] rounded-xl transition-all">
+          <button onClick={onClose} className="p-2 text-white hover:bg-black/10 rounded-xl transition-all">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -42,19 +42,19 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
           {prescriptions && prescriptions.length > 0 ? (
             <div className="space-y-4">
               {prescriptions.map((presc, idx) => (
-                <div key={idx} className="p-4 border border-white/30 rounded-xl bg-white/40 backdrop-blur-sm shadow-sm flex items-start gap-4">
-                  <div className="p-2 bg-white/50 rounded-lg">
-                    <Pill className="h-5 w-5 text-[#028597]" />
+                <div key={idx} className="p-5 border border-white/30 rounded-2xl bg-white/10 hover:bg-white/20 transition-all backdrop-blur-md shadow-lg flex items-start gap-4">
+                  <div className="p-2.5 bg-white/20 shadow-inner rounded-xl">
+                    <Pill className="h-5 w-5 text-white" />
                   </div>
                   <div className="space-y-1 w-full">
-                    <h4 className="font-bold text-[#0f4557] text-md">{presc.medicine_name}</h4>
-                    <div className="grid grid-cols-2 gap-2 text-sm text-[#537eac]">
+                    <h4 className="font-bold text-white text-md">{presc.medicine_name}</h4>
+                    <div className="grid grid-cols-2 gap-2 text-sm text-white/80">
                       <p><strong>Dosage:</strong> {presc.dosage}</p>
                       <p><strong>Frequency:</strong> {presc.frequency}</p>
                       <p><strong>Duration:</strong> {presc.duration}</p>
                     </div>
                     {presc.instructions && (
-                      <p className="text-xs text-[#537eac] mt-2 pt-2 border-t border-[#537eac]/15">
+                      <p className="text-xs text-white/80 mt-2 pt-2 border-t border-white/10">
                         <strong>Instructions:</strong> {presc.instructions}
                       </p>
                     )}
@@ -64,7 +64,7 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-[#537eac] font-medium">No prescriptions found for this consultation.</p>
+              <p className="text-white/80 font-medium">No prescriptions found for this consultation.</p>
             </div>
           )}
         </div>
@@ -72,7 +72,7 @@ export default function PrescriptionModal({ open, onClose, prescriptions, doctor
         <div className="p-5 border-t border-white/20 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2.5 bg-white border border-[#537eac]/20 text-[#0f4557] font-bold text-sm rounded-xl hover:bg-[#eef2f7] transition-all"
+            className="px-6 py-2.5 bg-white/10 border border-white/30 shadow-sm backdrop-blur-md text-white font-bold text-sm rounded-xl hover:bg-white/20 transition-all"
           >
             Close
           </button>
