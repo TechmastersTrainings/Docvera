@@ -354,33 +354,33 @@ export default function LandingPage() {
  : "glass-secondary bg-[#031d44]/90 hover:bg-[#031d44] hover:ring-1 hover:ring-[#04defb]/10"
  }`}
  >
- <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-[rgba(4,222,251,0.04)] border-l border-b border-[rgba(4,222,251,0.08)] text-[10px] font-bold rounded-bl-xl text-secondary">
- {doctor.experience_years} Yrs Exp
- </div>
+ <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-[rgba(255,255,255,0.06)] border-l border-b border-[rgba(255,255,255,0.12)] text-[10px] font-bold rounded-bl-xl text-white">
+  {doctor.experience_years} Yrs Exp
+  </div>
 
- <div className="space-y-3">
- <span className="px-2.5 py-1 bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] text-[10px] font-bold rounded uppercase tracking-wider text-[#04defb]">
- {doctor.specialization}
- </span>
- <h3 className="text-lg font-bold text-[#04defb] pt-1">Dr. {doctor.full_name}</h3>
- <div className="flex items-center space-x-2 text-xs font-medium text-muted">
- <MapPin className="h-4 w-4 shrink-0" />
- <span>{doctor.clinic_city}, {doctor.clinic_pin_code}</span>
- </div>
- </div>
+  <div className="space-y-3">
+  <span className="px-2.5 py-1 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] text-[10px] font-bold rounded uppercase tracking-wider text-white">
+  {doctor.specialization}
+  </span>
+  <h3 className="text-lg font-bold text-white pt-1">Dr. {doctor.full_name}</h3>
+  <div className="flex items-center space-x-2 text-xs font-medium text-white/80">
+  <MapPin className="h-4 w-4 shrink-0 text-white" />
+  <span>{doctor.clinic_city}, {doctor.clinic_pin_code}</span>
+  </div>
+  </div>
 
- <div className="h-px bg-[rgba(4,222,251,0.08)]" />
+  <div className="h-px bg-[rgba(255,255,255,0.12)]" />
 
- <div className="flex items-center justify-between text-sm font-semibold">
- <span className="text-[#04defb] font-bold">₹{doctor.consultation_fees} <span className="text-[#537eac] font-medium text-xs">/ consult</span></span>
- <Link
- href={`/booking?doctor_id=${doctor.user}`}
- className="font-bold text-[#04defb] hover:text-[#537eac] transition-colors"
- onClick={(e) => e.stopPropagation()}
- >
- Book Now →
- </Link>
- </div>
+  <div className="flex items-center justify-between text-sm font-semibold">
+  <span className="text-white font-bold">₹{doctor.consultation_fees} <span className="text-white/60 font-medium text-xs">/ consult</span></span>
+  <Link
+  href={`/booking?doctor_id=${doctor.user}`}
+  className="font-bold text-white hover:text-white/80 hover:underline transition-all"
+  onClick={(e) => e.stopPropagation()}
+  >
+  Book Now →
+  </Link>
+  </div>
  </div>
  ))
  ) : (
