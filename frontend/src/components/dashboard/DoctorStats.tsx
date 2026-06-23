@@ -1,63 +1,43 @@
 "use client";
 
 import React from "react";
-
-import {
-  IndianRupee,
-  User,
-  Calendar,
-} from "lucide-react";
-
+import { IndianRupee, User, Calendar } from "lucide-react";
 import StatCard from "./StatCard";
-
-import {
-  DashboardStats,
-} from "@/types/dashboard";
+import { DashboardStats } from "@/types/dashboard";
 
 interface Props {
-  stats:
-    DashboardStats;
+  stats: DashboardStats;
 }
 
-export default function DoctorStats({
-  stats,
-}: Props) {
-
+export default function DoctorStats({ stats }: Props) {
   return (
-    <div className="grid md:grid-cols-3 gap-6">
-
+    <div className="grid md:grid-cols-3 gap-6 mb-8">
       <StatCard
-        icon={
-          <IndianRupee className="h-6 w-6 text-white" />
-        }
+        icon={<IndianRupee className="h-6 w-6" />}
         title="Total Earnings"
-        value={`₹${stats.totalEarnings.toFixed(2)}`}
+        value={`₹${stats.totalEarnings.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`}
         subtext="Refreshes every 24h"
         color="emerald"
+        trend={12} // Mock trend for premium feel
       />
 
       <StatCard
-        icon={
-          <User className="h-6 w-6 text-foreground" />
-        }
+        icon={<User className="h-6 w-6" />}
         title="Patients Seen"
         value={stats.patientsSeen}
-        subtext="Paid visits"
+        subtext="Paid consultations"
         color="blue"
+        trend={5} // Mock trend
       />
 
       <StatCard
-        icon={
-          <Calendar className="h-6 w-6 text-foreground" />
-        }
+        icon={<Calendar className="h-6 w-6" />}
         title="Pending Payments"
-        value={
-          stats.pendingAppointments
-        }
+        value={stats.pendingAppointments}
         subtext="Awaiting confirmation"
         color="amber"
+        trend={-2} // Mock downward trend (good for pending)
       />
-
     </div>
   );
 }
