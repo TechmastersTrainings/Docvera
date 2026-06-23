@@ -463,24 +463,9 @@ export default function LandingPage() {
  </div>
  </div>
 
- <div className="relative" data-aos="fade-left">
- <div className="glass-secondary rounded-3xl p-8 border border-[rgba(4,222,251,0.08)] shadow-xl relative">
- <div className="p-6 glass-card bg-[#20063b] rounded-2xl space-y-5 border-none shadow-xl">
- <div className="flex items-center gap-4">
- <div className="h-12 w-12 bg-[rgba(2,133,151,0.1)] rounded-xl flex items-center justify-center font-extrabold text-base text-[#04defb]">DV</div>
- <div>
- <h4 className="font-bold text-sm text-[#04defb]">Dr. Sanidhya MD</h4>
- <p className="text-[11px] font-medium text-[#537eac]">Verification Code: <span className="text-[#04defb] font-bold">DV-ACTIVE-99</span></p>
- </div>
- </div>
- <div className="bg-[rgba(4,222,251,0.04)] px-4 py-3 rounded-xl border border-[rgba(4,222,251,0.08)] flex items-center justify-between text-[11px] font-bold text-[#537eac]">
- <span>e-KYC & License Confirmed</span>
- <span className="text-[#04defb] flex items-center gap-1">ACTIVE <CheckCircle className="h-3 w-3" /></span>
- </div>
- </div>
- </div>
- </div>
- </div>
+      {/* Empty column or future graphic can go here */}
+      <div className="hidden md:block"></div>
+    </div>
  </section>
 
  </div>
