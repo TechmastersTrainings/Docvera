@@ -37,6 +37,7 @@ class Patient(models.Model):
     emergency_contact = models.CharField(max_length=15, blank=True, null=True)
     profile_photo = models.ImageField(upload_to='patient_photos/', null=True, blank=True)
 
+    state = models.CharField(max_length=100, default='Karnataka')
     city = models.CharField(max_length=100)
     pin_code = models.CharField(max_length=10)
     address = models.TextField()

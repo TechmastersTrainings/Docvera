@@ -37,9 +37,10 @@ class Doctor(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     date_of_birth = models.DateField()
 
+    state = models.CharField(max_length=100, default='Karnataka')
     city = models.CharField(max_length=100)
     pin_code = models.CharField(max_length=10)
-    address = models.TextField()
+    address = models.TextField(blank=True, null=True)
 
     degree = models.CharField(max_length=150)
     degree_certificate = models.FileField(

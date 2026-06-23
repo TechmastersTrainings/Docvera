@@ -30,6 +30,7 @@ class PatientRegisterSerializer(serializers.ModelSerializer):
     full_name = serializers.CharField()
     gender = serializers.ChoiceField(choices=Patient.GENDER_CHOICES)
     date_of_birth = serializers.DateField()
+    state = serializers.CharField(default='Karnataka')
     city = serializers.CharField()
     pin_code = serializers.CharField()
     address = serializers.CharField()
@@ -44,6 +45,7 @@ class PatientRegisterSerializer(serializers.ModelSerializer):
             'full_name',
             'gender',
             'date_of_birth',
+            'state',
             'city',
             'pin_code',
             'address'
@@ -70,6 +72,7 @@ class PatientRegisterSerializer(serializers.ModelSerializer):
                 full_name=validated_data['full_name'],
                 gender=validated_data['gender'],
                 date_of_birth=validated_data['date_of_birth'],
+                state=validated_data.get('state', 'Karnataka'),
                 city=validated_data['city'],
                 pin_code=validated_data['pin_code'],
                 address=validated_data['address']
@@ -86,9 +89,10 @@ class DoctorRegisterSerializer(serializers.ModelSerializer):
     gender = serializers.ChoiceField(choices=Doctor.GENDER_CHOICES)
     date_of_birth = serializers.DateField()
 
+    state = serializers.CharField(default='Karnataka')
     city = serializers.CharField()
     pin_code = serializers.CharField()
-    address = serializers.CharField()
+    address = serializers.CharField(required=False, allow_blank=True)
 
     degree = serializers.CharField()
 
@@ -154,6 +158,7 @@ class DoctorRegisterSerializer(serializers.ModelSerializer):
             'gender',
             'date_of_birth',
 
+            'state',
             'city',
             'pin_code',
             'address',
@@ -203,9 +208,10 @@ class DoctorRegisterSerializer(serializers.ModelSerializer):
                 gender=validated_data['gender'],
                 date_of_birth=validated_data['date_of_birth'],
 
+                state=validated_data.get('state', 'Karnataka'),
                 city=validated_data['city'],
                 pin_code=validated_data['pin_code'],
-                address=validated_data['address'],
+                address=validated_data.get('address', ''),
 
                 degree=validated_data['degree'],
                 degree_certificate=validated_data.get('degree_certificate'),

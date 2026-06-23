@@ -339,13 +339,13 @@ export default function LandingPage() {
  </Link>
  </div>
 
- <div className="grid md:grid-cols-3 gap-6">
+ <div className="grid lg:grid-cols-2 gap-6">
  {isLoadingDoctors ? (
- [...Array(3)].map((_, idx) => (
+ [...Array(2)].map((_, idx) => (
  <div key={idx} className="p-6 glass-card bg-[#031d44]/50 h-56 animate-pulse border-none" />
  ))
  ) : doctors.length > 0 ? (
- doctors.slice(0, 3).map((doctor, idx) => (
+ doctors.slice(0, 4).map((doctor, idx) => (
  <div
  key={doctor.user || idx}
  onClick={() => setSelectedPreviewIdx(idx)}
@@ -354,20 +354,31 @@ export default function LandingPage() {
  : "glass-secondary bg-[#031d44]/90 hover:bg-[#031d44] hover:ring-1 hover:ring-[#04defb]/10"
  }`}
  >
- <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-[rgba(255,255,255,0.06)] border-l border-b border-[rgba(255,255,255,0.12)] text-[10px] font-bold rounded-bl-xl text-white">
-  {doctor.experience_years} Yrs Exp
-  </div>
+  <div className="absolute top-0 right-0 px-3.5 py-1.5 bg-[rgba(255,255,255,0.06)] border-l border-b border-[rgba(255,255,255,0.12)] text-[10px] font-bold rounded-bl-xl text-white z-10">
+   {doctor.experience_years} Yrs Exp
+   </div>
 
-  <div className="space-y-3">
-  <span className="px-2.5 py-1 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] text-[10px] font-bold rounded uppercase tracking-wider text-white">
-  {doctor.specialization}
-  </span>
-  <h3 className="text-lg font-bold text-white pt-1">Dr. {doctor.full_name}</h3>
-  <div className="flex items-center space-x-2 text-xs font-medium text-white/80">
-  <MapPin className="h-4 w-4 shrink-0 text-white" />
-  <span>{doctor.clinic_city}, {doctor.clinic_pin_code}</span>
-  </div>
-  </div>
+   <div className="flex gap-5">
+     <div className="shrink-0 w-24 h-24 rounded-2xl overflow-hidden bg-white/5 border border-white/10 mt-1">
+       {doctor.profile_photo ? (
+         <img src={doctor.profile_photo} alt={doctor.full_name} className="w-full h-full object-cover" />
+       ) : (
+         <div className="w-full h-full flex items-center justify-center bg-[#028597]/20 text-[#04defb] text-2xl font-bold">
+            {doctor.full_name.charAt(0)}
+         </div>
+       )}
+     </div>
+     <div className="space-y-2 flex-1 pt-1">
+       <span className="px-2.5 py-1 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] text-[10px] font-bold rounded uppercase tracking-wider text-white">
+       {doctor.specialization}
+       </span>
+       <h3 className="text-xl font-bold text-white pt-1 line-clamp-1">Dr. {doctor.full_name}</h3>
+       <div className="flex items-center space-x-2 text-xs font-medium text-white/80">
+       <MapPin className="h-4 w-4 shrink-0 text-[#04defb]" />
+       <span className="line-clamp-1">{doctor.clinic_city}, {doctor.clinic_pin_code}</span>
+       </div>
+     </div>
+   </div>
 
   <div className="h-px bg-[rgba(255,255,255,0.12)]" />
 

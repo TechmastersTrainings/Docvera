@@ -32,11 +32,20 @@ export default function RegisterPage() {
 
  const [dob, setDob] = useState("");
 
- const [city, setCity] = useState("");
+ const [city, setCity] = useState("Bengaluru");
+ const [stateVal, setStateVal] = useState("Karnataka");
 
  const [pinCode, setPinCode] = useState("");
 
  const [address, setAddress] = useState("");
+ 
+ const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
+
+ const KARNATAKA_CITIES = [
+   "Bengaluru", "Mysuru", "Hubballi", "Mangaluru", "Belagavi",
+   "Dharwad", "Kalaburagi", "Ballari", "Vijayapura", "Tumakuru",
+   "Udupi", "Davangere", "Shivamogga", "Hassan", "Bidar"
+ ];
 
  const [degree, setDegree] = useState("");
 
@@ -81,9 +90,7 @@ export default function RegisterPage() {
 
 
  const basePayload = {
-
- email, password, phone, full_name: fullName, gender, date_of_birth: dob, city, pin_code: pinCode, address,
-
+ email, password, phone, full_name: fullName, gender, date_of_birth: dob, state: stateVal, city, pin_code: pinCode, address: role === "PATIENT" ? address : "",
  };
 
 
@@ -108,17 +115,24 @@ export default function RegisterPage() {
 
  } else {
 
- const doctorPayload = {
+ const doctorFormData = new FormData();
+ Object.entries(basePayload).forEach(([key, val]) => doctorFormData.append(key, val as string));
+ doctorFormData.append("degree", degree);
+ doctorFormData.append("specialization", specialization);
+ doctorFormData.append("experience_years", experienceYears || "0");
+ doctorFormData.append("medical_council_number", medicalCouncilNumber);
+ doctorFormData.append("consultation_fees", consultationFees || "0");
+ doctorFormData.append("clinic_name", clinicName);
+ doctorFormData.append("clinic_address", clinicAddress);
+ doctorFormData.append("clinic_city", clinicCity);
+ doctorFormData.append("clinic_pin_code", clinicPinCode);
+ if (profilePhoto) {
+   doctorFormData.append("profile_photo", profilePhoto);
+ }
 
- ...basePayload, degree, specialization, experience_years: parseInt(experienceYears) || 0,
-
- medical_council_number: medicalCouncilNumber, consultation_fees: parseFloat(consultationFees) || 0,
-
- clinic_name: clinicName, clinic_address: clinicAddress, clinic_city: clinicCity, clinic_pin_code: clinicPinCode,
-
- };
-
- const response = await api.post("/auth/register/doctor/", doctorPayload);
+ const response = await api.post("/auth/register/doctor/", doctorFormData, {
+   headers: { "Content-Type": "multipart/form-data" }
+ });
 
  if (response.data.success) {
 
@@ -260,10 +274,17 @@ export default function RegisterPage() {
  className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
  <div className="space-y-1.5">
+ <label className="text-xs font-bold text-secondary uppercase tracking-wide">State</label>
+ <select disabled value={stateVal} className="w-full bg-white/50 border border-[rgba(255,255,255,0.08)] rounded-xl px-4 py-2.5 text-sm text-muted outline-none transition-all font-medium cursor-not-allowed">
+   <option value="Karnataka">Karnataka</option>
+ </select>
+ </div>
+ <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">City</label>
- <input type="text" required placeholder="Bengaluru" value={city}
- onChange={(e) => setCity(e.target.value)}
- className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
+ <select required value={city} onChange={(e) => setCity(e.target.value)}
+ className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium">
+   {KARNATAKA_CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+ </select>
  </div>
  <div className="space-y-1.5">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">PIN Code</label>
@@ -271,12 +292,14 @@ export default function RegisterPage() {
  onChange={(e) => setPinCode(e.target.value)}
  className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 font-medium" />
  </div>
+ {role === "PATIENT" && (
  <div className="space-y-1.5 md:col-span-2">
  <label className="text-xs font-bold text-secondary uppercase tracking-wide">Residential Address</label>
  <textarea required rows={2} placeholder="House No, Street, Landmark..." value={address}
  onChange={(e) => setAddress(e.target.value)}
  className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all placeholder:text-muted opacity-60 resize-none font-medium" />
  </div>
+ )}
  </div>
 
  {role === "DOCTOR" && (
@@ -327,6 +350,15 @@ export default function RegisterPage() {
  onChange={(e) => setConsultationFees(e.target.value)}
  className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
  </div>
+ </div>
+ <div className="space-y-1.5 md:col-span-2">
+ <label className="text-xs font-bold text-secondary uppercase tracking-wide">Profile Picture</label>
+ <input type="file" accept="image/*" onChange={(e) => {
+   if (e.target.files && e.target.files[0]) {
+     setProfilePhoto(e.target.files[0]);
+   }
+ }} className="w-full bg-white border border-[rgba(255,255,255,0.08)] focus:border-[#028597] focus:ring-4 focus:ring-[#028597]/10 rounded-xl px-4 py-2.5 text-sm text-primary outline-none transition-all font-medium" />
+ <p className="text-[11px] text-muted font-medium mt-1">Upload a professional headshot. Max 5MB.</p>
  </div>
  </div>
  </div>
