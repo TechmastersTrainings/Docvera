@@ -34,7 +34,7 @@ export interface DashboardStats {
 
   patientsSeen: number;
 
-  pendingAppointments: number;
+  successfulPayments: number;
 }
 
 export interface ProfileMessage {

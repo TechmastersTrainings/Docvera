@@ -32,11 +32,11 @@ export default function DoctorStats({ stats }: Props) {
 
       <StatCard
         icon={<Calendar className="h-6 w-6" />}
-        title="Pending Payments"
-        value={stats.pendingAppointments}
-        subtext="Awaiting confirmation"
-        color="amber"
-        trend={-2} // Mock downward trend (good for pending)
+        title="Recent Consultations"
+        value={stats.successfulPayments}
+        subtext="Successfully paid (24h)"
+        color="emerald"
+        trend={15} // Mock positive trend 
       />
     </div>
   );

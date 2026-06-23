@@ -33,7 +33,7 @@ export default function useDoctorDashboard():
     useState<DashboardStats>({
       totalEarnings: 0,
       patientsSeen: 0,
-      pendingAppointments: 0,
+      successfulPayments: 0,
     });
 
   const [clinicName, setClinicName] =
@@ -134,14 +134,7 @@ export default function useDoctorDashboard():
             patientsSeen:
               paid.length,
 
-            pendingAppointments:
-              data.filter(
-                (
-                  a: Appointment
-                ) =>
-                  a.status ===
-                  "PENDING"
-              ).length,
+            successfulPayments: paidLast24h.length,
           });
 
           if (
