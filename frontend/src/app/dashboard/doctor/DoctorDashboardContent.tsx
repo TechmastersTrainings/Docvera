@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import {
  DoctorStats,
  DoctorAppointments,
- PendingAppointments,
+
  ClinicDetailsForm,
  AvailabilityForm,
  DashboardHeader,
@@ -18,7 +18,7 @@ import useDoctorDashboard from "@/hooks/useDoctorDashboard";
 
 export default function DoctorDashboardContent() {
  const searchParams = useSearchParams();
- const tab = searchParams.get("tab") || "dashboard";
+ const tab = searchParams.get("tab") || "appointments";
 
  const {
  appointments, loading, stats,
@@ -35,7 +35,7 @@ export default function DoctorDashboardContent() {
 
  return (
  <PageContainer>
- {(tab === "dashboard" || tab === "appointments") && (
+ {(tab === "appointments") && (
  <>
  <DashboardHeader appointments={appointments} />
  <DoctorStats stats={stats} />

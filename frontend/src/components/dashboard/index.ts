@@ -6,9 +6,7 @@ export {
   default as DoctorAppointments,
 } from "./DoctorAppointments";
 
-export {
-  default as PendingAppointments,
-} from "./PendingAppointments";
+
 
 export {
   default as AppointmentCard,

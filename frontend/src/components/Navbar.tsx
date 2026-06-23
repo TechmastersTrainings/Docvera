@@ -39,7 +39,7 @@ export default function Navbar() {
   const dashboardLink = role === 'PATIENT'
     ? { href: "/dashboard/patient", label: "My Appointments", icon: Calendar }
     : role === 'DOCTOR'
-    ? { href: "/dashboard/doctor", label: "Dashboard", icon: User }
+    ? { href: "/dashboard/doctor", label: "Appointments", icon: Calendar }
     : role === 'ADMIN'
     ? { href: "/dashboard/admin", label: "Admin", icon: Shield }
     : null;

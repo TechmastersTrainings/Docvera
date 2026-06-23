@@ -8,7 +8,7 @@ import { Activity, LogOut, LayoutDashboard, Calendar, MapPin, Clock, Menu, X, Us
 function DoctorNav() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentTab = searchParams.get("tab") || "dashboard";
+  const currentTab = searchParams.get("tab") || "appointments";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
@@ -22,7 +22,7 @@ function DoctorNav() {
   };
 
   const navLinks = [
-    { name: "Dashboard", tab: "dashboard", icon: LayoutDashboard },
+
     { name: "Appointments", tab: "appointments", icon: Calendar },
     { name: "Clinic Details", tab: "address", icon: MapPin },
     { name: "Availability", tab: "availability", icon: Clock },
