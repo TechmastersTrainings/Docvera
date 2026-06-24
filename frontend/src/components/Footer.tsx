@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Activity, ArrowRight, ShieldCheck, MapPin } from "lucide-react";
+import { Activity, ShieldCheck, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
