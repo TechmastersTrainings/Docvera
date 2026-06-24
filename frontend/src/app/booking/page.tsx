@@ -131,29 +131,6 @@ function BookingDetails() {
  const totalFee = consultationFee + platformFee;
 
  const openRazorpayCheckout = (orderId: string, keyId: string, amount: number) => {
- if (orderId && orderId.startsWith("order_mock_")) {
- console.log("Mock Razorpay Order detected. Bypassing checkout and simulating payment...");
- const mockPaymentId = "pay_mock_" + Math.random().toString(36).substring(2, 11);
- (async () => {
- try {
- const verifyRes = await api.post("/appointments/verify-payment/", {
- razorpay_order_id: orderId,
- razorpay_payment_id: mockPaymentId,
- razorpay_signature: "sandbox_bypass_signature",
- });
- if (verifyRes.data.success) {
- setSuccess(true);
- } else {
- alert("Payment verification failed!");
- setError("Payment verification failed.");
- }
- } catch (err) {
- console.error(err);
- setError("Error verifying payment.");
- }
- })();
- return;
- }
 
  const userEmail = localStorage.getItem("user_email");
  const prefillData: any = {};

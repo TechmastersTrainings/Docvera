@@ -239,8 +239,8 @@ CORS_ALLOW_CREDENTIALS = True
 # RAZORPAY
 # =========================================================
 
-RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
-RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID', 'rzp_test_T4QcO2UyyVdzRv')
+RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET', '84rBERAvL5RaprUlrSNIIKnM')
 
 # =========================================================
 # EMAIL
