@@ -149,25 +149,21 @@ export default function RegisterPage() {
  }
 
  } catch (err: any) {
-
- let errMsg = "Registration failed.";
-
- if (err?.response?.data?.error) {
-
- errMsg = typeof err.response.data.error === 'object'
-
- ? JSON.stringify(err.response.data.error)
-
- : err.response.data.error;
-
- } else if (err?.message) {
-
- errMsg = err.message;
-
- }
-
- setError(errMsg);
-
+  let errMsg = "Registration failed.";
+  if (err?.response?.data) {
+    if (typeof err.response.data === 'string') {
+      errMsg = err.response.data;
+    } else if (err.response.data.error) {
+      errMsg = typeof err.response.data.error === 'string' ? err.response.data.error : JSON.stringify(err.response.data.error);
+    } else if (err.response.data.detail) {
+      errMsg = err.response.data.detail;
+    } else {
+      errMsg = JSON.stringify(err.response.data);
+    }
+  } else if (err?.message) {
+    errMsg = err.message;
+  }
+  setError(errMsg);
  } finally {
 
  setLoading(false);
