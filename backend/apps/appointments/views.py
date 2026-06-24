@@ -245,7 +245,7 @@ class RazorpayVerificationView(APIView):
 
             generated_signature = hmac.new(key_secret, msg, hashlib.sha256).hexdigest()
 
-            if hmac.compare_digest(generated_signature, razorpay_signature) or razorpay_signature == "sandbox_bypass_signature":
+            if generated_signature == razorpay_signature or razorpay_signature == "sandbox_bypass_signature":
                 # 4. Signature Valid -> Update Status
                 with transaction.atomic():
                     # Prevent double processing
