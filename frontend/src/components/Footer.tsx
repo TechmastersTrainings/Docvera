@@ -53,6 +53,8 @@ export default function Footer() {
             <div className="space-y-6">
               <h4 className="text-sm font-bold text-white tracking-wider">Company</h4>
               <ul className="space-y-3">
+                <li><Link href="/about" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">About Us</Link></li>
+                <li><Link href="/contact" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Contact Us</Link></li>
                 <li><Link href="/privacy-policy" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Terms & Conditions</Link></li>
               </ul>
