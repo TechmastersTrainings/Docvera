@@ -23,10 +23,6 @@ export default function Footer() {
             
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm text-[#7598bd]">
-                <ShieldCheck className="h-5 w-5 text-[#04defb]" />
-                <span>Enterprise-grade Security</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-[#7598bd]">
                 <MapPin className="h-5 w-5 text-[#04defb]" />
                 <span>TechmastersInnovations Pvt Ltd, Karnataka</span>
               </div>
@@ -34,48 +30,31 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
             <div className="space-y-6">
-              <h4 className="text-sm font-bold text-white tracking-wider">Solutions</h4>
+              <h4 className="text-sm font-bold text-white tracking-wider">For Patients</h4>
               <ul className="space-y-3">
-                <li><Link href="/doctors" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Search Specialists</Link></li>
+                <li><Link href="/doctors" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Search Doctors</Link></li>
+                <li><Link href="/hospitals" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Find Hospitals</Link></li>
+                <li><Link href="/login" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Patient Login</Link></li>
+                <li><Link href="/register" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Registration</Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h4 className="text-sm font-bold text-white tracking-wider">For Providers</h4>
+              <ul className="space-y-3">
+                <li><Link href="/register" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Doctor Registration</Link></li>
                 <li><Link href="/hospitals" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Hospital Affiliations</Link></li>
-                <li><Link href="/register" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Patient Registration</Link></li>
-                <li><Link href="/register" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Provider Registration</Link></li>
+                <li><Link href="/login" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Provider Login</Link></li>
               </ul>
             </div>
 
             <div className="space-y-6">
-              <h4 className="text-sm font-bold text-white tracking-wider">Services</h4>
+              <h4 className="text-sm font-bold text-white tracking-wider">Company</h4>
               <ul className="space-y-3">
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Cardiology Clinics</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Dermatology Care</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Pediatrics</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Neurology Evaluation</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-sm font-bold text-white tracking-wider">Resources</h4>
-              <ul className="space-y-3">
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Blogs</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Webinars</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">News</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Glossary</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-sm font-bold text-white tracking-wider">Join Us</h4>
-              <ul className="space-y-3">
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">About DocVera</Link></li>
-                <li>
-                  <Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb] flex items-center gap-2">
-                    Careers <span className="px-2 py-0.5 rounded-full bg-[#04defb]/10 text-[#04defb] text-[10px] font-bold uppercase">Hiring</span>
-                  </Link>
-                </li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Events</Link></li>
-                <li><Link href="#" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Open Positions</Link></li>
+                <li><Link href="/privacy-policy" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-sm transition-colors text-[#7598bd] hover:text-[#04defb]">Terms & Conditions</Link></li>
               </ul>
             </div>
           </div>
@@ -89,11 +68,6 @@ export default function Footer() {
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="hover:text-[#04defb] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#04defb] transition-colors">Terms & Conditions</Link>
-            <div className="flex items-center gap-4 ml-4">
-              <Link href="#" className="hover:text-[#04defb] transition-colors">LinkedIn</Link>
-              <Link href="#" className="hover:text-[#04defb] transition-colors">X-Twitter</Link>
-              <Link href="#" className="hover:text-[#04defb] transition-colors">YouTube</Link>
-            </div>
           </div>
         </div>
       </div>

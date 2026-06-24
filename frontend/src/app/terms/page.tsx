@@ -59,12 +59,43 @@ export default function TermsOfService() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white uppercase tracking-wider">5. Contact Information</h2>
-            <div className="flex items-center gap-3 p-4 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-xl w-fit">
-              <Mail className="h-5 w-5 text-[#04defb]" />
-              <span className="text-sm font-semibold text-white">
-                Techmasterstrainings@gmail.com
-              </span>
+            <h2 className="text-lg font-bold text-white uppercase tracking-wider">5. Doctor Verification</h2>
+            <p>
+              All healthcare providers listed on DocVera are required to submit a valid Medical Registration Number and supporting professional information. Profiles become visible to patients only after successful verification and approval by the DocVera administration team.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-white uppercase tracking-wider">6. Limitation of Liability</h2>
+            <p>
+              DocVera acts solely as a technology platform connecting patients with independent healthcare providers. Medical decisions, diagnoses, prescriptions, and treatment recommendations are the sole responsibility of the consulting doctor.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-white uppercase tracking-wider">7. Contact Us</h2>
+            <p className="font-semibold text-white">TechmastersInnovations Private Limited</p>
+            <div className="flex flex-col gap-2 mt-2">
+              <div className="flex items-center gap-3 p-4 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-xl w-fit">
+                <Mail className="h-5 w-5 text-[#04defb]" />
+                <span className="text-sm font-semibold text-white">
+                  TechmastersInnovations@gmail.com
+                </span>
+              </div>
+              <div className="flex items-center gap-3 p-4 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-xl w-fit">
+                <span className="text-sm font-semibold text-white">
+                  Phone: +91 9880768222
+                </span>
+              </div>
+              <div className="p-4 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-xl w-fit">
+                <address className="text-sm text-white not-italic leading-relaxed">
+                  113-6-9 Mascat Enclave Building,<br />
+                  1st Floor, Sai Nagar,<br />
+                  GND Engineering College Road,<br />
+                  Mailoor, Bidar - 585401,<br />
+                  Karnataka, India.
+                </address>
+              </div>
             </div>
           </section>
         </div>
