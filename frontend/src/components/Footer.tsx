@@ -18,7 +18,7 @@ export default function Footer() {
               Enterprise-grade scheduling with 10-minute pessimistic checkout holds. Connecting patients with verified healthcare providers.
             </p>
             <div className="text-xs text-[#537eac]">
-              &copy; 2026 Docvera Technologies Pvt Ltd. All rights reserved.
+              &copy; 2026 TechmastersInnovations Private Limited. All rights reserved.
             </div>
           </div>
 
