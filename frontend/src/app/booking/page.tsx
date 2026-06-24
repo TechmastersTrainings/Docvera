@@ -155,7 +155,11 @@ function BookingDetails() {
  return;
  }
 
- const options = {
+ const userEmail = localStorage.getItem("user_email");
+ const prefillData: any = {};
+ if (userEmail) prefillData.email = userEmail;
+
+ const options: any = {
  key: keyId,
  amount: Math.round(amount * 100),
  currency: "INR",
@@ -180,11 +184,6 @@ function BookingDetails() {
  setError("Error verifying payment.");
  }
  },
- prefill: {
- name: doctor?.full_name || "",
- email: "",
- contact: "",
- },
  theme: { color: "#002D62" },
  modal: {
  ondismiss: function () {
@@ -192,6 +191,10 @@ function BookingDetails() {
  }
  }
  };
+ 
+ if (Object.keys(prefillData).length > 0) {
+   options.prefill = prefillData;
+ }
  const rzp = new (window as any).Razorpay(options);
  rzp.open();
  };

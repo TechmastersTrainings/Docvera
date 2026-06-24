@@ -62,8 +62,8 @@ class RazorpayPaymentVerifyView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # Cryptographic Signature Verification
-        secret = "rzp_test_secret_placeholder"
+        from django.conf import settings
+        secret = settings.RAZORPAY_KEY_SECRET or ""
         msg = f"{order_id}|{payment_id}"
         
         try:
