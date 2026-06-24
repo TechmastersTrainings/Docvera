@@ -202,33 +202,40 @@ export default function LandingPage() {
   </button>
   </div>
 
-  {/* Inputs */}
-  <div className="grid md:grid-cols-1 gap-4">
-  {/* Location Input Only */}
-  <div className="relative flex items-center">
-  <input
-  type="text"
-  placeholder="City or PIN Code"
-  value={cityInput || pinInput}
-  onChange={(e) => {
-  const val = e.target.value;
-  if (/^\d+$/.test(val)) {
-  setPinInput(val);
-  setCityInput("");
-  } else {
-  setCityInput(val);
-  setPinInput("");
-  }
-  }}
-  className="w-full sm:w-1/2 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-white focus:ring-4 focus:ring-[rgba(83,126,172,0.15)] rounded-xl px-4 py-3.5 text-sm outline-none transition-all text-primary placeholder:text-muted font-medium"
-  />
-  </div>
-  </div>
+   {/* Inputs */}
+   <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-3/4">
+     <div className="relative flex-1">
+       <input
+       type="text"
+       placeholder="City or PIN Code"
+       value={cityInput || pinInput}
+       onChange={(e) => {
+       const val = e.target.value;
+       if (/^\d+$/.test(val)) {
+       setPinInput(val);
+       setCityInput("");
+       } else {
+       setCityInput(val);
+       setPinInput("");
+       }
+       }}
+       className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-white focus:ring-4 focus:ring-[rgba(83,126,172,0.15)] rounded-xl px-4 py-3.5 text-sm outline-none transition-all text-white placeholder:text-muted font-medium"
+       />
+     </div>
+     <button
+       onClick={handleGeoLocate}
+       disabled={geoStatus === 'loading'}
+       className={`shrink-0 px-5 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-all border ${geoStatus === 'loading' ? 'bg-[rgba(255,255,255,0.08)] border-transparent text-white/50 cursor-not-allowed' : geoStatus === 'success' ? 'bg-[#028597]/20 border-[#028597]/50 text-[#04defb]' : 'bg-[rgba(255,255,255,0.04)] border-[rgba(255,255,255,0.08)] text-white hover:bg-[rgba(255,255,255,0.08)]'}`}
+     >
+       <MapPin className="h-4 w-4" />
+       <span className="text-sm">{geoStatus === 'loading' ? 'Locating...' : geoStatus === 'success' ? 'Located' : 'Use Location'}</span>
+     </button>
+   </div>
 
   {/* Search CTA */}
   <button
   onClick={handleSearch}
-  className="bg-[#028597] hover:bg-[#0f4557] text-white rounded-full px-8 py-4 font-bold text-base flex items-center justify-center gap-2 transition-all shadow-lg w-full sm:w-1/2"
+  className="bg-[#028597] hover:bg-[#0f4557] text-white rounded-full px-8 py-4 font-bold text-base flex items-center justify-center gap-2 transition-all shadow-lg w-full sm:w-3/4"
   >
   Find Providers <ArrowRight className="h-5 w-5" />
   </button>
@@ -358,22 +365,22 @@ export default function LandingPage() {
    {doctor.experience_years} Yrs Exp
    </div>
 
-   <div className="flex gap-5">
-     <div className="shrink-0 w-24 h-24 rounded-2xl overflow-hidden bg-white/5 border border-white/10 mt-1">
+   <div className="flex gap-5 sm:gap-6">
+     <div className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden bg-white/5 border border-white/10 mt-1">
        {doctor.profile_photo ? (
          <img src={doctor.profile_photo} alt={doctor.full_name} className="w-full h-full object-cover" />
        ) : (
-         <div className="w-full h-full flex items-center justify-center bg-[#028597]/20 text-[#04defb] text-2xl font-bold">
+         <div className="w-full h-full flex items-center justify-center bg-[#028597]/20 text-[#04defb] text-4xl font-bold">
             {doctor.full_name.charAt(0)}
          </div>
        )}
      </div>
-     <div className="space-y-2 flex-1 pt-1">
-       <span className="px-2.5 py-1 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] text-[10px] font-bold rounded uppercase tracking-wider text-white">
+     <div className="space-y-3 flex-1 pt-2 sm:pt-4">
+       <span className="px-3 py-1.5 bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.15)] text-[11px] font-bold rounded uppercase tracking-wider text-white inline-block">
        {doctor.specialization}
        </span>
-       <h3 className="text-xl font-bold text-white pt-1 line-clamp-1">Dr. {doctor.full_name}</h3>
-       <div className="flex items-center space-x-2 text-xs font-medium text-white/80">
+       <h3 className="text-2xl font-bold text-white pt-1 line-clamp-1">Dr. {doctor.full_name}</h3>
+       <div className="flex items-center space-x-2 text-sm font-medium text-white/80">
        <MapPin className="h-4 w-4 shrink-0 text-[#04defb]" />
        <span className="line-clamp-1">{doctor.clinic_city}, {doctor.clinic_pin_code}</span>
        </div>
