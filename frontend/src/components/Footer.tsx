@@ -8,42 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#05181e] border-t border-[#213245] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Section - Let's Talk & Newsletter */}
-        <div className="grid lg:grid-cols-2 gap-12 border-b border-[rgba(255,255,255,0.08)] pb-16 mb-16">
-          {/* Left: Let's Talk */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-extrabold text-white">Let's Talk</h3>
-            <div className="space-y-3 text-[#a9c7eb] text-sm">
-              <p>For general inquiries: <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline">TechmastersInnovations@gmail.com</a></p>
-              <p>For provider partnerships: <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline">TechmastersInnovations@gmail.com</a></p>
-            </div>
-            <Link href="#" className="inline-flex items-center gap-2 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] px-6 py-3 rounded-xl transition-colors font-semibold text-sm">
-              Schedule a Meeting
-            </Link>
-          </div>
 
-          {/* Right: Newsletter */}
-          <div className="space-y-6 bg-[rgba(4,222,251,0.03)] p-8 rounded-3xl border border-[rgba(4,222,251,0.1)]">
-            <div className="space-y-2">
-              <h3 className="text-2xl font-extrabold text-white">Sign up for our Newsletter</h3>
-              <p className="text-[#7598bd] text-sm">Don’t miss out updates</p>
-            </div>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="flex gap-3">
-                <input type="email" placeholder="Enter your email" className="bg-[#021127] border border-[#213245] focus:border-[#04defb] focus:ring-1 focus:ring-[#04defb] rounded-xl px-4 py-3 flex-1 text-sm outline-none" />
-                <button type="submit" className="bg-[#04defb] text-[#05181e] px-6 py-3 rounded-xl font-bold hover:bg-[#03c0d8] transition-colors flex items-center gap-2">
-                  Sign Up <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-              <label className="flex items-start gap-3 cursor-pointer group">
-                <input type="checkbox" className="mt-1 w-4 h-4 rounded border-[#213245] bg-[#021127] text-[#04defb] focus:ring-[#04defb] focus:ring-offset-[#05181e]" />
-                <span className="text-[#7598bd] text-xs leading-relaxed group-hover:text-[#a9c7eb] transition-colors">
-                  I agree to receiving marketing and product communications from DocVera.
-                </span>
-              </label>
-            </form>
-          </div>
-        </div>
 
         {/* Middle Section - Links & Brand */}
         <div className="grid lg:grid-cols-12 gap-12 border-b border-[rgba(255,255,255,0.08)] pb-16 mb-8">
