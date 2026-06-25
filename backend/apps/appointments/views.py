@@ -186,16 +186,16 @@ class BookingCreateView(APIView):
 
                 order_id = None
                 try:
-                    if settings.RAZORPAY_KEY_ID and settings.RAZORPAY_KEY_SECRET:
-                        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
-                        razorpay_order = client.order.create(data=order_data)
-                        order_id = razorpay_order['id']
-                    else:
-                        print("Razorpay credentials are not configured in settings. Generating mock order ID...")
-                        order_id = f"order_mock_{uuid.uuid4().hex[:12]}"
+                    if not settings.RAZORPAY_KEY_ID or not settings.RAZORPAY_KEY_SECRET:
+                        return api_response(success=False, error="Razorpay credentials are not configured on the server. Please update the .env file.", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+                    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+                    razorpay_order = client.order.create(data=order_data)
+                    order_id = razorpay_order['id']
+
                 except Exception as e:
-                    print(f"Razorpay API Error: {e}. Falling back to generating a mock order ID...")
-                    order_id = f"order_mock_{uuid.uuid4().hex[:12]}"
+                    print(f"Razorpay API Error: {e}")
+                    return api_response(success=False, error=f"Failed to communicate with Razorpay. Please verify your API keys in the .env file. Error details: {str(e)}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
                 # 5. Create Payment Record
                 Payment.objects.create(
@@ -245,7 +245,7 @@ class RazorpayVerificationView(APIView):
 
             generated_signature = hmac.new(key_secret, msg, hashlib.sha256).hexdigest()
 
-            if hmac.compare_digest(generated_signature, razorpay_signature) or razorpay_signature == "sandbox_bypass_signature":
+            if hmac.compare_digest(generated_signature, razorpay_signature):
                 # 4. Signature Valid -> Update Status
                 with transaction.atomic():
                     # Prevent double processing

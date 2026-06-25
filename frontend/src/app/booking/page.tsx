@@ -142,14 +142,9 @@ function BookingDetails() {
  currency: "INR",
  name: "Docvera Health",
  description: "Consultation Fee Payment",
+ order_id: orderId,
  handler: async function (response: any) {
  try {
- // If it's a mock order, Razorpay won't return order_id or signature
- if (!response.razorpay_order_id && orderId.startsWith("order_mock_")) {
-   response.razorpay_order_id = orderId;
-   response.razorpay_signature = "sandbox_bypass_signature";
- }
-
  const verifyRes = await api.post("/appointments/verify-payment/", {
  razorpay_order_id: response.razorpay_order_id,
  razorpay_payment_id: response.razorpay_payment_id,
@@ -173,10 +168,6 @@ function BookingDetails() {
  }
  }
  };
- 
- if (!orderId.startsWith("order_mock_")) {
-   options.order_id = orderId;
- }
  
  if (Object.keys(prefillData).length > 0) {
    options.prefill = prefillData;
