@@ -107,7 +107,11 @@ export default function PrivacyPolicy() {
               To exercise any of these rights, or if you have any questions, you can connect with us at <strong>TechmastersInnovations@gmail.com</strong>.
             </p>
           </section>
+        </div>
 
+        <hr className="border-[rgba(255,255,255,0.08)]" />
+
+        <div className="space-y-10 text-[#a9c7eb] leading-relaxed text-sm sm:text-base">
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-white tracking-wider">Data Retention</h2>
             <p>
@@ -136,7 +140,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-xl font-bold text-white tracking-wider">Children&apos;s Privacy</h2>
+            <h2 className="text-xl font-bold text-white tracking-wider">Children's Privacy</h2>
             <p>
               DocVera is not intended for use by children under the age of 18 without the involvement of a parent or legal guardian. If we become aware that personal information of a minor has been collected without appropriate consent, we will take reasonable steps to delete such information.
             </p>
@@ -166,16 +170,14 @@ export default function PrivacyPolicy() {
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-white tracking-wider">Account Deactivation and Data Deletion</h2>
             <p>
-              You may request account deactivation or deletion by contacting us at{" "}
-              <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline font-semibold">TechmastersInnovations@gmail.com</a>.
-              Certain records may continue to be retained where required by law, regulatory obligations, fraud prevention requirements, dispute resolution processes, or legitimate business purposes.
+              You may request account deactivation or deletion by contacting us at <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline">TechmastersInnovations@gmail.com</a>. Certain records may continue to be retained where required by law, regulatory obligations, fraud prevention requirements, dispute resolution processes, or legitimate business purposes.
             </p>
           </section>
 
           <section className="space-y-4">
             <h2 className="text-xl font-bold text-white tracking-wider">Changes to this Privacy Policy</h2>
             <p>
-              We may update this Privacy Policy from time to time to reflect changes in our services, legal requirements, or business operations. Any updates will be posted on this page with a revised &quot;Last Updated&quot; date. Continued use of the platform after such modifications constitutes acceptance of the updated Privacy Policy.
+              We may update this Privacy Policy from time to time to reflect changes in our services, legal requirements, or business operations. Any updates will be posted on this page with a revised "Last Updated" date. Continued use of the platform after such modifications constitutes acceptance of the updated Privacy Policy.
             </p>
           </section>
 
@@ -184,12 +186,12 @@ export default function PrivacyPolicy() {
             <p>
               If you have any questions regarding this Privacy Policy, your personal information, or your data protection rights, you may contact:
             </p>
-            <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] space-y-2">
-              <p className="font-semibold text-white">TechmastersInnovations Private Limited</p>
-              <p>Karnataka, India</p>
-              <p>Email: <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline font-semibold">TechmastersInnovations@gmail.com</a></p>
-              <p>Website: <a href="https://docvera.techmaster.space" className="text-[#04defb] hover:underline font-semibold">https://docvera.techmaster.space</a></p>
-            </div>
+            <address className="not-italic mt-2 text-[#7598bd]">
+              TechmastersInnovations Private Limited<br />
+              Karnataka, India<br />
+              Email: <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline">TechmastersInnovations@gmail.com</a><br />
+              Website: <a href="https://docvera.techmaster.space" target="_blank" rel="noopener noreferrer" className="text-[#04defb] hover:underline">https://docvera.techmaster.space</a>
+            </address>
           </section>
         </div>
       </main>
