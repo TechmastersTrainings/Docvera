@@ -165,14 +165,14 @@ export default function LandingPage() {
  <Navbar />
 
   {/* ═══════ HERO ═══════ */}
-  <section id="home" className="relative pt-24 pb-32 bg-[#08222b] overflow-hidden">
+  <section id="home" className="relative pt-20 pb-16 bg-[#08222b] overflow-hidden">
   <div className="max-w-[1400px] mx-auto px-6 relative z-10" data-aos="fade-up" data-aos-duration="1000">
-  <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+  <div className="grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
   
   {/* Left Content: Search Engine */}
   <div id="search" className="w-full">
   <div className="bg-transparent p-4 sm:p-6 relative z-10">
-  <div className="text-center sm:text-left space-y-4 mb-8">
+  <div className="text-center sm:text-left space-y-2 mb-5">
   <div className="inline-flex items-center gap-1.5 bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] text-[#028597] rounded-full px-4 py-1.5 text-xs font-bold">
   <Sparkles className="h-3.5 w-3.5" /> Clinic Locator
   </div>
@@ -182,7 +182,7 @@ export default function LandingPage() {
   </p>
   </div>
 
-  <div className="space-y-6">
+  <div className="space-y-4">
   {/* Mode Selector */}
   <div className="inline-flex glass-secondary p-1.5 rounded-xl w-full sm:w-auto">
   <button
@@ -244,14 +244,14 @@ export default function LandingPage() {
   )}
   </div>
 
-  <p className="text-center sm:text-left text-xs font-medium text-muted mt-6">
+  <p className="text-center sm:text-left text-xs font-medium text-muted mt-4">
   <Shield className="inline h-4 w-4 mr-1 opacity-50" /> Secure scheduling with verified healthcare providers.
   </p>
   </div>
   </div>
 
   {/* Right Content: Text & Badges */}
-  <div className="space-y-8 max-w-2xl pl-0 lg:pl-12">
+  <div className="space-y-5 max-w-2xl pl-0 lg:pl-8">
   <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-black leading-[1.1] tracking-tight text-white">
   Book Appointments. <br />
   <span className="text-white">Visit Doctors In-Person.</span>
@@ -261,7 +261,7 @@ export default function LandingPage() {
   Find and book appointments with verified healthcare professionals near you. Visit clinics and hospitals for in-person consultations with guaranteed slot protection.
   </p>
 
-  <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+  <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
   <Link
   href="#specializations"
   className="bg-[rgba(2,133,151,0.1)] hover:bg-[rgba(2,133,151,0.2)] text-white border border-[rgba(2,133,151,0.3)] rounded-full px-8 py-4 font-bold text-base flex items-center justify-center transition-all w-full sm:w-auto"
@@ -270,7 +270,7 @@ export default function LandingPage() {
   </Link>
   </div>
 
-  <div className="flex items-center gap-5 pt-8 text-white text-sm font-bold">
+  <div className="flex items-center gap-5 pt-4 text-white text-sm font-bold">
   <div className="flex -space-x-3">
   <div className="w-12 h-12 rounded-full bg-[#08222b] border-2 border-[#028597] flex items-center justify-center text-[11px] text-white z-40">MD</div>
   <div className="w-12 h-12 rounded-full bg-[#08222b] border-2 border-[#028597] flex items-center justify-center text-[11px] text-white z-30">OB</div>
@@ -286,8 +286,8 @@ export default function LandingPage() {
   </section>
 
  {/* ═══════ CLINICAL SPECIALIZATIONS ═══════ */}
- <section id="specializations" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
- <div className="max-w-7xl mx-auto text-center space-y-4" data-aos="fade-up">
+ <section id="specializations" className="py-12 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-7xl mx-auto text-center space-y-3" data-aos="fade-up">
  <span className="text-white font-bold tracking-wide uppercase text-[11px] bg-[#08222b] border border-[#08222b]/50 px-4 py-1.5 rounded-full">
  Book By Specialty
  </span>
@@ -299,7 +299,7 @@ export default function LandingPage() {
  </p>
  </div>
 
- <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mt-14">
+ <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto mt-8">
  {specializations.map((spec, idx) => {
  const Icon = spec.icon;
  return (
@@ -307,13 +307,13 @@ export default function LandingPage() {
   key={idx}
   data-aos="fade-up"
   data-aos-delay={idx * 80}
-  className="rounded-[20px] p-6 sm:p-8 group bg-[#20063b] border-none shadow-lg"
+  className="rounded-[16px] p-5 sm:p-6 group bg-[#20063b] border-none shadow-lg"
   >
-  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
   <Icon className="h-6 w-6 text-[#ee1123]" strokeWidth={2.5} />
   </div>
   <h3 className="text-[17px] sm:text-lg font-bold text-white mb-2">{spec.name}</h3>
-  <p className="text-white/80 font-medium text-[13px] sm:text-sm leading-relaxed mb-8">{spec.desc}</p>
+  <p className="text-white/80 font-medium text-[13px] sm:text-sm leading-relaxed mb-4">{spec.desc}</p>
   <Link
   href={`/doctors?specialization=${spec.name.toUpperCase()}`}
   className="inline-flex items-center gap-1.5 text-[13px] sm:text-sm font-bold text-white hover:opacity-80 transition-opacity"
@@ -327,9 +327,9 @@ export default function LandingPage() {
  </section>
 
  {/* ═══════ TOP RATED SPECIALISTS ═══════ */}
- <section id="doctors" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
- <div className="max-w-7xl mx-auto space-y-12" data-aos="fade-up">
- <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+ <section id="doctors" className="py-12 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-7xl mx-auto space-y-8" data-aos="fade-up">
+ <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
  <div className="space-y-3">
  <span className="text-[#028597] font-bold tracking-wide uppercase text-[11px] bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] px-4 py-1.5 rounded-full">Verified Directory</span>
  <h2 className="text-3xl font-extrabold text-[#031d44] tracking-tight">Verified Healthcare Professionals</h2>
@@ -343,7 +343,7 @@ export default function LandingPage() {
  </Link>
  </div>
 
- <div className="grid lg:grid-cols-2 gap-6">
+ <div className="grid lg:grid-cols-2 gap-4">
  {isLoadingDoctors ? (
  [...Array(2)].map((_, idx) => (
  <div key={idx} className="p-6 glass-card bg-[#031d44]/50 h-56 animate-pulse border-none" />
@@ -353,7 +353,7 @@ export default function LandingPage() {
  <div
  key={doctor.user || idx}
  onClick={() => setSelectedPreviewIdx(idx)}
- className={`p-6 border rounded-2xl space-y-5 relative cursor-pointer transition-all duration-300 ${selectedPreviewIdx === idx
+ className={`p-5 border rounded-2xl space-y-4 relative cursor-pointer transition-all duration-300 ${selectedPreviewIdx === idx
  ? "glass-card bg-[#031d44] ring-2 ring-[#04defb]/20 -translate-y-1 shadow-[0_20px_40px_rgba(3,29,68,0.3)]"
  : "glass-secondary bg-[#031d44]/90 hover:bg-[#031d44] hover:ring-1 hover:ring-[#04defb]/10"
  }`}
@@ -362,8 +362,8 @@ export default function LandingPage() {
    {doctor.experience_years} Yrs Exp
    </div>
 
-   <div className="flex gap-5 sm:gap-6">
-     <div className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden bg-white/5 border border-white/10 mt-1">
+   <div className="flex gap-4 sm:gap-5">
+     <div className="shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-white/5 border border-white/10 mt-1">
        {doctor.profile_photo ? (
          <img src={doctor.profile_photo} alt={doctor.full_name} className="w-full h-full object-cover" />
        ) : (
@@ -408,8 +408,8 @@ export default function LandingPage() {
  </section>
 
  {/* ═══════ HOW IT WORKS ═══════ */}
- <section id="howitworks" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
- <div className="max-w-7xl mx-auto text-center space-y-4" data-aos="fade-up">
+ <section id="howitworks" className="py-12 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-7xl mx-auto text-center space-y-3" data-aos="fade-up">
  <span className="bg-[rgba(2,133,151,0.1)] text-[#028597] border border-[rgba(2,133,151,0.2)] px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide">
  Simple & Secure
  </span>
@@ -421,7 +421,7 @@ export default function LandingPage() {
  </p>
  </div>
 
- <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mt-14">
+ <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mt-8">
  {[
  { step: "1", title: "Find a Doctor", desc: "Search for verified doctors or clinic facilities using GPS location, city name, or PIN code.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: Search },
  { step: "2", title: "Select a Time Slot", desc: "Choose an available appointment slot. The system locks it for 10 minutes to prevent double bookings.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: CalendarCheck },
@@ -432,31 +432,31 @@ export default function LandingPage() {
  key={idx}
  data-aos="zoom-in"
  data-aos-delay={idx * 100}
- className="glass-card bg-[#20063b] p-8 text-center transition-all shadow-xl hover:-translate-y-1 duration-300 group border-none"
+ className="glass-card bg-[#20063b] p-6 text-center transition-all shadow-xl hover:-translate-y-1 duration-300 group border-none"
  >
  <div
- className={`w-14 h-14 mx-auto rounded-2xl flex items-center justify-center text-xl font-black ${item.color} ${item.bg} border border-[rgba(4,222,251,0.08)] group-hover:scale-110 transition-transform`}
+ className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center text-lg font-black ${item.color} ${item.bg} border border-[rgba(4,222,251,0.08)] group-hover:scale-110 transition-transform`}
  >
  {item.step}
  </div>
- <h4 className="font-bold mt-5 text-base text-white">{item.title}</h4>
- <p className="text-white/80 font-medium text-sm mt-2.5 leading-relaxed">{item.desc}</p>
+ <h4 className="font-bold mt-4 text-base text-white">{item.title}</h4>
+ <p className="text-white/80 font-medium text-sm mt-2 leading-relaxed">{item.desc}</p>
  </div>
  ))}
  </div>
  </section>
 
  {/* ═══════ TRUST & PLATFORM INTEGRITY ═══════ */}
- <section id="trust" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
- <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
- <div className="space-y-8" data-aos="fade-right">
+ <section id="trust" className="py-12 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-4xl mx-auto">
+ <div className="space-y-6" data-aos="fade-right">
  <div className="glass-secondary inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs text-secondary font-bold">
  <ShieldCheck className="h-4 w-4 text-[#028597]" /> Secure Scheduling Platform
  </div>
  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-primary tracking-tight leading-tight">
  Appointment booking <br />engineered for <span className="text-[#028597]">reliability.</span>
  </h2>
- <ul className="space-y-5 text-sm font-medium text-secondary">
+ <ul className="space-y-3 text-sm font-medium text-secondary">
  <li className="flex gap-4 items-start">
  <CheckCircle className="h-5 w-5 text-[#028597] shrink-0 mt-0.5" />
  <span><strong className="text-primary">Zero Double Bookings:</strong> Atomic slot locking prevents scheduling conflicts instantly.</span>
@@ -474,23 +474,20 @@ export default function LandingPage() {
  <span><strong className="text-primary">Digital Records:</strong> Doctors can securely maintain digital records of in-clinic visits and prescriptions after your appointment.</span>
  </li>
  </ul>
- <div className="flex gap-4 p-5 glass-secondary rounded-2xl">
+ <div className="flex gap-4 p-4 glass-secondary rounded-2xl">
  <Shield className="text-3xl text-muted shrink-0" />
  <span className="text-[#537eac] font-medium text-sm leading-relaxed">
  DocVera is a technology platform that facilitates appointment scheduling and digital clinic management. All medical consultations are conducted exclusively by independent healthcare professionals during physical in-person visits.
  </span>
  </div>
  </div>
-
-      {/* Empty column or future graphic can go here */}
-      <div className="hidden md:block"></div>
     </div>
  </section>
 
  {/* ═══════ FAQ ═══════ */}
- <section id="faq" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <section id="faq" className="py-12 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
  <div className="max-w-3xl mx-auto" data-aos="fade-up">
- <div className="text-center space-y-4 mb-14">
+ <div className="text-center space-y-3 mb-8">
  <span className="bg-[rgba(2,133,151,0.1)] text-[#028597] border border-[rgba(2,133,151,0.2)] px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide">
  Common Questions
  </span>
@@ -499,7 +496,7 @@ export default function LandingPage() {
  </h2>
  </div>
 
- <div className="space-y-4">
+ <div className="space-y-3">
  {faqs.map((faq, idx) => (
  <div
  key={idx}
@@ -507,13 +504,13 @@ export default function LandingPage() {
  >
  <button
   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-  className="w-full text-left px-6 py-5 flex items-center justify-between text-sm font-bold text-primary hover:text-[#028597] transition-colors"
+  className="w-full text-left px-5 py-4 flex items-center justify-between text-sm font-bold text-primary hover:text-[#028597] transition-colors"
  >
   <span>{faq.q}</span>
   <Plus className={`h-5 w-5 shrink-0 transition-transform duration-300 ${activeFaq === idx ? 'rotate-45' : ''}`} />
  </button>
  {activeFaq === idx && (
-  <div className="px-6 pb-5 text-sm text-secondary font-medium leading-relaxed">
+  <div className="px-5 pb-4 text-sm text-secondary font-medium leading-relaxed">
   {faq.a}
   </div>
  )}
@@ -524,11 +521,11 @@ export default function LandingPage() {
  </section>
 
  {/* ═══════ COMPLIANCE DISCLAIMERS ═══════ */}
- <section className="py-12 px-6 bg-[#05181e] border-t border-[rgba(4,222,251,0.08)]">
- <div className="max-w-5xl mx-auto space-y-6" data-aos="fade-up">
- <div className="grid sm:grid-cols-2 gap-6">
- <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
- <div className="flex items-center gap-2 mb-3">
+ <section className="py-8 px-6 bg-[#05181e] border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-5xl mx-auto space-y-4" data-aos="fade-up">
+ <div className="grid sm:grid-cols-2 gap-4">
+ <div className="p-4 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-2">
  <FileText className="h-4 w-4 text-[#028597]" />
  <h4 className="text-xs font-bold text-white uppercase tracking-wider">Platform Disclaimer</h4>
  </div>
@@ -536,8 +533,8 @@ export default function LandingPage() {
  DocVera is a technology platform that facilitates appointment scheduling and digital clinic management. Medical consultations are conducted exclusively by independent healthcare professionals during physical in-person visits.
  </p>
  </div>
- <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
- <div className="flex items-center gap-2 mb-3">
+ <div className="p-4 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-2">
  <CreditCard className="h-4 w-4 text-[#028597]" />
  <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Disclaimer</h4>
  </div>
@@ -545,8 +542,8 @@ export default function LandingPage() {
  Payments made on DocVera are solely for appointment booking and related clinic services. DocVera does not provide medical consultation services.
  </p>
  </div>
- <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
- <div className="flex items-center gap-2 mb-3">
+ <div className="p-4 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-2">
  <UserCheck className="h-4 w-4 text-[#028597]" />
  <h4 className="text-xs font-bold text-white uppercase tracking-wider">Doctor Disclaimer</h4>
  </div>
@@ -554,8 +551,8 @@ export default function LandingPage() {
  Doctors and healthcare providers listed on DocVera are independent professionals and are solely responsible for the medical services they provide.
  </p>
  </div>
- <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
- <div className="flex items-center gap-2 mb-3">
+ <div className="p-4 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-2">
  <ClipboardList className="h-4 w-4 text-[#028597]" />
  <h4 className="text-xs font-bold text-white uppercase tracking-wider">Medical Records Disclaimer</h4>
  </div>
