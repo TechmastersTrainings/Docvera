@@ -20,7 +20,13 @@ import {
  CheckCircle,
  Shield,
  Sparkles,
- Building2
+ Building2,
+ CalendarCheck,
+ Clock,
+ CreditCard,
+ ClipboardList,
+ UserCheck,
+ FileText
 } from "lucide-react";
 import AOS from "aos";
 
@@ -137,31 +143,22 @@ export default function LandingPage() {
  }, []);
 
  const specializations = [
- { name: "Cardiology", icon: Heart, desc: "Heart disease diagnosis & advanced treatments" },
- { name: "Dermatology", icon: Stethoscope, desc: "Comprehensive skin health & clinical therapy" },
- { name: "Pediatrics", icon: Activity, desc: "Newborn health & pediatric wellness care" },
- { name: "Neurology", icon: Award, desc: "Expert neurological evaluation & care" },
- { name: "Orthopedics", icon: Compass, desc: "Bone restoration, joints & trauma surgeries" },
- { name: "Ophthalmology", icon: Eye, desc: "Precision eye testings & visual enhancements" },
+ { name: "Cardiology", icon: Heart, desc: "Book appointments with heart disease specialists & cardiologists" },
+ { name: "Dermatology", icon: Stethoscope, desc: "Schedule visits for skin health & dermatology treatments" },
+ { name: "Pediatrics", icon: Activity, desc: "Find pediatricians for child health & wellness checkups" },
+ { name: "Neurology", icon: Award, desc: "Book in-clinic neurological evaluation & specialist visits" },
+ { name: "Orthopedics", icon: Compass, desc: "Schedule appointments for bone, joint & trauma care" },
+ { name: "Ophthalmology", icon: Eye, desc: "Book eye examinations & vision care appointments" },
  ];
 
  const faqs = [
- { q: "How does the 10-minute slot lock booking engine function?", a: "When you select a doctor's slot, the booking engine applies an atomic lock on that schedule for exactly 10 minutes. This guarantees that no other user can double-book or hijack the slot while you complete your Razorpay transaction." },
- { q: "Can I reschedule or cancel my appointment later?", a: "Yes. Through your patient dashboard, you can reschedule to any other open availability slot for the same doctor, or cancel. Cancellations automatically trigger transactional status updates and refund payloads." },
- { q: "What should I do if my browser geolocation is blocked?", a: "If you deny location privileges, Docvera falls back dynamically to PIN Code search, and then to City filtering to ensure you can locate certified clinicians in your proximity instantly." },
+ { q: "How does the appointment slot locking system work?", a: "When you select a doctor's available slot, DocVera applies an atomic lock on that schedule for 10 minutes. This guarantees that no other patient can book the same slot while you complete your payment, ensuring zero double bookings." },
+ { q: "Can I reschedule or cancel my appointment?", a: "Yes. Through your patient dashboard, you can reschedule to any other open availability slot for the same doctor, or cancel your appointment. Cancellations automatically trigger status updates and refund processing." },
+ { q: "What happens during the appointment?", a: "DocVera helps you book an in-person appointment at the doctor's clinic or hospital. You visit the doctor physically for your consultation. After the visit, the doctor can update your digital medical records on the platform." },
+ { q: "What should I do if my browser location is blocked?", a: "If you deny location access, DocVera falls back to PIN Code search, and then to City filtering to help you find verified doctors and clinics near you." },
  ];
 
  const currentPreviewDoctor = doctors[selectedPreviewIdx] || doctors[0];
-
- /* Per-specialization accent colors using the new clean palette */
- const specColors = [
- { bg: "bg-[#eef2f7]", border: "border-[#028597]/20", icon: "bg-[#eef2f7]", iconStroke: "text-[#028597]", link: "text-[#028597]" },
- { bg: "bg-[#eef2f7]", border: "border-[#028597]/20", icon: "bg-[#eef2f7]", iconStroke: "text-[#028597]", link: "text-[#028597]" },
- { bg: "bg-[#eef2f7]", border: "border-[#537eac]/20", icon: "bg-[#eef2f7]", iconStroke: "text-[#537eac]", link: "text-[#537eac]" },
- { bg: "bg-[#eef2f7]", border: "border-emerald-100", icon: "bg-[#eef2f7]", iconStroke: "text-[#028597]", link: "text-[#028597]" },
- { bg: "bg-sky-50", border: "border-sky-100", icon: "bg-sky-100", iconStroke: "text-sky-600", link: "text-sky-600" },
- { bg: "bg-violet-50", border: "border-violet-100", icon: "bg-violet-100", iconStroke: "text-violet-600", link: "text-violet-600" },
- ];
 
  return (
  <div className="font-sans min-h-screen bg-transparent flex flex-col">
@@ -177,11 +174,11 @@ export default function LandingPage() {
   <div className="bg-transparent p-4 sm:p-6 relative z-10">
   <div className="text-center sm:text-left space-y-4 mb-8">
   <div className="inline-flex items-center gap-1.5 bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] text-[#028597] rounded-full px-4 py-1.5 text-xs font-bold">
-  <Sparkles className="h-3.5 w-3.5" /> Real-time Locator
+  <Sparkles className="h-3.5 w-3.5" /> Clinic Locator
   </div>
-  <h3 className="text-2xl lg:text-3xl font-extrabold text-white">Search Available Providers</h3>
+  <h3 className="text-2xl lg:text-3xl font-extrabold text-white">Find Doctors & Book Appointments</h3>
   <p className="text-white/80 text-sm font-medium">
-  Find certified doctors and multi-specialty clinics in your neighborhood instantly.
+  Discover verified doctors and clinics in your area. Book in-person appointments instantly.
   </p>
   </div>
 
@@ -237,7 +234,7 @@ export default function LandingPage() {
   onClick={handleSearch}
   className="bg-[#028597] hover:bg-[#0f4557] text-white rounded-full px-8 py-4 font-bold text-base flex items-center justify-center gap-2 transition-all shadow-lg w-full sm:w-3/4"
   >
-  Find Providers <ArrowRight className="h-5 w-5" />
+  Find Doctors <ArrowRight className="h-5 w-5" />
   </button>
 
   {searchError && (
@@ -248,7 +245,7 @@ export default function LandingPage() {
   </div>
 
   <p className="text-center sm:text-left text-xs font-medium text-muted mt-6">
-  <Shield className="inline h-4 w-4 mr-1 opacity-50" /> Data runs through verified API servers. No spam guaranteed.
+  <Shield className="inline h-4 w-4 mr-1 opacity-50" /> Secure scheduling with verified healthcare providers.
   </p>
   </div>
   </div>
@@ -256,12 +253,12 @@ export default function LandingPage() {
   {/* Right Content: Text & Badges */}
   <div className="space-y-8 max-w-2xl pl-0 lg:pl-12">
   <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-black leading-[1.1] tracking-tight text-white">
-  Instant consultations. <br />
-  <span className="text-white">Zero double bookings.</span>
+  Book Appointments. <br />
+  <span className="text-white">Visit Doctors In-Person.</span>
   </h1>
   
   <p className="text-white/80 text-lg sm:text-xl leading-relaxed font-medium">
-  Connect with top-rated medical specialists and verified multi-specialty hospitals instantly. Pessimistic database locking protects your slot reservation in real-time.
+  Find and book appointments with verified healthcare professionals near you. Visit clinics and hospitals for in-person consultations with guaranteed slot protection.
   </p>
 
   <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
@@ -269,7 +266,7 @@ export default function LandingPage() {
   href="#specializations"
   className="bg-[rgba(2,133,151,0.1)] hover:bg-[rgba(2,133,151,0.2)] text-white border border-[rgba(2,133,151,0.3)] rounded-full px-8 py-4 font-bold text-base flex items-center justify-center transition-all w-full sm:w-auto"
   >
-  Clinical Specializations
+  Browse Specializations
   </Link>
   </div>
 
@@ -292,13 +289,13 @@ export default function LandingPage() {
  <section id="specializations" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
  <div className="max-w-7xl mx-auto text-center space-y-4" data-aos="fade-up">
  <span className="text-white font-bold tracking-wide uppercase text-[11px] bg-[#08222b] border border-[#08222b]/50 px-4 py-1.5 rounded-full">
- Clinical Excellence
+ Book By Specialty
  </span>
  <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
- Clinical Specializations
+ Find Doctors by Specialization
  </h2>
  <p className="text-secondary max-w-2xl mx-auto text-base font-medium leading-relaxed">
- Discover and consult top-rated doctors categorized under certified medical specializations.
+ Browse verified doctors across certified medical specializations and book your in-person clinic visit today.
  </p>
  </div>
 
@@ -321,7 +318,7 @@ export default function LandingPage() {
   href={`/doctors?specialization=${spec.name.toUpperCase()}`}
   className="inline-flex items-center gap-1.5 text-[13px] sm:text-sm font-bold text-white hover:opacity-80 transition-opacity"
   >
-  Explore Specialists <ArrowRight className="h-4 w-4" />
+  Book Appointment <ArrowRight className="h-4 w-4" />
   </Link>
   </div>
  );
@@ -335,8 +332,8 @@ export default function LandingPage() {
  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
  <div className="space-y-3">
  <span className="text-[#028597] font-bold tracking-wide uppercase text-[11px] bg-[rgba(83,126,172,0.1)] border border-[rgba(83,126,172,0.2)] px-4 py-1.5 rounded-full">Verified Directory</span>
- <h2 className="text-3xl font-extrabold text-[#031d44] tracking-tight">Top Rated Specialists</h2>
- <p className="text-[#031d44]/80 font-medium">Docvera partners with premium healthcare professionals ensuring clinical quality.</p>
+ <h2 className="text-3xl font-extrabold text-[#031d44] tracking-tight">Verified Healthcare Professionals</h2>
+ <p className="text-[#031d44]/80 font-medium">All doctors listed on DocVera are verified and available for in-person clinic appointments.</p>
  </div>
  <Link
  href="/doctors"
@@ -390,13 +387,13 @@ export default function LandingPage() {
   <div className="h-px bg-[rgba(255,255,255,0.12)]" />
 
   <div className="flex items-center justify-between text-sm font-semibold">
-  <span className="text-white font-bold">₹{doctor.consultation_fees} <span className="text-white/60 font-medium text-xs">/ consult</span></span>
+  <span className="text-white font-bold">₹{doctor.consultation_fees} <span className="text-white/60 font-medium text-xs">/ visit</span></span>
   <Link
   href={`/booking?doctor_id=${doctor.user}`}
   className="font-bold text-white hover:text-white/80 hover:underline transition-all"
   onClick={(e) => e.stopPropagation()}
   >
-  Book Now →
+  Book Appointment →
   </Link>
   </div>
  </div>
@@ -417,19 +414,19 @@ export default function LandingPage() {
  Simple & Secure
  </span>
  <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
- From search to consultation in 4 steps
+ From Search to Clinic Visit in 4 Steps
  </h2>
  <p className="text-secondary text-base font-medium max-w-xl mx-auto">
- How Docvera manages scheduling conflicts using state-of-the-art database slot allocations.
+ Book your in-person doctor appointment in minutes with our secure scheduling system.
  </p>
  </div>
 
  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mt-14">
  {[
- { step: "1", title: "Locate & Filter", desc: "Find specialist doctors or clinic facilities using active GPS coordinates or city PIN code search.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]" },
- { step: "2", title: "Pessimistic Lock", desc: "Select an open appointment slot. The engine locks it for 10 minutes to guarantee zero overlap.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]" },
- { step: "3", title: "Secure Checkout", desc: "Complete transaction smoothly via Razorpay Sandbox supporting Net Banking, UPI, and Cards.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]" },
- { step: "4", title: "Consultation Room", desc: "Once verified, access the real-time doctor portal for prescriptions, diagnoses, and medical charts.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]" },
+ { step: "1", title: "Find a Doctor", desc: "Search for verified doctors or clinic facilities using GPS location, city name, or PIN code.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: Search },
+ { step: "2", title: "Select a Time Slot", desc: "Choose an available appointment slot. The system locks it for 10 minutes to prevent double bookings.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: CalendarCheck },
+ { step: "3", title: "Pay Booking Fee", desc: "Complete your appointment booking fee securely via UPI, Net Banking, or Cards.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: CreditCard },
+ { step: "4", title: "Visit the Clinic", desc: "Visit the doctor at their clinic or hospital for your in-person consultation. Digital records are maintained after your visit.", color: "text-[#04defb]", bg: "bg-[rgba(4,222,251,0.1)]", icon: ClipboardList },
  ].map((item, idx) => (
  <div
  key={idx}
@@ -449,34 +446,38 @@ export default function LandingPage() {
  </div>
  </section>
 
- {/* ═══════ TRUST & PIPELINE INTEGRITY ═══════ */}
+ {/* ═══════ TRUST & PLATFORM INTEGRITY ═══════ */}
  <section id="trust" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
  <div className="space-y-8" data-aos="fade-right">
  <div className="glass-secondary inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs text-secondary font-bold">
- <ShieldCheck className="h-4 w-4 text-[#028597]" /> HIPAA-Compliant Data Pipeline
+ <ShieldCheck className="h-4 w-4 text-[#028597]" /> Secure Scheduling Platform
  </div>
  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-primary tracking-tight leading-tight">
- Clinical scheduling <br /> engineered for <span className="text-[#028597]">integrity.</span>
+ Appointment booking <br />engineered for <span className="text-[#028597]">reliability.</span>
  </h2>
  <ul className="space-y-5 text-sm font-medium text-secondary">
  <li className="flex gap-4 items-start">
  <CheckCircle className="h-5 w-5 text-[#028597] shrink-0 mt-0.5" />
- <span><strong className="text-primary">Zero Slot Overlaps:</strong> Atomic locking stops transaction conflicts instantly.</span>
+ <span><strong className="text-primary">Zero Double Bookings:</strong> Atomic slot locking prevents scheduling conflicts instantly.</span>
  </li>
  <li className="flex gap-4 items-start">
  <CheckCircle className="h-5 w-5 text-[#028597] shrink-0 mt-0.5" />
- <span><strong className="text-primary">Administrative Review:</strong> Every registered clinician undergoes strict identity checks.</span>
+ <span><strong className="text-primary">Verified Doctors:</strong> Every registered healthcare professional undergoes identity and credential verification.</span>
  </li>
  <li className="flex gap-4 items-start">
  <CheckCircle className="h-5 w-5 text-[#028597] shrink-0 mt-0.5" />
- <span><strong className="text-primary">Clear Refund SLA:</strong> Easy cancelations directly initiate refund webhook sequences.</span>
+ <span><strong className="text-primary">Easy Cancellations:</strong> Cancel or reschedule appointments with transparent refund processing.</span>
+ </li>
+ <li className="flex gap-4 items-start">
+ <CheckCircle className="h-5 w-5 text-[#028597] shrink-0 mt-0.5" />
+ <span><strong className="text-primary">Digital Records:</strong> Doctors can securely maintain digital records of in-clinic visits and prescriptions after your appointment.</span>
  </li>
  </ul>
  <div className="flex gap-4 p-5 glass-secondary rounded-2xl">
  <Shield className="text-3xl text-muted shrink-0" />
  <span className="text-[#537eac] font-medium text-sm leading-relaxed">
- Docvera locks appointments on verified servers. Payment tokens, credentials, and charts are fully encrypted under AES-256 protocols.
+ DocVera is a technology platform that facilitates appointment scheduling and digital clinic management. All medical consultations are conducted exclusively by independent healthcare professionals during physical in-person visits.
  </span>
  </div>
  </div>
@@ -484,6 +485,86 @@ export default function LandingPage() {
       {/* Empty column or future graphic can go here */}
       <div className="hidden md:block"></div>
     </div>
+ </section>
+
+ {/* ═══════ FAQ ═══════ */}
+ <section id="faq" className="py-20 px-6 bg-transparent border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-3xl mx-auto" data-aos="fade-up">
+ <div className="text-center space-y-4 mb-14">
+ <span className="bg-[rgba(2,133,151,0.1)] text-[#028597] border border-[rgba(2,133,151,0.2)] px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wide">
+ Common Questions
+ </span>
+ <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+ Frequently Asked Questions
+ </h2>
+ </div>
+
+ <div className="space-y-4">
+ {faqs.map((faq, idx) => (
+ <div
+ key={idx}
+ className="glass-secondary rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] transition-all"
+ >
+ <button
+  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+  className="w-full text-left px-6 py-5 flex items-center justify-between text-sm font-bold text-primary hover:text-[#028597] transition-colors"
+ >
+  <span>{faq.q}</span>
+  <Plus className={`h-5 w-5 shrink-0 transition-transform duration-300 ${activeFaq === idx ? 'rotate-45' : ''}`} />
+ </button>
+ {activeFaq === idx && (
+  <div className="px-6 pb-5 text-sm text-secondary font-medium leading-relaxed">
+  {faq.a}
+  </div>
+ )}
+ </div>
+ ))}
+ </div>
+ </div>
+ </section>
+
+ {/* ═══════ COMPLIANCE DISCLAIMERS ═══════ */}
+ <section className="py-12 px-6 bg-[#05181e] border-t border-[rgba(4,222,251,0.08)]">
+ <div className="max-w-5xl mx-auto space-y-6" data-aos="fade-up">
+ <div className="grid sm:grid-cols-2 gap-6">
+ <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-3">
+ <FileText className="h-4 w-4 text-[#028597]" />
+ <h4 className="text-xs font-bold text-white uppercase tracking-wider">Platform Disclaimer</h4>
+ </div>
+ <p className="text-xs text-[#7598bd] leading-relaxed">
+ DocVera is a technology platform that facilitates appointment scheduling and digital clinic management. Medical consultations are conducted exclusively by independent healthcare professionals during physical in-person visits.
+ </p>
+ </div>
+ <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-3">
+ <CreditCard className="h-4 w-4 text-[#028597]" />
+ <h4 className="text-xs font-bold text-white uppercase tracking-wider">Payment Disclaimer</h4>
+ </div>
+ <p className="text-xs text-[#7598bd] leading-relaxed">
+ Payments made on DocVera are solely for appointment booking and related clinic services. DocVera does not provide medical consultation services.
+ </p>
+ </div>
+ <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-3">
+ <UserCheck className="h-4 w-4 text-[#028597]" />
+ <h4 className="text-xs font-bold text-white uppercase tracking-wider">Doctor Disclaimer</h4>
+ </div>
+ <p className="text-xs text-[#7598bd] leading-relaxed">
+ Doctors and healthcare providers listed on DocVera are independent professionals and are solely responsible for the medical services they provide.
+ </p>
+ </div>
+ <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.06)]">
+ <div className="flex items-center gap-2 mb-3">
+ <ClipboardList className="h-4 w-4 text-[#028597]" />
+ <h4 className="text-xs font-bold text-white uppercase tracking-wider">Medical Records Disclaimer</h4>
+ </div>
+ <p className="text-xs text-[#7598bd] leading-relaxed">
+ Digital prescriptions and medical records available on the platform are generated only after an in-person consultation between the patient and the healthcare provider.
+ </p>
+ </div>
+ </div>
+ </div>
  </section>
 
  </div>

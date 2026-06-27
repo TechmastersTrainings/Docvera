@@ -141,7 +141,7 @@ function BookingDetails() {
  amount: Math.round(amount * 100),
  currency: "INR",
  name: "Docvera Health",
- description: "Consultation Fee Payment",
+ description: "Appointment Booking Fee",
  order_id: orderId,
  handler: async function (response: any) {
  try {
@@ -219,7 +219,7 @@ function BookingDetails() {
  );
  }
 
- const locationTitle = hospitalIdFromUrl ? "Selected Facility" : "Consultation Location";
+ const locationTitle = hospitalIdFromUrl ? "Selected Facility" : "Clinic Location";
  const locationName = hospitalIdFromUrl ? appointmentData?.hospital_name : doctor.clinic_name;
 
  return (
@@ -356,7 +356,7 @@ function BookingDetails() {
  <span className="text-[#0f4557] font-bold">Dr. {doctor.full_name}</span>
  </div>
  <div className="flex justify-between text-sm">
- <span className="text-text-secondary">Consultation Fee</span>
+ <span className="text-text-secondary">Appointment Fee</span>
  <span className="text-[#0f4557] font-medium">₹{consultationFee.toFixed(2)}</span>
  </div>
  <div className="flex justify-between text-sm">

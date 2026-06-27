@@ -33,7 +33,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/doctors", label: "Find Doctors" },
-    { href: "/hospitals", label: "Hospitals" },
+    { href: "/hospitals", label: "Find Clinics" },
   ];
 
   const dashboardLink = role === 'PATIENT'

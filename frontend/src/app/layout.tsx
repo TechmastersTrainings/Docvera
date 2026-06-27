@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
- title: "Docvera | Premium Healthcare Platform",
- description: "Clinical Excellence. Pessimistic Slot Locking.",
+ title: "DocVera | Book Doctor Appointments Online – In-Person Clinic Visits",
+ description: "DocVera is a doctor appointment booking and clinic management platform. Find verified doctors, book in-person appointments, and manage clinic visits securely.",
 };
 
 export default function RootLayout({
