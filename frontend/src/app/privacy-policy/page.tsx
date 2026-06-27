@@ -107,6 +107,90 @@ export default function PrivacyPolicy() {
               To exercise any of these rights, or if you have any questions, you can connect with us at <strong>TechmastersInnovations@gmail.com</strong>.
             </p>
           </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Data Retention</h2>
+            <p>
+              We retain personal information, appointment records, and medical records only for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements.
+            </p>
+            <p>
+              Patient medical records and prescriptions may be retained in accordance with applicable healthcare and record retention laws. Upon account deletion requests, certain information may be retained where legally required or necessary for fraud prevention, security, and regulatory compliance.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Data Storage and Security</h2>
+            <p>
+              All information stored by DocVera is protected using industry-standard security measures, including encryption of passwords, secured network communications, access controls, and regular security monitoring.
+            </p>
+            <p>
+              Although we implement reasonable safeguards to protect your information, no electronic storage method or transmission over the Internet is completely secure, and therefore we cannot guarantee absolute security.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Cross-Border Data Transfers</h2>
+            <p>
+              Our servers, cloud infrastructure providers, analytics providers, and service partners may process and store information in jurisdictions outside your state or country of residence. By using our platform, you consent to such processing and storage, subject to applicable data protection laws.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Children&apos;s Privacy</h2>
+            <p>
+              DocVera is not intended for use by children under the age of 18 without the involvement of a parent or legal guardian. If we become aware that personal information of a minor has been collected without appropriate consent, we will take reasonable steps to delete such information.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Third-Party Services</h2>
+            <p>
+              Our platform may integrate with third-party service providers, including payment gateways, cloud hosting providers, analytics services, communication providers, and notification services. These third parties have their own privacy policies, and DocVera is not responsible for the privacy practices of such third parties.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Data Breach Notification</h2>
+            <p>
+              In the event of an actual or suspected data breach that may compromise your personal information, DocVera will take reasonable steps to investigate, mitigate, and notify affected users and regulatory authorities where required under applicable laws.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Consent to Electronic Communication</h2>
+            <p>
+              By creating an account and using DocVera, you consent to receive electronic communications, including appointment reminders, notifications, security alerts, payment confirmations, and service-related communications via email, SMS, WhatsApp, or in-app notifications.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Account Deactivation and Data Deletion</h2>
+            <p>
+              You may request account deactivation or deletion by contacting us at{" "}
+              <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline font-semibold">TechmastersInnovations@gmail.com</a>.
+              Certain records may continue to be retained where required by law, regulatory obligations, fraud prevention requirements, dispute resolution processes, or legitimate business purposes.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Changes to this Privacy Policy</h2>
+            <p>
+              We may update this Privacy Policy from time to time to reflect changes in our services, legal requirements, or business operations. Any updates will be posted on this page with a revised &quot;Last Updated&quot; date. Continued use of the platform after such modifications constitutes acceptance of the updated Privacy Policy.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold text-white tracking-wider">Contact Information</h2>
+            <p>
+              If you have any questions regarding this Privacy Policy, your personal information, or your data protection rights, you may contact:
+            </p>
+            <div className="p-5 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] space-y-2">
+              <p className="font-semibold text-white">TechmastersInnovations Private Limited</p>
+              <p>Karnataka, India</p>
+              <p>Email: <a href="mailto:TechmastersInnovations@gmail.com" className="text-[#04defb] hover:underline font-semibold">TechmastersInnovations@gmail.com</a></p>
+              <p>Website: <a href="https://docvera.techmaster.space" className="text-[#04defb] hover:underline font-semibold">https://docvera.techmaster.space</a></p>
+            </div>
+          </section>
         </div>
       </main>
     </div>
