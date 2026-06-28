@@ -68,20 +68,20 @@ export default function Footer() {
         {/* Compliance Disclaimers */}
         <div className="border-b border-[rgba(255,255,255,0.08)] pb-8 mb-8 space-y-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="h-4 w-4 text-[#028597]" />
-            <h4 className="text-base font-bold text-white uppercase tracking-wider">Important Disclaimers</h4>
+            <FileText className="h-5 w-5 text-[#028597]" />
+            <h4 className="text-[19px] font-bold text-white uppercase tracking-wider">Important Disclaimers</h4>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <p className="text-[15px] text-[#537eac] leading-relaxed">
+          <div className="grid sm:grid-cols-2 gap-5">
+            <p className="text-[18px] text-[#537eac] leading-relaxed">
               <strong className="text-[#7598bd]">Payment Disclaimer:</strong> Payments made on DocVera are solely for appointment booking and related clinic services. DocVera does not provide medical consultation services.
             </p>
-            <p className="text-[15px] text-[#537eac] leading-relaxed">
+            <p className="text-[18px] text-[#537eac] leading-relaxed">
               <strong className="text-[#7598bd]">Doctor Disclaimer:</strong> Doctors and healthcare providers listed on DocVera are independent professionals and are solely responsible for the medical services they provide.
             </p>
-            <p className="text-[15px] text-[#537eac] leading-relaxed">
+            <p className="text-[18px] text-[#537eac] leading-relaxed">
               <strong className="text-[#7598bd]">Medical Records:</strong> Digital prescriptions and medical records available on the platform are generated only after an in-person consultation between the patient and the healthcare provider.
             </p>
-            <p className="text-[15px] text-[#537eac] leading-relaxed">
+            <p className="text-[18px] text-[#537eac] leading-relaxed">
               <strong className="text-[#7598bd]">Platform Role:</strong> DocVera does not provide online consultations, video consultations, telemedicine services, or medical advice. All consultations occur in-person at the doctor&apos;s clinic or hospital.
             </p>
           </div>
